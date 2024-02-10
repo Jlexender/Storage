@@ -8,10 +8,8 @@ import ru.lexender.project.description.FormOfEducation;
 import ru.lexender.project.description.Person;
 import ru.lexender.project.description.Semester;
 import ru.lexender.project.description.StudyGroup;
-import ru.lexender.project.exception.console.handler.StorageObjectBuilderException;
 import ru.lexender.project.storage.object.StorageObject;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

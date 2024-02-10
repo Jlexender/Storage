@@ -1,14 +1,11 @@
 package ru.lexender.project.description;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import ru.lexender.project.storage.object.StorageObject;
-
-import java.time.LocalDateTime;
 
 
 

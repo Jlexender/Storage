@@ -2,7 +2,11 @@ package ru.lexender.project.file.transferer.io.reader;
 
 import ru.lexender.project.exception.file.transferer.StorageIOException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class ReaderViaScanner implements IRead {

@@ -1,13 +1,11 @@
 package ru.lexender.project.console.command.list;
 
 import ru.lexender.project.console.command.Command;
-import ru.lexender.project.exception.console.command.CommandExecutionException;
 import ru.lexender.project.console.controller.Controller;
+import ru.lexender.project.exception.console.command.CommandExecutionException;
 import ru.lexender.project.exception.file.transferer.StorageTransferException;
 import ru.lexender.project.file.transferer.DefaultTransferer;
 import ru.lexender.project.file.transferer.ITransfer;
-
-import java.io.IOException;
 
 public class Save extends Command {
     public Save() {

@@ -1,7 +1,5 @@
 package ru.lexender.project.console.sender;
 
-import lombok.NonNull;
-
 public class ConsoleSender implements ISend {
     public void sendf(String format, Object ... args) {
         System.out.printf(format, args);

@@ -1,11 +1,9 @@
 package ru.lexender.project.file.transferer;
 
-import lombok.NonNull;
 import ru.lexender.project.exception.file.transferer.StorageIOException;
 import ru.lexender.project.exception.file.transferer.StorageTransferException;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
 import ru.lexender.project.file.FileSystem;
-import ru.lexender.project.file.transferer.io.reader.ReaderViaScanner;
 import ru.lexender.project.file.transferer.io.writer.IWrite;
 import ru.lexender.project.file.transferer.io.writer.WriteViaPrintWriter;
 import ru.lexender.project.file.transferer.json.parser.StorageObjectParser;
@@ -14,13 +12,6 @@ import ru.lexender.project.file.transferer.json.serializer.GsonStorageSerializer
 import ru.lexender.project.file.transferer.json.serializer.ISerialize;
 import ru.lexender.project.storage.IStore;
 import ru.lexender.project.storage.object.StorageObject;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
 
 public class DefaultTransferer implements ITransfer {
     FileSystem fileSystem;

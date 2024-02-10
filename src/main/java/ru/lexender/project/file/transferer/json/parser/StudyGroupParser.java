@@ -10,10 +10,8 @@ import ru.lexender.project.file.transferer.io.reader.ReaderViaScanner;
 import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Optional;
-
 
 public class StudyGroupParser implements StorageObjectParser {
     private final File file;
