@@ -8,7 +8,6 @@ import lombok.ToString;
 import ru.lexender.project.storage.object.StorageObject;
 
 
-
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
 public class StudyGroup extends StorageObject {
     @Expose @NonNull private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически

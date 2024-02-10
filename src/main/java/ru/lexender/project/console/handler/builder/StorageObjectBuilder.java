@@ -18,5 +18,5 @@ public abstract class StorageObjectBuilder {
         this.orderedFields = orderedFields;
     }
 
-    public abstract Optional<StorageObject> build(List<String> arguments) throws StorageObjectBuilderException;
+    public abstract StorageObject build(List<String> arguments) throws StorageObjectBuilderException;
 }

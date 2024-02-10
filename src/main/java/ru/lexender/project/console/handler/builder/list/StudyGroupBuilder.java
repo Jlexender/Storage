@@ -10,6 +10,7 @@ import ru.lexender.project.description.Semester;
 import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.storage.object.StorageObject;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,9 +34,9 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                 });
 
     }
-    public Optional<StorageObject> build(List<String> arguments) {
+    public StorageObject build(List<String> arguments) {
         try {
-            if (arguments.size() != getArgumentsAmount()) return Optional.empty();
+            if (arguments.size() != getArgumentsAmount()) return StorageObject.nullObject;
             String name = arguments.get(0);
             Long x_Coordinates = Long.parseLong(arguments.get(1));
             long y_Coordinates = Long.parseLong(arguments.get(2));
@@ -50,13 +51,13 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
             Country nationality_Person = Country.valueOf(arguments.get(11));
             Coordinates coordinates = new Coordinates(x_Coordinates, y_Coordinates);
             Person groupAdmin = new Person(name_Person, weight_Person, eyeColor_Person, hairColor_Person, nationality_Person);
-            return Optional.of(new StudyGroup(name, coordinates, studentsCount,
-                    averageMark, formOfEducation, semesterEnum, groupAdmin));
+            return new StudyGroup(name, coordinates, studentsCount,
+                    averageMark, formOfEducation, semesterEnum, groupAdmin);
         } catch (IllegalAccessException exception) {
             System.out.println(exception.getMessage());
-            return Optional.empty();
+            return StorageObject.nullObject;
         } catch (Exception exception) {
-            return Optional.empty();
+            return StorageObject.nullObject;
         }
     }
 }

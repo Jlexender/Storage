@@ -31,7 +31,7 @@ public class ConsoleHandler implements IHandle {
         List<String> arguments = formatToArguments(rawInput);
 
         try {
-            Optional<StorageObject> definedObject = builder.build(arguments);
+            StorageObject definedObject = builder.build(arguments);
 
             CommandGenerator.generate(
                     new Help(),

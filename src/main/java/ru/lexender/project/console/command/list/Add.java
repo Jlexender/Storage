@@ -9,9 +9,9 @@ import ru.lexender.project.storage.object.StorageObject;
 import java.util.Optional;
 
 public class Add extends NonStaticCommand {
-    private final Optional<StorageObject> nullableObject;
+    private final StorageObject nullableObject;
 
-    public Add(Optional<StorageObject> nullableObject, StorageObjectBuilder objectBuilder) {
+    public Add(StorageObject nullableObject, StorageObjectBuilder objectBuilder) {
         super("add", "Adds new element to the collection", objectBuilder);
         this.nullableObject = nullableObject;
         StringBuilder syntax = new StringBuilder(getAbbreviation());
@@ -21,9 +21,9 @@ public class Add extends NonStaticCommand {
         super.syntax = syntax.toString();
     }
     public void execute(Controller controller) throws CommandExecutionException {
-        if (nullableObject.isEmpty())
+        if (nullableObject.isNull())
             throw new CommandExecutionException("Can't add to the collection", this);
-        controller.getStorage().add(nullableObject.get());
+        controller.getStorage().add(nullableObject);
         controller.getSender().send("ok " + super.getAbbreviation());
     }
 }
