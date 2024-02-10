@@ -9,7 +9,7 @@ public class Main {
             ConsoleApp application = new ConsoleApp(variable);
             application.run();
         } catch (NullPointerException exception) {
-            System.out.println("Please add \'LAB\' environment variable");
+            System.out.println("Please add 'LAB' environment variable");
         }
     }
 }
