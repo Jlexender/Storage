@@ -10,9 +10,7 @@ import ru.lexender.project.description.Semester;
 import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.storage.object.StorageObject;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 public class StudyGroupBuilder extends StorageObjectBuilder {
 

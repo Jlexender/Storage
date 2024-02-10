@@ -6,8 +6,6 @@ import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
 import ru.lexender.project.storage.object.StorageObject;
 
-import java.util.Optional;
-
 public class Add extends NonStaticCommand {
     private final StorageObject nullableObject;
 

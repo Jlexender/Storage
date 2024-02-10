@@ -6,7 +6,6 @@ import ru.lexender.project.exception.console.handler.StorageObjectBuilderExcepti
 import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 public abstract class StorageObjectBuilder {
