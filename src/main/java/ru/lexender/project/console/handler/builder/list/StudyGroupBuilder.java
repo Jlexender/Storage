@@ -35,6 +35,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
     }
     public Optional<StorageObject> build(List<String> arguments) {
         try {
+            if (arguments.size() != getArgumentsAmount()) throw new IllegalAccessException("Unexpected arguments");
             String name = arguments.get(0);
             Long x_Coordinates = Long.parseLong(arguments.get(1));
             long y_Coordinates = (long)Long.parseLong(arguments.get(2));
