@@ -35,11 +35,11 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
     }
     public Optional<StorageObject> build(List<String> arguments) {
         try {
-            if (arguments.size() != getArgumentsAmount()) throw new IllegalAccessException("Unexpected arguments");
+            if (arguments.size() != getArgumentsAmount()) return Optional.empty();
             String name = arguments.get(0);
             Long x_Coordinates = Long.parseLong(arguments.get(1));
-            long y_Coordinates = (long)Long.parseLong(arguments.get(2));
-            long studentsCount = (long)Long.parseLong(arguments.get(3));
+            long y_Coordinates = Long.parseLong(arguments.get(2));
+            long studentsCount = Long.parseLong(arguments.get(3));
             Long averageMark = Long.parseLong(arguments.get(4));
             FormOfEducation formOfEducation = FormOfEducation.valueOf(arguments.get(5));
             Semester semesterEnum = Semester.valueOf(arguments.get(6));

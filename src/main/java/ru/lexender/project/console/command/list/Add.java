@@ -22,7 +22,7 @@ public class Add extends NonStaticCommand {
     }
     public void execute(Controller controller) throws CommandExecutionException {
         if (nullableObject.isEmpty())
-            throw new CommandExecutionException("Can't add this object to a collection", this);
+            throw new CommandExecutionException("Can't add to the collection", this);
         controller.getStorage().add(nullableObject.get());
         controller.getSender().send("ok " + super.getAbbreviation());
     }
