@@ -55,6 +55,10 @@ public class StudyGroup extends StorageObject {
         this.formOfEducation = (FormOfEducation) orderedFields[4];
         this.semesterEnum = (Semester) orderedFields[5];
         this.groupAdmin = (Person) orderedFields[6];
+
+        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+        if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
+        if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
     }
 
     public Object[] getOrderedFields() {
