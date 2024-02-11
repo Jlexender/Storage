@@ -19,18 +19,22 @@ public class Info extends Command {
     }
     public void execute(Controller controller) throws CommandExecutionException {
         try {
-            Collection<StorageObject> storageCollection = controller.getStorage().getCollection();
+            Collection<? extends StorageObject> storageCollection = controller.getStorage().getCollectionCopy();
+            String message;
             if (storageCollection.isEmpty()) {
-                controller.getSender().send("No creation date (no objects in the collection)");
+                message = "No creation date (no objects in the collection)";
+                controller.getSender().send(message);
                 return;
             }
+
 
             List<StorageObject> storageList = new ArrayList<>(storageCollection);
             storageList.sort(Comparator.comparing(StorageObject::getCreationDate));
 
             LocalDateTime creationDate = storageList.get(0).getCreationDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            controller.getSender().send("Creation date: " + creationDate.format(formatter));
+            message = "Creation date: " + creationDate.format(formatter);
+            controller.getSender().send(message);
         } catch (Exception e) {
             throw new CommandExecutionException("An unexpected CommandExecutionException has been thrown", this);
         }

@@ -1,15 +1,13 @@
 package ru.lexender.project.storage;
 
-import lombok.Getter;
 import lombok.NonNull;
 import ru.lexender.project.storage.object.StorageObject;
 
+import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
-@Getter
 public class TreeSetStorage implements IStore {
-
-    private final TreeSet<StorageObject> collection;
+    private TreeSet<StorageObject> collection;
 
     public TreeSetStorage() {
         collection = new TreeSet<>();
@@ -21,5 +19,31 @@ public class TreeSetStorage implements IStore {
 
     public void clear() {
         collection.clear();
+    }
+
+    public StorageObject getById(long id) throws NoSuchElementException {
+        for (StorageObject object: collection) {
+            if (object.getId() == id) return object;
+        }
+        throw new NoSuchElementException("No such element");
+    }
+
+    public void update(long id, StorageObject replace) throws IllegalAccessException {
+        getById(id).update(replace.getOrderedFields());
+    }
+
+
+    public boolean remove(StorageObject object) {
+        if (collection.contains(object)) {
+            collection.remove(object);
+            return true;
+        }
+        return false;
+    }
+
+    public TreeSet<StorageObject> getCollectionCopy() {
+        TreeSet<StorageObject> dataCopy = new TreeSet<>();
+        dataCopy.addAll(collection);
+        return dataCopy;
     }
 }

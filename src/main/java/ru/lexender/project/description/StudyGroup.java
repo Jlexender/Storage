@@ -7,14 +7,16 @@ import lombok.NonNull;
 import lombok.ToString;
 import ru.lexender.project.storage.object.StorageObject;
 
+import java.time.LocalDateTime;
+
 
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
 public class StudyGroup extends StorageObject {
-    @Expose @NonNull private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    @Expose private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose @NonNull private Coordinates coordinates; //Поле не может быть null
     @Expose @NonNull private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    @Expose @NonNull private long studentsCount; //Значение поля должно быть больше 0
+    @Expose private long studentsCount; //Значение поля должно быть больше 0
     @Expose @NonNull private Long averageMark; //Значение поля должно быть больше 0, Поле может быть null
     @Expose @NonNull private FormOfEducation formOfEducation; //Поле может быть null
     @Expose @NonNull private Semester semesterEnum; //Поле может быть null
@@ -42,6 +44,31 @@ public class StudyGroup extends StorageObject {
         this.formOfEducation = formOfEducation;
         this.semesterEnum = semesterEnum;
         this.groupAdmin = groupAdmin;
+    }
+
+    public void update(Object[] orderedFields) throws IllegalAccessException {
+        if (orderedFields.length != getOrderedFields().length)
+            throw new IllegalAccessException("Invalid arguments amount");
+
+        this.name = (String) orderedFields[0];
+        this.coordinates = (Coordinates) orderedFields[1];
+        this.studentsCount = (long) orderedFields[2];
+        this.averageMark = (long) orderedFields[3];
+        this.formOfEducation = (FormOfEducation) orderedFields[4];
+        this.semesterEnum = (Semester) orderedFields[5];
+        this.groupAdmin = (Person) orderedFields[6];
+    }
+
+    public Object[] getOrderedFields() {
+        return new Object[] {
+                name,
+                coordinates,
+                studentsCount,
+                averageMark,
+                formOfEducation,
+                semesterEnum,
+                groupAdmin
+        };
     }
 
     public int compareTo(StudyGroup group) {

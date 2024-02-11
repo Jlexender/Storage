@@ -12,8 +12,9 @@ public class Show extends Command {
         super("show", "Prints collection elements.");
     }
     public void execute(Controller controller) {
-        Collection<StorageObject> collection = controller.getStorage().getCollection();
-        for (StorageObject object: collection)
+        Collection<? extends StorageObject> collection = controller.getStorage().getCollectionCopy();
+        for (StorageObject object: collection) {
             controller.getSender().send(object);
+        }
     }
 }

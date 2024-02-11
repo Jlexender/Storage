@@ -19,6 +19,8 @@ public class Person {
                   Color hairColor,
                   Country nationality) throws IllegalAccessException {
         if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+        if (weight < 0) throw new IllegalAccessException("Weight must be positive");
+
         this.name = name;
         this.weight = weight;
         this.eyeColor = eyeColor;

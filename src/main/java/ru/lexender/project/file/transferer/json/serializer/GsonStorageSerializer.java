@@ -23,7 +23,7 @@ public class GsonStorageSerializer implements ISerialize {
                     setPrettyPrinting().
                     registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
-            Object[] objects = storage.getCollection().toArray();
+            Object[] objects = storage.getCollectionCopy().toArray();
             return gson.toJson(objects);
         } catch (Exception exception) {
             exception.printStackTrace();

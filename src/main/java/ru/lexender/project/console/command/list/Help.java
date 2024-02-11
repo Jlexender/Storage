@@ -14,8 +14,6 @@ public class Help extends Command {
         for (Command command: CommandGenerator.getCommandList().values()) {
             helpString.append("Command: ").append(command.getAbbreviation())
                     .append('\n').append("Info: ").append(command.getInfo()).append('\n');
-            if (command.getSyntax() != null) helpString.append("Syntax: ").append(command.getSyntax()).append('\n');
-            helpString.append('\n');
         }
         controller.getSender().send(helpString.toString());
     }

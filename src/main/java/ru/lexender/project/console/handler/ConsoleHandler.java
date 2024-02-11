@@ -3,15 +3,17 @@ package ru.lexender.project.console.handler;
 import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.command.CommandGenerator;
 import ru.lexender.project.console.command.list.Add;
+import ru.lexender.project.console.command.list.Clear;
 import ru.lexender.project.console.command.list.Exit;
 import ru.lexender.project.console.command.list.Help;
 import ru.lexender.project.console.command.list.Info;
+import ru.lexender.project.console.command.list.RemoveById;
 import ru.lexender.project.console.command.list.Save;
 import ru.lexender.project.console.command.list.Show;
+import ru.lexender.project.console.command.list.UpdateId;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.exception.console.handler.InputHandleException;
 import ru.lexender.project.exception.console.handler.UnknownCommandException;
-import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,6 @@ public class ConsoleHandler implements IHandle {
         List<String> arguments = formatToArguments(rawInput);
 
         try {
-            StorageObject definedObject = builder.build(arguments);
 
             CommandGenerator.generate(
                     new Help(),
@@ -38,7 +39,10 @@ public class ConsoleHandler implements IHandle {
                     new Show(),
                     new Save(),
                     new Exit(),
-                    new Add(definedObject, builder)
+                    new Add(arguments, builder),
+                    new Clear(),
+                    new UpdateId(arguments, builder),
+                    new RemoveById(arguments)
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {

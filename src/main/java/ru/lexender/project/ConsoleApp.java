@@ -10,11 +10,13 @@ import ru.lexender.project.console.receiver.ConsoleReceiver;
 import ru.lexender.project.console.receiver.IReceive;
 import ru.lexender.project.console.sender.ConsoleSender;
 import ru.lexender.project.console.sender.ISend;
+import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.file.FileSystem;
 import ru.lexender.project.file.enviroment.EnvironmentVariable;
 import ru.lexender.project.file.transferer.DefaultTransferer;
 import ru.lexender.project.file.transferer.ITransfer;
 import ru.lexender.project.storage.TreeSetStorage;
+import ru.lexender.project.storage.object.StorageObject;
 
 public class ConsoleApp implements Runnable {
     private final IReceive receiver;
@@ -30,7 +32,7 @@ public class ConsoleApp implements Runnable {
 
         this.receiver = new ConsoleReceiver();
         this.sender = new ConsoleSender();
-        this.controller = new Controller(storage, fileSystem, sender);
+        this.controller = new Controller(storage, fileSystem, sender, receiver);
         this.handler = new ConsoleHandler(new StudyGroupBuilder());
 
         try {

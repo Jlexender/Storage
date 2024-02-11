@@ -10,18 +10,31 @@ public abstract class StorageObject implements Comparable<StorageObject> {
     private final long id;
     private final LocalDateTime creationDate;
 
-    public static final StorageObject nullObject = new StorageObject() {};
+    public static final StorageObject nullObject = new StorageObject() {
+        public void update(Object[] orderedFields) {
+            return;
+        }
+
+        public Object[] getOrderedFields() {
+            return new Object[0];
+        }
+    };
 
     public StorageObject() {
         this.id = ID++;
         this.creationDate = LocalDateTime.now();
     }
 
+    public abstract Object[] getOrderedFields();
+
     public static void initializeID(StorageObject[] objects) {
         for (StorageObject object: objects) {
             ID = Math.max(object.getId(), ID);
         }
+        ID++;
     }
+
+    public abstract void update(Object[] orderedFields) throws IllegalAccessException;
 
     public boolean isNull() {
         return (this == nullObject);

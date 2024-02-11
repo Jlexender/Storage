@@ -12,6 +12,10 @@ public class CommandExecutionException extends Exception {
         this.command = command;
     }
 
+    public CommandExecutionException(String message) {
+        super(message);
+    }
+
     public CommandExecutionException(Exception exception) {
         super(exception.getMessage());
     }
