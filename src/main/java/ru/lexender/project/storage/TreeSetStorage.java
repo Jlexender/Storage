@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
 public class TreeSetStorage implements IStore {
-    private TreeSet<StorageObject> collection;
+    private final TreeSet<StorageObject> collection;
 
     public TreeSetStorage() {
         collection = new TreeSet<>();

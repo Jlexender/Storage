@@ -7,7 +7,6 @@ import ru.lexender.project.console.sender.ISend;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
 import ru.lexender.project.file.FileSystem;
 import ru.lexender.project.storage.IStore;
-import ru.lexender.project.storage.object.StorageObject;
 
 @Getter
 public class Controller implements IControl {

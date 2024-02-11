@@ -4,7 +4,6 @@ import ru.lexender.project.console.command.InteractiveCommand;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
-import ru.lexender.project.exception.console.handler.StorageObjectBuilderException;
 
 import java.util.List;
 

@@ -7,8 +7,6 @@ import lombok.NonNull;
 import lombok.ToString;
 import ru.lexender.project.storage.object.StorageObject;
 
-import java.time.LocalDateTime;
-
 
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
 public class StudyGroup extends StorageObject {

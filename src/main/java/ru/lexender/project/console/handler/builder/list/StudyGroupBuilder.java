@@ -18,21 +18,20 @@ import java.util.List;
 public class StudyGroupBuilder extends StorageObjectBuilder {
 
     public StudyGroupBuilder() {
-        super(3, Arrays.asList(new String[]
-                {
-                        "group name",
-                        "students count",
-                        "average mark",
-                        "coordinate x",
-                        "coordinate y",
-                        "form of education",
-                        "semester",
-                        "group admin name",
-                        "group admin weight",
-                        "eye color",
-                        "hair color",
-                        "nationality"
-                }));
+        super(3, Arrays.asList(
+                "group name",
+                "students count",
+                "average mark",
+                "coordinate x",
+                "coordinate y",
+                "form of education",
+                "semester",
+                "group admin name",
+                "group admin weight",
+                "eye color",
+                "hair color",
+                "nationality"
+        ));
 
     }
     public StudyGroup build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
@@ -112,7 +111,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                     case 5: yield FormOfEducation.valueOf(message);
                     case 6: yield Semester.valueOf(message);
                     case 7:
-                        if (message.isBlank()) throw new IllegalAccessException("Name can't be empty string");;
+                        if (message.isBlank()) throw new IllegalAccessException("Name can't be empty string");
                         yield message;
                     case 8:
                         int personWeight = Integer.parseInt(message);

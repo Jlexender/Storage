@@ -11,9 +11,7 @@ public abstract class StorageObject implements Comparable<StorageObject> {
     private final LocalDateTime creationDate;
 
     public static final StorageObject nullObject = new StorageObject() {
-        public void update(Object[] orderedFields) {
-            return;
-        }
+        public void update(Object[] orderedFields) {}
 
         public Object[] getOrderedFields() {
             return new Object[0];
