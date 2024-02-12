@@ -11,9 +11,9 @@ import ru.lexender.project.console.receiver.IReceive;
 import ru.lexender.project.console.sender.ConsoleSender;
 import ru.lexender.project.console.sender.ISend;
 import ru.lexender.project.file.FileSystem;
-import ru.lexender.project.file.enviroment.EnvironmentVariable;
 import ru.lexender.project.file.transferer.DefaultTransferer;
 import ru.lexender.project.file.transferer.ITransfer;
+import ru.lexender.project.file.variable.EnvironmentVariable;
 import ru.lexender.project.storage.TreeSetStorage;
 
 public class ConsoleApp implements Runnable {

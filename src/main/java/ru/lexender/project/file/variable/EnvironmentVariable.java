@@ -1,4 +1,4 @@
-package ru.lexender.project.file.enviroment;
+package ru.lexender.project.file.variable;
 
 import lombok.Getter;
 

@@ -30,6 +30,9 @@ public class TreeSetStorage implements IStore {
         throw new NoSuchElementException("No such element");
     }
 
+    public int size() {
+        return collection.size();
+    }
 
     public boolean remove(StorageObject<?> object) {
         if (collection.contains(object)) {

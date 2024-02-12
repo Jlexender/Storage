@@ -1,15 +1,16 @@
 package ru.lexender.project;
 
-import ru.lexender.project.file.enviroment.EnvironmentVariable;
+import ru.lexender.project.file.variable.EnvironmentVariable;
 
 public class Main {
     public static void main(String[] args) {
+        String variableName = "LAB";
         try {
-            EnvironmentVariable variable = new EnvironmentVariable("LAB");
+            EnvironmentVariable variable = new EnvironmentVariable(variableName);
             ConsoleApp application = new ConsoleApp(variable);
             application.run();
         } catch (NullPointerException exception) {
-            System.out.println("Please add 'LAB' environment variable");
+            System.out.printf("Please add '%s' environment variable\n", variableName);
         }
     }
 }
