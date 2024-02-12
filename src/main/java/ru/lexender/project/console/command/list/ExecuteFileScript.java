@@ -8,6 +8,13 @@ import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Executes a script from certain file.
+ * All script arguments are written is order that is provided for user.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class ExecuteFileScript extends NonStaticCommand {
     private final List<String> arguments;
 

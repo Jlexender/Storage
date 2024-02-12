@@ -9,6 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * Implementation of IRead, reads data from java.io.File. Uses java.util.Scanner.
+ * @see ru.lexender.project.file.transferer.io.reader.IRead
+ */
 public class ReaderViaScanner implements IRead {
     private final InputStream inputStream;
 

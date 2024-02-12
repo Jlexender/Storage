@@ -9,6 +9,11 @@ import ru.lexender.project.storage.object.StorageInitializable;
 
 import java.time.LocalDateTime;
 
+/**
+ * Description class, collection target.
+ *
+ * @see ru.lexender.project.storage.object.StorageInitializable
+ */
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
 public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable {
     @Expose private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически

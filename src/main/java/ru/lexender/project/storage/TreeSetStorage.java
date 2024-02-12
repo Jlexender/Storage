@@ -8,6 +8,10 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.TreeSet;
 
+/**
+ * Class provided for storing elements.
+ * @see ru.lexender.project.storage.IStore
+ */
 public class TreeSetStorage implements IStore {
     private final TreeSet<StorageObject<?>> collection;
 

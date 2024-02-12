@@ -15,6 +15,10 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * The transferer provided with ITransfer interface.
+ * @see ru.lexender.project.file.transferer.ITransfer
+ */
 public class DefaultTransferer implements ITransfer {
     FileSystem fileSystem;
     IStore storage;

@@ -7,6 +7,10 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * Tries to initialize an instance of StorageObject class by provided arguments (in java.lang.String form)
+ * @see ru.lexender.project.storage.object.StorageObject
+ */
 @Getter
 public abstract class StorageObjectBuilder {
     private final int firstArgumentsAmount;

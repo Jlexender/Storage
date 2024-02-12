@@ -16,12 +16,20 @@ import ru.lexender.project.file.transferer.ITransfer;
 import ru.lexender.project.file.variable.EnvironmentVariable;
 import ru.lexender.project.storage.TreeSetStorage;
 
+/**
+ *  The console application.
+ */
 public class ConsoleApp implements Runnable {
     private final IReceive receiver;
     private final IControl controller;
     private final IHandle handler;
     private final ISend sender;
 
+    /**
+     * Initializes ConsoleApp with EnvironmentVariable object.
+     * @param pathToFile
+     * @see ru.lexender.project.file.variable.EnvironmentVariable
+     */
     public ConsoleApp(EnvironmentVariable pathToFile) {
         FileSystem fileSystem = new FileSystem(pathToFile);
         TreeSetStorage storage = new TreeSetStorage();
@@ -40,6 +48,10 @@ public class ConsoleApp implements Runnable {
             sender.send(exception.getMessage());
         }
     }
+
+    /**
+     * Console initialization and execution.
+     */
     public void run() {
 
         Command init = new Command("init", "Initializes Console Application") {

@@ -8,11 +8,19 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * Adds element to collection if it's less than collection minimum.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class AddIfMin extends InteractiveCommand {
     private final List<String> firstArguments;
 
     public AddIfMin(List<String> firstArguments, StorageObjectBuilder objectBuilder) {
-        super("add_if_min", "Adds element to collection if it's less than minimal", objectBuilder, 3);
+        super("add_if_min",
+                "Adds element to collection if it's less than minimal element",
+                objectBuilder, 3);
         this.firstArguments = firstArguments;
     }
 

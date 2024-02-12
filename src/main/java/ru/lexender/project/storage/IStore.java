@@ -5,6 +5,9 @@ import ru.lexender.project.storage.object.StorageObject;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 
+/**
+ * Stores the collection's elements.
+ */
 public interface IStore {
     public void add(StorageObject<?> element);
     public Collection<StorageObject<?>> getCollectionCopy();

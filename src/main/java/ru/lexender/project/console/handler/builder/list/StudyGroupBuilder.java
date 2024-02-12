@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class for initializing a StudyGroup object. Extends StorageObjectBuilder.
+ * @see ru.lexender.project.console.handler.builder.StorageObjectBuilder
+ */
 public class StudyGroupBuilder extends StorageObjectBuilder {
 
     public StudyGroupBuilder() {

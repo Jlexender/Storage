@@ -2,6 +2,9 @@ package ru.lexender.project.exception.console.handler;
 
 import lombok.Getter;
 
+/**
+ * An exception that occurs due to command recognizing failure.
+ */
 @Getter
 public class UnknownCommandException extends InputHandleException {
     private final String command;

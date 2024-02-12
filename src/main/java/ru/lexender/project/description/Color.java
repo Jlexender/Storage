@@ -1,5 +1,8 @@
 package ru.lexender.project.description;
 
+/**
+ * Description enum.
+ */
 public enum Color {
     GREEN,
     RED,

@@ -4,6 +4,12 @@ import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
 
+/**
+ * Prints out collection info.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class Info extends Command {
 
     public Info() {

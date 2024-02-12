@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Description class.
+ */
 @ToString
 @Getter
 public class Coordinates {

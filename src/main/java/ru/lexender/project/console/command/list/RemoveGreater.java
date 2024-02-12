@@ -9,6 +9,12 @@ import ru.lexender.project.storage.object.StorageObject;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Removes all elements that are greater than the specified one.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class RemoveGreater extends InteractiveCommand {
     private final List<String> firstArguments;
 

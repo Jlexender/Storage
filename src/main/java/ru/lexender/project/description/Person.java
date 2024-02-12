@@ -5,6 +5,9 @@ import com.google.gson.annotations.Expose;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Description class.
+ */
 @ToString
 public class Person {
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой

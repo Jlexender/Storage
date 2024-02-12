@@ -8,6 +8,10 @@ import ru.lexender.project.storage.object.StorageObject;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Parses data from file to a list of StorageObject classes.
+ * @see ru.lexender.project.storage.object.StorageObject
+ */
 @Getter
 public abstract class StorageObjectParser {
     private final File file;

@@ -13,7 +13,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
 
-
+/**
+ * Class provided with ISerialize in order to serialize IStore classes. Implementation with Google Gson.
+ * @see ru.lexender.project.file.transferer.json.serializer.ISerialize
+ */
 public class GsonStorageSerializer implements ISerialize {
     protected final IStore storage;
 

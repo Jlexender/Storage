@@ -9,6 +9,12 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * Adds new element to the collection.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class Add extends InteractiveCommand {
     private final List<String> firstArguments;
 
@@ -16,6 +22,8 @@ public class Add extends InteractiveCommand {
         super("add", "Adds new element to the collection", objectBuilder, 12);
         this.firstArguments = firstArguments;
     }
+
+
     public void execute(Controller controller) throws CommandExecutionException {
         try {
             StorageObject<?> object = getObjectBuilder().build(firstArguments, controller);

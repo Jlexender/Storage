@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * StudyGroup class to StorageObject class parser.
+ * @see ru.lexender.project.file.transferer.json.parser.StorageObjectParser
+ */
 public class StudyGroupParser extends StorageObjectParser {
 
     public StudyGroupParser(File file) {

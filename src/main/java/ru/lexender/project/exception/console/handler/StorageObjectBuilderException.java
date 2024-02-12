@@ -2,6 +2,9 @@ package ru.lexender.project.exception.console.handler;
 
 import lombok.Getter;
 
+/**
+ * An exception that occurs due to builder transformation to StorageObject failure.
+ */
 @Getter
 public class StorageObjectBuilderException extends Exception {
     String input;

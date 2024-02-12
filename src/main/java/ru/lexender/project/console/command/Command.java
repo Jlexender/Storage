@@ -6,6 +6,10 @@ import lombok.NonNull;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
 
+/**
+ * Basic abstract class for command. Used for static commands.
+ */
+
 @Getter
 @EqualsAndHashCode
 public abstract class Command {

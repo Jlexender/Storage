@@ -4,6 +4,12 @@ import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.command.CommandGenerator;
 import ru.lexender.project.console.controller.Controller;
 
+/**
+ * Prints out all commands and their usage.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class Help extends Command {
 
     public Help() {

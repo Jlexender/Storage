@@ -6,6 +6,11 @@ import lombok.NonNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Object that is allowed to be stored in classes that implement IStore interface.
+ * @param <T> is a collection target class.
+ * @see ru.lexender.project.storage.object.StorageInitializable
+ */
 @Getter
 public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
     private static long ID = 0;

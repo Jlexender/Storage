@@ -7,6 +7,12 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * Tries to remove the collection element with specified id.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class RemoveById extends NonStaticCommand {
     private final List<String> arguments;
 

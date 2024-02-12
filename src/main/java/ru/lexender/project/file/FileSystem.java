@@ -11,6 +11,9 @@ import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
+/**
+ * Provides information about file and its last modification date.
+ */
 @Getter
 public class FileSystem {
     private final @NonNull File file;

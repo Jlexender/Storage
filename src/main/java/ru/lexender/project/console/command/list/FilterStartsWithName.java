@@ -7,6 +7,12 @@ import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
+/**
+ * Prints out only elements that have the same name.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class FilterStartsWithName extends NonStaticCommand {
     List<String> arguments;
 

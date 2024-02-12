@@ -2,6 +2,9 @@ package ru.lexender.project.exception.console.handler;
 
 import lombok.Getter;
 
+/**
+ * An exception that occurs due to Handler input handling failure.
+ */
 @Getter
 public class InputHandleException extends Exception {
     String input;

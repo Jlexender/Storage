@@ -12,6 +12,11 @@ import ru.lexender.project.storage.IStore;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Class provided for IControl interface.
+ * @see ru.lexender.project.console.controller.IControl
+ */
+
 @Getter
 public class Controller implements IControl {
     private final Queue<Command> history = new LinkedList<>();

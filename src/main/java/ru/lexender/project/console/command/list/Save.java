@@ -7,6 +7,12 @@ import ru.lexender.project.exception.file.transferer.StorageTransferException;
 import ru.lexender.project.file.transferer.DefaultTransferer;
 import ru.lexender.project.file.transferer.ITransfer;
 
+/**
+ * Saves collection to file.
+ * @see ru.lexender.project.console.command.InteractiveCommand
+ * @see ru.lexender.project.console.command.NonStaticCommand
+ * @see ru.lexender.project.console.command.Command
+ */
 public class Save extends Command {
     public Save() {
         super("save", "Writes current collection to chosen FileSystem");
