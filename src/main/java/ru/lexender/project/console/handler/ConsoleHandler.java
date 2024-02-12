@@ -3,11 +3,14 @@ package ru.lexender.project.console.handler;
 import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.command.CommandGenerator;
 import ru.lexender.project.console.command.list.Add;
+import ru.lexender.project.console.command.list.AddIfMin;
 import ru.lexender.project.console.command.list.Clear;
 import ru.lexender.project.console.command.list.Exit;
 import ru.lexender.project.console.command.list.Help;
+import ru.lexender.project.console.command.list.History;
 import ru.lexender.project.console.command.list.Info;
 import ru.lexender.project.console.command.list.RemoveById;
+import ru.lexender.project.console.command.list.RemoveGreater;
 import ru.lexender.project.console.command.list.Save;
 import ru.lexender.project.console.command.list.Show;
 import ru.lexender.project.console.command.list.UpdateId;
@@ -42,7 +45,10 @@ public class ConsoleHandler implements IHandle {
                     new Add(arguments, builder),
                     new Clear(),
                     new UpdateId(arguments, builder),
-                    new RemoveById(arguments)
+                    new RemoveById(arguments),
+                    new AddIfMin(arguments, builder),
+                    new RemoveGreater(arguments, builder),
+                    new History()
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {

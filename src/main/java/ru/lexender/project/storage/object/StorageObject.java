@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Getter
-public class StorageObject<T extends StorageInitializable> implements Comparable<StorageObject<T>> {
+public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
     private static long ID = 0;
     private final long id;
     private final LocalDateTime creationDate;
     private T object;
 
-    public static final StorageObject<?> nullObject = new StorageObject<>() {};
+    public static final StorageObject<?> nullObject = new StorageObject<>();
 
     public StorageObject(T object) {
         this.object = object;
@@ -46,8 +46,9 @@ public class StorageObject<T extends StorageInitializable> implements Comparable
         return object.toString();
     }
 
-    public int compareTo(StorageObject<T> object) {
-        return Long.compare(this.getId(), object.getId());
+    public int compareTo(StorageObject<?> obj) throws ClassCastException {
+        return object.compareTo(((StorageObject<T>) obj).getObject());
     }
+
 }
 

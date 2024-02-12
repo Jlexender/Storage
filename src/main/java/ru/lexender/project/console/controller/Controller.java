@@ -8,12 +8,17 @@ import ru.lexender.project.exception.console.command.CommandExecutionException;
 import ru.lexender.project.file.FileSystem;
 import ru.lexender.project.storage.IStore;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 @Getter
 public class Controller implements IControl {
-    IStore storage;
-    FileSystem fileSystem;
-    ISend sender;
-    IReceive receiver;
+    private final Queue<Command> history = new LinkedList<>();
+
+    private final IStore storage;
+    private final FileSystem fileSystem;
+    private final ISend sender;
+    private final IReceive receiver;
 
     public Controller(IStore storage, FileSystem fileSystem, ISend sender, IReceive receiver) {
         this.storage = storage;
@@ -24,5 +29,7 @@ public class Controller implements IControl {
 
     public void execute(Command command) throws CommandExecutionException {
         command.execute(this);
+        history.add(command);
+        if (history.size() > 9) history.remove();
     }
 }

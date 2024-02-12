@@ -37,6 +37,12 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
     }
     public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
         try {
+            if (arguments.size() != getFirstArgumentsAmount())
+                throw new StorageObjectBuilderException(
+                        String.format(
+                                "Wrong field amount: %d arguments expected, got %d",
+                                getFirstArgumentsAmount(), arguments.size())
+                );
             List<Object> constructorArgs = new ArrayList<>();
 
             String name = arguments.get(0);

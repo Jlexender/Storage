@@ -11,4 +11,5 @@ public interface IStore {
     public void clear();
     public StorageObject<?> getById(long objectId) throws NoSuchElementException;
     public boolean remove(StorageObject<?> object);
+    public StorageObject<?> getMin();
 }
