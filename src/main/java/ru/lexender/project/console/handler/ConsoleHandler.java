@@ -50,7 +50,7 @@ public class ConsoleHandler implements IHandle {
                     new AddIfMin(arguments, builder),
                     new RemoveGreater(arguments, builder),
                     new History(),
-                    new ExecuteFileScript(arguments, builder)
+                    new ExecuteFileScript(arguments)
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {
