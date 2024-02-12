@@ -17,7 +17,7 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
 
     public StorageObject(T object) {
         this.object = object;
-        this.id = (object.getId() != 0) ? object.getId() : ++ID;
+        this.id = (object.getId() != 0) ? object.getId() : ID++;
         this.creationDate = LocalDateTime.now();
         object.initialize(id, creationDate);
     }
@@ -35,6 +35,7 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
         for (StorageObject<?> object: objects) {
             ID = Math.max(object.getId(), ID);
         }
+        ID++;
     }
 
     public boolean isNull() {
