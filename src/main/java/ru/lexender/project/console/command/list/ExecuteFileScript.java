@@ -1,6 +1,5 @@
 package ru.lexender.project.console.command.list;
 
-import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.command.NonStaticCommand;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;

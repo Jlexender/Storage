@@ -2,12 +2,9 @@ package ru.lexender.project.storage.object;
 
 import lombok.Getter;
 import lombok.NonNull;
-import ru.lexender.project.storage.IStore;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
