@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString
 public class Person {
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
-    @Expose @NonNull private int weight; //Значение поля должно быть больше 0
+    @Expose private int weight; //Значение поля должно быть больше 0
     @Expose @NonNull private Color eyeColor; //Поле не может быть null
     @Expose @NonNull private Color hairColor; //Поле не может быть null
     @Expose @NonNull private Country nationality; //Поле не может быть null

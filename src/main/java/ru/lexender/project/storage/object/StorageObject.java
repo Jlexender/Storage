@@ -1,6 +1,7 @@
 package ru.lexender.project.storage.object;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
@@ -25,8 +26,8 @@ public class StorageObject<T extends StorageInitializable> implements Comparable
         this.creationDate = LocalDateTime.now();
     }
 
-    public void update(StorageObject<?> object) {
-        if (object.getObject().getClass() == object.getClass())
+    public void update(@NonNull StorageObject<?> object) throws IllegalArgumentException {
+        if (object.getObject().getClass() != object.getClass())
             throw new IllegalArgumentException("Objects have different classes");
         this.object = (T)(object.getObject());
     }

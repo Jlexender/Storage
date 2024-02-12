@@ -13,7 +13,7 @@ public class Help extends Command {
         StringBuilder helpString = new StringBuilder("AVAILABLE COMMANDS:\n\n");
         for (Command command: CommandGenerator.getCommandList().values()) {
             helpString.append("Command: ").append(command.getAbbreviation())
-                    .append('\n').append("Info: ").append(command.getInfo()).append('\n');
+                    .append('\n').append("Usage: ").append(command.getInfo()).append("\n\n");
         }
         controller.getSender().send(helpString.toString());
     }
