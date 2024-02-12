@@ -21,7 +21,12 @@ public class Add extends InteractiveCommand {
             StorageObject<?> object = getObjectBuilder().build(firstArguments, controller);
             controller.getStorage().add(object);
         } catch (StorageObjectBuilderException exception) {
-            throw new CommandExecutionException(exception);
+            try {
+                StorageObject<?> object = getObjectBuilder().buildInLine(firstArguments, controller);
+                controller.getStorage().add(object);
+            } catch (StorageObjectBuilderException exception1) {
+                throw new CommandExecutionException(exception);
+            }
         }
     }
 }

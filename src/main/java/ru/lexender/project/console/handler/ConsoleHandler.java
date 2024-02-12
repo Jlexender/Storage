@@ -5,6 +5,7 @@ import ru.lexender.project.console.command.CommandGenerator;
 import ru.lexender.project.console.command.list.Add;
 import ru.lexender.project.console.command.list.AddIfMin;
 import ru.lexender.project.console.command.list.Clear;
+import ru.lexender.project.console.command.list.ExecuteFileScript;
 import ru.lexender.project.console.command.list.Exit;
 import ru.lexender.project.console.command.list.Help;
 import ru.lexender.project.console.command.list.History;
@@ -48,7 +49,8 @@ public class ConsoleHandler implements IHandle {
                     new RemoveById(arguments),
                     new AddIfMin(arguments, builder),
                     new RemoveGreater(arguments, builder),
-                    new History()
+                    new History(),
+                    new ExecuteFileScript(arguments, builder)
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {

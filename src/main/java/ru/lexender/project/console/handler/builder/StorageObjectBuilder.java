@@ -18,4 +18,5 @@ public abstract class StorageObjectBuilder {
     }
 
     public abstract StorageObject<?> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException;
+    public abstract StorageObject<?> buildInLine(List<String> arguments, Controller controller) throws StorageObjectBuilderException;
 }

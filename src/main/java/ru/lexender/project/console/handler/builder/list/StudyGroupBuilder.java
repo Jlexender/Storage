@@ -37,12 +37,14 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
     }
     public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
         try {
-            if (arguments.size() != getFirstArgumentsAmount())
+            if (arguments.size() != getFirstArgumentsAmount()) {
                 throw new StorageObjectBuilderException(
                         String.format(
                                 "Wrong field amount: %d arguments expected, got %d",
                                 getFirstArgumentsAmount(), arguments.size())
                 );
+            }
+
             List<Object> constructorArgs = new ArrayList<>();
 
             String name = arguments.get(0);
@@ -133,6 +135,61 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
             } catch (Exception exception) {
                 controller.getSender().send("Invalid argument. Please enter valid argument.");
             }
+        }
+    }
+
+    public StorageObject<StudyGroup> buildInLine(List<String> arguments, Controller controller) throws StorageObjectBuilderException{
+        try {
+            if (arguments.size() != getFieldNames().size()) {
+                throw new StorageObjectBuilderException(
+                        String.format(
+                                "Wrong field amount: %d arguments expected, got %d",
+                                getFieldNames().size(), arguments.size())
+                );
+            }
+
+            String name = arguments.get(0);
+            long studentsCount = Long.parseLong(arguments.get(1));
+            Long averageMark = Long.parseLong(arguments.get(2));
+            Long coordinateX = Long.parseLong(arguments.get(3));
+            long coordinateY = Long.parseLong(arguments.get(4));
+            FormOfEducation formOfEducation = FormOfEducation.valueOf(arguments.get(5));
+            Semester semesterEnum = Semester.valueOf(arguments.get(6));
+            String personName = arguments.get(7);
+            int personWeight = Integer.parseInt(arguments.get(8));
+            Color personEyeColor = Color.valueOf(arguments.get(9));
+            Color persoHairColor = Color.valueOf(arguments.get(10));
+            Country personNationality = Country.valueOf(arguments.get(11));
+
+
+            if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+            if (studentsCount < 0) throw new IllegalAccessException("Students count must be greater than 0");
+            if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
+            if (coordinateY >= 159) throw new IllegalAccessException("Y value must be less than 159");
+            if (personName.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+            if (personWeight <= 0) throw new IllegalAccessException("Weight must be positive");
+
+
+            return new StorageObject<>(new StudyGroup(
+                    name,
+                    new Coordinates(
+                            coordinateX,
+                            coordinateY
+                    ),
+                    studentsCount,
+                    averageMark,
+                    formOfEducation,
+                    semesterEnum,
+                    new Person(
+                            personName,
+                            personWeight,
+                            personEyeColor,
+                            persoHairColor,
+                            personNationality
+                    )
+            ));
+        } catch (Exception exception) {
+            throw new StorageObjectBuilderException(exception);
         }
     }
 }

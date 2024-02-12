@@ -2,9 +2,12 @@ package ru.lexender.project.storage.object;
 
 import lombok.Getter;
 import lombok.NonNull;
+import ru.lexender.project.storage.IStore;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Getter
 public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
@@ -17,7 +20,7 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
 
     public StorageObject(T object) {
         this.object = object;
-        this.id = ID++;
+        this.id = (object.getId() != 0) ? object.getId() : ++ID;
         this.creationDate = LocalDateTime.now();
         object.initialize(id, creationDate);
     }
@@ -31,7 +34,7 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
         this.object = (T)(object.getObject());
     }
 
-    public static void initializeID(Collection<StorageObject<?>> objects) throws ClassCastException {
+    public static void initializeID(List<StorageObject<?>> objects) throws ClassCastException {
         for (StorageObject<?> object: objects) {
             ID = Math.max(object.getId(), ID);
         }

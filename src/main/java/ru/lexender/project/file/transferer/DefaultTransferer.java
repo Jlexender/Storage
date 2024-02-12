@@ -1,5 +1,6 @@
 package ru.lexender.project.file.transferer;
 
+import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.exception.file.transferer.StorageIOException;
 import ru.lexender.project.exception.file.transferer.StorageTransferException;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
@@ -13,6 +14,7 @@ import ru.lexender.project.file.transferer.json.serializer.ISerialize;
 import ru.lexender.project.storage.IStore;
 import ru.lexender.project.storage.object.StorageObject;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DefaultTransferer implements ITransfer {
@@ -28,6 +30,7 @@ public class DefaultTransferer implements ITransfer {
         storage.clear();
         try {
             StorageObjectParser parser = new StudyGroupParser(fileSystem.getFile());
+
             List<StorageObject<?>> data = parser.parse();
 
             for (StorageObject<?> object: data)
@@ -38,6 +41,7 @@ public class DefaultTransferer implements ITransfer {
             StorageObject.initializeID(data);
 
         } catch (Exception exception) {
+            exception.printStackTrace();
             throw new StorageTransferException(exception);
         }
     }

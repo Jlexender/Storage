@@ -16,30 +16,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StudyGroupParser implements StorageObjectParser {
-    private final File file;
+public class StudyGroupParser extends StorageObjectParser {
 
     public StudyGroupParser(File file) {
-        this.file = file;
+        super(file);
     }
 
     public @NonNull List<StorageObject<?>> parse() throws StorageTransformationException {
         try {
-            IRead reader = new ReaderViaScanner(file);
+            IRead reader = new ReaderViaScanner(getFile());
             Gson gson = new GsonBuilder()
                     .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
 
             Optional<StudyGroup[]> parsedData = Optional.ofNullable(gson.fromJson(reader.read(), StudyGroup[].class));
-            if (parsedData.isEmpty()) return new ArrayList<>();
 
-            StudyGroup[] objects = parsedData.get();
-            List<StorageObject<?>> castedObjects = new ArrayList<>();
-            for (StudyGroup object: objects) {
-                castedObjects.add(new StorageObject<>(object));
+            if (parsedData.isPresent()) {
+                List<StorageObject<?>> transformedData = new ArrayList<>();
+                StudyGroup[] data = parsedData.get();
+
+                for (StudyGroup object: data) {
+                    transformedData.add(new StorageObject<>(object));
+                }
+
+                return transformedData;
             }
-            return castedObjects;
+            else return new ArrayList<>();
+
         } catch (Exception exception) {
             throw new StorageTransformationException("Can't parse from file storage");
         }

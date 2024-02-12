@@ -30,8 +30,9 @@ public class ConsoleApp implements Runnable {
 
         this.receiver = new ConsoleReceiver();
         this.sender = new ConsoleSender();
-        this.controller = new Controller(storage, fileSystem, sender, receiver);
         this.handler = new ConsoleHandler(new StudyGroupBuilder());
+
+        this.controller = new Controller(storage, fileSystem, sender, receiver, handler);
 
         try {
             transferer.transferIn();
