@@ -7,13 +7,13 @@ import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
 public class TreeSetStorage implements IStore {
-    private final TreeSet<StorageObject> collection;
+    private final TreeSet<StorageObject<?>> collection;
 
     public TreeSetStorage() {
         collection = new TreeSet<>();
     }
 
-    public void add(@NonNull StorageObject element) {
+    public void add(@NonNull StorageObject<?> element) {
         collection.add(element);
     }
 
@@ -21,19 +21,15 @@ public class TreeSetStorage implements IStore {
         collection.clear();
     }
 
-    public StorageObject getById(long id) throws NoSuchElementException {
-        for (StorageObject object: collection) {
+    public StorageObject<?> getById(long id) throws NoSuchElementException {
+        for (StorageObject<?> object: collection) {
             if (object.getId() == id) return object;
         }
         throw new NoSuchElementException("No such element");
     }
 
-    public void update(long id, StorageObject replace) throws IllegalAccessException {
-        getById(id).update(replace.getOrderedFields());
-    }
 
-
-    public boolean remove(StorageObject object) {
+    public boolean remove(StorageObject<?> object) {
         if (collection.contains(object)) {
             collection.remove(object);
             return true;
@@ -41,8 +37,8 @@ public class TreeSetStorage implements IStore {
         return false;
     }
 
-    public TreeSet<StorageObject> getCollectionCopy() {
-        TreeSet<StorageObject> dataCopy = new TreeSet<>();
+    public TreeSet<StorageObject<?>> getCollectionCopy() {
+        TreeSet<StorageObject<?>> dataCopy = new TreeSet<>();
         dataCopy.addAll(collection);
         return dataCopy;
     }

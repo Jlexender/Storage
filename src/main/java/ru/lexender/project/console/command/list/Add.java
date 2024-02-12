@@ -20,7 +20,7 @@ public class Add extends InteractiveCommand {
         try {
             if (firstArguments.size() != super.getObjectBuilder().getFirstArgumentsAmount())
                 throw new CommandExecutionException("Wrong field amount");
-            StorageObject object = getObjectBuilder().build(firstArguments, controller);
+            StorageObject<?> object = getObjectBuilder().build(firstArguments, controller);
             controller.getStorage().add(object);
         } catch (StorageObjectBuilderException | CommandExecutionException exception) {
             throw new CommandExecutionException(exception);

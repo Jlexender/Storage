@@ -5,11 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import ru.lexender.project.storage.object.StorageObject;
+import ru.lexender.project.storage.object.StorageInitializable;
 
+import java.time.LocalDateTime;
 
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
-public class StudyGroup extends StorageObject {
+public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable {
     @Expose private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose @NonNull private Coordinates coordinates; //Поле не может быть null
@@ -27,16 +28,12 @@ public class StudyGroup extends StorageObject {
                   FormOfEducation formOfEducation,
                   Semester semesterEnum,
                   Person groupAdmin) throws IllegalAccessException {
-        super();
-
         if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
         if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
         if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
 
-        this.id = super.getId();
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = super.getCreationDate();
         this.studentsCount = studentsCount;
         this.averageMark = averageMark;
         this.formOfEducation = formOfEducation;
@@ -44,33 +41,11 @@ public class StudyGroup extends StorageObject {
         this.groupAdmin = groupAdmin;
     }
 
-    public void update(Object[] orderedFields) throws IllegalAccessException {
-        if (orderedFields.length != getOrderedFields().length)
-            throw new IllegalAccessException("Invalid arguments amount");
-
-        this.name = (String) orderedFields[0];
-        this.coordinates = (Coordinates) orderedFields[1];
-        this.studentsCount = (long) orderedFields[2];
-        this.averageMark = (long) orderedFields[3];
-        this.formOfEducation = (FormOfEducation) orderedFields[4];
-        this.semesterEnum = (Semester) orderedFields[5];
-        this.groupAdmin = (Person) orderedFields[6];
-
-        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
-        if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
-        if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
-    }
-
-    public Object[] getOrderedFields() {
-        return new Object[] {
-                name,
-                coordinates,
-                studentsCount,
-                averageMark,
-                formOfEducation,
-                semesterEnum,
-                groupAdmin
-        };
+    public void initialize(long id, LocalDateTime creationDate) {
+        if (this.creationDate == null) {
+            this.id = id;
+            this.creationDate = creationDate;
+        }
     }
 
     public int compareTo(StudyGroup group) {

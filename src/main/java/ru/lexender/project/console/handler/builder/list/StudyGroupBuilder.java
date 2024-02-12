@@ -10,6 +10,7 @@ import ru.lexender.project.description.Person;
 import ru.lexender.project.description.Semester;
 import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.exception.console.handler.StorageObjectBuilderException;
+import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         ));
 
     }
-    public StudyGroup build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
+    public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
         try {
             List<Object> constructorArgs = new ArrayList<>();
 
@@ -55,7 +56,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                 constructorArgs.add(newArgument);
             }
 
-            return new StudyGroup(
+            return new StorageObject<>(new StudyGroup(
                     (String)constructorArgs.get(0),
                     new Coordinates(
                             (long)constructorArgs.get(3),
@@ -72,7 +73,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                             (Color)constructorArgs.get(10),
                             (Country)constructorArgs.get(11)
                         )
-            );
+            ));
         } catch (Exception exception) {
             throw new StorageObjectBuilderException(exception);
         }

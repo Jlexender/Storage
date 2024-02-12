@@ -5,40 +5,48 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public abstract class StorageObject implements Comparable<StorageObject> {
+public class StorageObject<T extends StorageInitializable> implements Comparable<StorageObject<T>> {
     private static long ID = 0;
     private final long id;
     private final LocalDateTime creationDate;
+    private T object;
 
-    public static final StorageObject nullObject = new StorageObject() {
-        public void update(Object[] orderedFields) {}
+    public static final StorageObject<?> nullObject = new StorageObject<>() {};
 
-        public Object[] getOrderedFields() {
-            return new Object[0];
-        }
-    };
+    public StorageObject(T object) {
+        this.object = object;
+        this.id = ID++;
+        this.creationDate = LocalDateTime.now();
+        object.initialize(id, creationDate);
+    }
 
-    public StorageObject() {
+    private StorageObject() {
         this.id = ID++;
         this.creationDate = LocalDateTime.now();
     }
 
-    public abstract Object[] getOrderedFields();
-
-    public static void initializeID(StorageObject[] objects) {
-        for (StorageObject object: objects) {
-            ID = Math.max(object.getId(), ID);
-        }
-        ID++;
+    public void update(StorageObject<?> object) {
+        if (object.getObject().getClass() == object.getClass())
+            throw new IllegalArgumentException("Objects have different classes");
+        this.object = (T)(object.getObject());
     }
 
-    public abstract void update(Object[] orderedFields) throws IllegalAccessException;
+    public static void initializeID(Object[] objects) throws ClassCastException {
+        for (Object object: objects) {
+            ID = Math.max(((StorageObject<?>)object).getId(), ID);
+        }
+    }
 
     public boolean isNull() {
         return (this == nullObject);
     }
 
-    public int compareTo(StorageObject object) {
+    @Override
+    public String toString() {
+        return object.toString();
+    }
+
+    public int compareTo(StorageObject<T> object) {
         return Long.compare(this.getId(), object.getId());
     }
 }

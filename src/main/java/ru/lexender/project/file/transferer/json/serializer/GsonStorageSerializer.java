@@ -5,8 +5,13 @@ import com.google.gson.GsonBuilder;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
 import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
 import ru.lexender.project.storage.IStore;
+import ru.lexender.project.storage.object.StorageObject;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
 
 public class GsonStorageSerializer implements ISerialize {
@@ -23,8 +28,14 @@ public class GsonStorageSerializer implements ISerialize {
                     setPrettyPrinting().
                     registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
-            Object[] objects = storage.getCollectionCopy().toArray();
-            return gson.toJson(objects);
+            Function<StorageObject<?>, Object> toObject = StorageObject::getObject;
+            List<Object> objects = new ArrayList<>();
+            Collection<StorageObject<?>> collection = storage.getCollectionCopy();
+            for (StorageObject<?> object: collection) {
+                objects.add(toObject.apply(object));
+            }
+
+            return gson.toJson(objects.toArray());
         } catch (Exception exception) {
             exception.printStackTrace();
             throw new StorageTransformationException("Unexpected storage serializing exception");

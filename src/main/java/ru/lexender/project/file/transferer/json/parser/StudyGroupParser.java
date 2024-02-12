@@ -2,15 +2,18 @@ package ru.lexender.project.file.transferer.json.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.NonNull;
 import ru.lexender.project.description.StudyGroup;
-import ru.lexender.project.exception.file.transferer.StorageIOException;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
 import ru.lexender.project.file.transferer.io.reader.IRead;
 import ru.lexender.project.file.transferer.io.reader.ReaderViaScanner;
 import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
+import ru.lexender.project.storage.object.StorageObject;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class StudyGroupParser implements StorageObjectParser {
@@ -20,16 +23,24 @@ public class StudyGroupParser implements StorageObjectParser {
         this.file = file;
     }
 
-    public StudyGroup[] parse() throws StorageTransformationException {
+    public @NonNull Object[] parse() throws StorageTransformationException {
         try {
             IRead reader = new ReaderViaScanner(file);
             Gson gson = new GsonBuilder()
                     .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
+
             Optional<StudyGroup[]> parsedData = Optional.ofNullable(gson.fromJson(reader.read(), StudyGroup[].class));
-            return parsedData.orElseGet(() -> new StudyGroup[0]);
-        } catch (StorageIOException exception) {
+            if (parsedData.isEmpty()) return new Object[0];
+
+            StudyGroup[] objects = parsedData.get();
+            List<StorageObject<StudyGroup>> castedObjects = new ArrayList<>();
+            for (StudyGroup object: objects) {
+                castedObjects.add(new StorageObject<>(object));
+            }
+            return castedObjects.toArray();
+        } catch (Exception exception) {
             throw new StorageTransformationException("Can't parse from file storage");
         }
     }

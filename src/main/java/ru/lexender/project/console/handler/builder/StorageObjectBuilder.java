@@ -17,5 +17,5 @@ public abstract class StorageObjectBuilder {
         this.fieldNames = fieldNames;
     }
 
-    public abstract StorageObject build(List<String> arguments, Controller controller) throws StorageObjectBuilderException;
+    public abstract StorageObject<?> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException;
 }

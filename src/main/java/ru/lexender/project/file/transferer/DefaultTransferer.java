@@ -26,9 +26,15 @@ public class DefaultTransferer implements ITransfer {
         storage.clear();
         try {
             StorageObjectParser parser = new StudyGroupParser(fileSystem.getFile());
-            StorageObject[] data = parser.parse();
+            Object[] data = parser.parse();
 
-            for (StorageObject object: data) storage.add(object);
+
+
+            for (Object object: data)
+            {
+                storage.add((StorageObject<?>) object);
+            }
+
             StorageObject.initializeID(data);
 
         } catch (Exception exception) {

@@ -4,6 +4,7 @@ import ru.lexender.project.console.command.InteractiveCommand;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
+import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
 
@@ -27,7 +28,9 @@ public class UpdateId extends InteractiveCommand {
             long id = Long.parseLong(firstArguments.get(0));
             firstArguments.remove(0);
 
-            controller.getStorage().update(id, getObjectBuilder().build(firstArguments, controller));
+            StorageObject<?> foundOne = controller.getStorage().getById(id);
+            StorageObject<?> newOne = getObjectBuilder().build(firstArguments, controller);
+            foundOne.update(newOne);
 
         } catch (Exception exception) {
             throw new CommandExecutionException(exception);
