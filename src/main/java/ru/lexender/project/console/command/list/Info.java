@@ -12,7 +12,7 @@ public class Info extends Command {
     public void execute(Controller controller) throws CommandExecutionException {
         try {
             controller.getSender().send(String.format("Elements amount: %d", controller.getStorage().size()));
-            controller.getSender().send(String.format("Creation date: %s", controller.getFileSystem().getCreationDate()));
+            controller.getSender().send(String.format("Last modified: %s", controller.getFileSystem().getModificationDate()));
         } catch (Exception e) {
             throw new CommandExecutionException("An unexpected CommandExecutionException has been thrown", this);
         }

@@ -14,19 +14,19 @@ import java.time.ZoneId;
 @Getter
 public class FileSystem {
     private final @NonNull File file;
-    private final @NonNull LocalDateTime creationDate;
+    private final @NonNull LocalDateTime modificationDate;
 
     public FileSystem(File file) {
         this.file = file;
 
         LocalDateTime creationTime;
         try {
-            FileTime creationTimeAttribute = (FileTime) Files.getAttribute(file.toPath(), "creationTime");
+            FileTime creationTimeAttribute = Files.getLastModifiedTime(file.toPath());
             creationTime = LocalDateTime.ofInstant(creationTimeAttribute.toInstant(), ZoneId.systemDefault());
         } catch (IOException exception) {
             creationTime = LocalDateTime.now();
         }
-        creationDate = creationTime;
+        modificationDate = creationTime;
     }
 
     public FileSystem(EnvironmentVariable variable) {

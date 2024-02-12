@@ -49,7 +49,9 @@ public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable 
     }
 
     public int compareTo(StudyGroup group) {
-        return Long.compare(group.getAverageMark(), this.averageMark);
+        if (this != group)
+            return (this.averageMark > group.getAverageMark() ? -1 : 1);
+        return 0;
     }
 
 }
