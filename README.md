@@ -6,7 +6,7 @@
                 
 [Схема работы](IMPLEMENTATION.md)
 
-[Диаграмма классов](diagram.svg)
+[Диаграмма классов](https://raw.githubusercontent.com/Jlexender/Storage/alpha/diagram.svg)
 
 #### Разработанная программа должна удовлетворять следующим требованиям:
 
