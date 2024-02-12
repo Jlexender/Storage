@@ -48,10 +48,8 @@ public class DefaultTransferer implements ITransfer {
             ISerialize serializer = new GsonStorageSerializer(storage);
             writer.write(serializer.serialize());
         } catch (StorageTransformationException exception) {
-            exception.printStackTrace();
             throw new StorageTransferException(exception);
         } catch (StorageIOException exception) {
-            exception.printStackTrace();
             throw new StorageTransferException("Loading storage from file failed");
         }
     }
