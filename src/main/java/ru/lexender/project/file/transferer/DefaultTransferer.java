@@ -13,6 +13,8 @@ import ru.lexender.project.file.transferer.json.serializer.ISerialize;
 import ru.lexender.project.storage.IStore;
 import ru.lexender.project.storage.object.StorageObject;
 
+import java.util.List;
+
 public class DefaultTransferer implements ITransfer {
     FileSystem fileSystem;
     IStore storage;
@@ -26,13 +28,11 @@ public class DefaultTransferer implements ITransfer {
         storage.clear();
         try {
             StorageObjectParser parser = new StudyGroupParser(fileSystem.getFile());
-            Object[] data = parser.parse();
+            List<StorageObject<?>> data = parser.parse();
 
-
-
-            for (Object object: data)
+            for (StorageObject<?> object: data)
             {
-                storage.add((StorageObject<?>) object);
+                storage.add(object);
             }
 
             StorageObject.initializeID(data);

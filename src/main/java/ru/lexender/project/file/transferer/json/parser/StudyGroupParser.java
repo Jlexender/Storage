@@ -23,7 +23,7 @@ public class StudyGroupParser implements StorageObjectParser {
         this.file = file;
     }
 
-    public @NonNull Object[] parse() throws StorageTransformationException {
+    public @NonNull List<StorageObject<?>> parse() throws StorageTransformationException {
         try {
             IRead reader = new ReaderViaScanner(file);
             Gson gson = new GsonBuilder()
@@ -32,14 +32,14 @@ public class StudyGroupParser implements StorageObjectParser {
                     .create();
 
             Optional<StudyGroup[]> parsedData = Optional.ofNullable(gson.fromJson(reader.read(), StudyGroup[].class));
-            if (parsedData.isEmpty()) return new Object[0];
+            if (parsedData.isEmpty()) return new ArrayList<>();
 
             StudyGroup[] objects = parsedData.get();
-            List<StorageObject<StudyGroup>> castedObjects = new ArrayList<>();
+            List<StorageObject<?>> castedObjects = new ArrayList<>();
             for (StudyGroup object: objects) {
                 castedObjects.add(new StorageObject<>(object));
             }
-            return castedObjects.toArray();
+            return castedObjects;
         } catch (Exception exception) {
             throw new StorageTransformationException("Can't parse from file storage");
         }

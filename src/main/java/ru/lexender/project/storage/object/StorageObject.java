@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Getter
 public class StorageObject<T extends StorageInitializable> implements Comparable<StorageObject<T>> {
@@ -26,15 +27,13 @@ public class StorageObject<T extends StorageInitializable> implements Comparable
         this.creationDate = LocalDateTime.now();
     }
 
-    public void update(@NonNull StorageObject<?> object) throws IllegalArgumentException {
-        if (object.getObject().getClass() != object.getClass())
-            throw new IllegalArgumentException("Objects have different classes");
+    public void update(@NonNull StorageObject<?> object) throws ClassCastException {
         this.object = (T)(object.getObject());
     }
 
-    public static void initializeID(Object[] objects) throws ClassCastException {
-        for (Object object: objects) {
-            ID = Math.max(((StorageObject<?>)object).getId(), ID);
+    public static void initializeID(Collection<StorageObject<?>> objects) throws ClassCastException {
+        for (StorageObject<?> object: objects) {
+            ID = Math.max(object.getId(), ID);
         }
     }
 
