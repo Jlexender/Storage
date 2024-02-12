@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class Show extends Command {
     public Show() {
-        super("show", "Prints collection elements.");
+        super("show", "Prints collection elements");
     }
     public void execute(Controller controller) {
         Collection<? extends StorageObject<?>> collection = controller.getStorage().getCollectionCopy();

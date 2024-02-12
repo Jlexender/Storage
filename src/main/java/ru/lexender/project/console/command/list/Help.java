@@ -7,7 +7,7 @@ import ru.lexender.project.console.controller.Controller;
 public class Help extends Command {
 
     public Help() {
-        super("help", "Prints available commands and its descriptions.");
+        super("help", "Prints available commands and its descriptions");
     }
     public void execute(Controller controller) {
         StringBuilder helpString = new StringBuilder("AVAILABLE COMMANDS:\n\n");

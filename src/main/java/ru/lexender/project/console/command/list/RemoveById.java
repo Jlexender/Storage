@@ -11,7 +11,7 @@ public class RemoveById extends NonStaticCommand {
     private final List<String> arguments;
 
     public RemoveById(List<String> arguments) {
-        super("remove", "Removes collection element with specified id.", 1);
+        super("remove", "Removes collection element with specified id", 1);
         this.arguments = arguments;
     }
     public void execute(Controller controller) throws CommandExecutionException {
@@ -19,7 +19,7 @@ public class RemoveById extends NonStaticCommand {
             if (arguments.size() != getArgumentsAmount())
                 throw new CommandExecutionException("Wrong field amount");
 
-            StorageObject identifiedObject = controller.getStorage().getById(Integer.parseInt(arguments.get(0)));
+            StorageObject<?> identifiedObject = controller.getStorage().getById(Integer.parseInt(arguments.get(0)));
             if (!controller.getStorage().remove(identifiedObject)) {
                 String noObjectMessage = "No object with such id";
                 controller.getSender().send(noObjectMessage);

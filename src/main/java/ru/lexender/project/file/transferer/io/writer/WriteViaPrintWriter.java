@@ -3,7 +3,6 @@ package ru.lexender.project.file.transferer.io.writer;
 import ru.lexender.project.exception.file.transferer.StorageIOException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class WriteViaPrintWriter implements IWrite {
@@ -16,10 +15,9 @@ public class WriteViaPrintWriter implements IWrite {
             PrintWriter writer = new PrintWriter(file);
             writer.write(data);
             writer.close();
-        } catch (FileNotFoundException exception) {
+        } catch (Exception exception) {
             throw new StorageIOException(exception);
         }
-
     }
 }
 

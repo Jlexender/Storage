@@ -15,11 +15,11 @@ import java.util.List;
 public class Info extends Command {
 
     public Info() {
-        super("info", "Prints collection info.");
+        super("info", "Prints collection info");
     }
     public void execute(Controller controller) throws CommandExecutionException {
         try {
-            Collection<? extends StorageObject> storageCollection = controller.getStorage().getCollectionCopy();
+            Collection<? extends StorageObject<?>> storageCollection = controller.getStorage().getCollectionCopy();
             String message;
             if (storageCollection.isEmpty()) {
                 message = "No creation date (no objects in the collection)";
@@ -28,7 +28,7 @@ public class Info extends Command {
             }
 
 
-            List<StorageObject> storageList = new ArrayList<>(storageCollection);
+            List<StorageObject<?>> storageList = new ArrayList<>(storageCollection);
             storageList.sort(Comparator.comparing(StorageObject::getCreationDate));
 
             LocalDateTime creationDate = storageList.get(0).getCreationDate();

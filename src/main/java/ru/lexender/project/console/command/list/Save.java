@@ -9,7 +9,7 @@ import ru.lexender.project.file.transferer.ITransfer;
 
 public class Save extends Command {
     public Save() {
-        super("save", "Writes current collection to chosen FileSystem.");
+        super("save", "Writes current collection to chosen FileSystem");
     }
     public void execute(Controller controller) throws CommandExecutionException {
         try {

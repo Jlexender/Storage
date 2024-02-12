@@ -5,7 +5,7 @@ import ru.lexender.project.console.controller.Controller;
 
 public class Exit extends Command {
     public Exit() {
-        super("exit", "Exits from the application.");
+        super("exit", "Exits from the application");
     }
     public void execute(Controller controller) {
         String exitString = "Goodbye!";
