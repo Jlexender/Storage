@@ -35,7 +35,7 @@ public class UpdateId extends InteractiveCommand {
             firstArguments.remove(0);
 
             StorageObject<?> foundOne = controller.getStorage().getById(id);
-            StorageObject<?> newOne = getObjectBuilder().build(firstArguments, controller);
+            StorageObject<?> newOne = (StorageObject<?>) getObjectBuilder().build(firstArguments, controller);
             foundOne.update(newOne);
 
         } catch (Exception exception) {

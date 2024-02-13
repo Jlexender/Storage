@@ -2,14 +2,15 @@ package ru.lexender.project.description;
 
 
 import com.google.gson.annotations.Expose;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
 /**
  * Description class.
  */
-@ToString
-public class Person {
+@ToString @Getter
+public class Person implements Comparable<Person> {
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose private int weight; //Значение поля должно быть больше 0
     @Expose @NonNull private Color eyeColor; //Поле не может быть null
@@ -29,5 +30,9 @@ public class Person {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.nationality = nationality;
+    }
+
+    public int compareTo(Person person) {
+        return Integer.compare(person.getWeight(), weight);
     }
 }

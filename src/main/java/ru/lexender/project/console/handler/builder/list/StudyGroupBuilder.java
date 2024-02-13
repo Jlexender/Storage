@@ -1,6 +1,7 @@
 package ru.lexender.project.console.handler.builder.list;
 
 import ru.lexender.project.console.controller.Controller;
+import ru.lexender.project.console.handler.builder.ObjectBuilder;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.description.Color;
 import ru.lexender.project.description.Coordinates;
@@ -9,7 +10,7 @@ import ru.lexender.project.description.FormOfEducation;
 import ru.lexender.project.description.Person;
 import ru.lexender.project.description.Semester;
 import ru.lexender.project.description.StudyGroup;
-import ru.lexender.project.exception.console.handler.StorageObjectBuilderException;
+import ru.lexender.project.exception.console.handler.ObjectBuilderException;
 import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.ArrayList;
@@ -17,10 +18,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Class for initializing a StudyGroup object. Extends StorageObjectBuilder.
+ * Class for initializing a StorageObject object when StudyGroup is parameter.
  * @see ru.lexender.project.console.handler.builder.StorageObjectBuilder
  */
-public class StudyGroupBuilder extends StorageObjectBuilder {
+public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBuilder {
 
     public StudyGroupBuilder() {
         super(3, Arrays.asList(
@@ -39,10 +40,10 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         ));
 
     }
-    public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws StorageObjectBuilderException {
+    public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws ObjectBuilderException {
         try {
             if (arguments.size() != getFirstArgumentsAmount()) {
-                throw new StorageObjectBuilderException(
+                throw new ObjectBuilderException(
                         String.format(
                                 "Wrong field amount: %d arguments expected, got %d",
                                 getFirstArgumentsAmount(), arguments.size())
@@ -87,7 +88,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                         )
             ));
         } catch (Exception exception) {
-            throw new StorageObjectBuilderException(exception);
+            throw new ObjectBuilderException(exception);
         }
     }
 
@@ -107,8 +108,6 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                     break;
                 case 11:
                     controller.getSender().send(Arrays.asList(Country.values()));
-                    break;
-                default:
                     break;
             }
 
@@ -142,10 +141,10 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         }
     }
 
-    public StorageObject<StudyGroup> buildInLine(List<String> arguments, Controller controller) throws StorageObjectBuilderException{
+    public StorageObject<StudyGroup> buildInLine(List<String> arguments, Controller controller) throws ObjectBuilderException {
         try {
             if (arguments.size() != getFieldNames().size()) {
-                throw new StorageObjectBuilderException(
+                throw new ObjectBuilderException(
                         String.format(
                                 "Wrong field amount: %d arguments expected, got %d",
                                 getFieldNames().size(), arguments.size())
@@ -193,7 +192,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                     )
             ));
         } catch (Exception exception) {
-            throw new StorageObjectBuilderException(exception);
+            throw new ObjectBuilderException(exception);
         }
     }
 }

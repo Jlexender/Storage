@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="CUSTOM_SCOPE_NAME" value="Selected directory" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="fixed FilterStartsWithName">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/CountGreaterThanGroupAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/PrintFieldAscendingSemesterEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/IBuild.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/ObjectBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/PersonBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/diagram.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-17.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-18.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-19.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-20.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-21.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-22.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/ConsoleApp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/Command.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/CommandGenerator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/InteractiveCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/NonStaticCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/AddIfMin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Clear.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/ExecuteFileScript.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Exit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/FilterStartsWithName.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/History.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/RemoveById.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/RemoveGreater.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Save.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Show.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/UpdateId.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/IControl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/ConsoleHandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/IHandle.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/StorageObjectBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/ConsoleReceiver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/IReceive.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/ConsoleSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/ISend.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Color.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Coordinates.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Country.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/FormOfEducation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Person.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Semester.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/StudyGroup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/CommandExecutionException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/InputHandleException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/StorageObjectBuilderException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/UnknownCommandException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageIOException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageTransferException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageTransformationException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/AlreadyInitializedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/FileSystem.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/DefaultTransferer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/ITransfer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/IRead.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/ReaderViaScanner.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/IWrite.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/WriteViaPrintWriter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/LocalDateTimeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StorageObjectParser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/GsonStorageSerializer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/ISerialize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/EnvironmentVariable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/IStore.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/TreeSetStorage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/StorageInitializable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/StorageObject.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-3.6.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/InteractiveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/InteractiveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/RemoveGreater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/UpdateId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/ConsoleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/ConsoleHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/StorageObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/StorageObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/Semester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/exception/console/handler/StorageObjectBuilderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/exception/console/handler/ObjectBuilderException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageInitializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageInitializable.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="package-info" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2boq2y1KQYIO8DTHSFh8XwxTtFt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Maven.lab5-1700 [clean].executor": "Run",
+    "Maven.lab5-1700 [compile].executor": "Run",
+    "Maven.lab5-1700 [deploy].executor": "Run",
+    "Maven.lab5-1700 [install].executor": "Run",
+    "Maven.lab5-1700 [package].executor": "Run",
+    "Maven.lab5-1700 [site].executor": "Run",
+    "Maven.lab5-1700 [test].executor": "Run",
+    "Maven.lab5-1700 [validate].executor": "Run",
+    "Maven.lab5-1700 [verify].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "alpha",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/alex/Desktop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.36206895",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/ru/lexender/project/console" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.lexender.project.console.command.list" />
+      <recent name="ru.lexender.project.exception.file" />
+      <recent name="ru.lexender.project.file" />
+      <recent name="ru.lexender.project.description.handling.builder" />
+      <recent name="ru.lexender.project.description.handling.builder.valuedEnumBuilder" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.lexender.project.storage.object" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.lexender.project.console.command.list" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="" />
+      <created>1706891578474</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706891578474</updated>
+      <workItem from="1706891579551" duration="3546000" />
+      <workItem from="1706895129215" duration="15506000" />
+      <workItem from="1706968270092" duration="18177000" />
+      <workItem from="1706991184645" duration="3427000" />
+      <workItem from="1707063587270" duration="4631000" />
+      <workItem from="1707116573213" duration="92000" />
+      <workItem from="1707116819158" duration="20749000" />
+      <workItem from="1707164422079" duration="8851000" />
+      <workItem from="1707220548173" duration="6004000" />
+      <workItem from="1707230746957" duration="354000" />
+      <workItem from="1707313085780" duration="9382000" />
+      <workItem from="1707340661267" duration="12046000" />
+      <workItem from="1707354710134" duration="1193000" />
+      <workItem from="1707357129274" duration="2515000" />
+      <workItem from="1707400307762" duration="2807000" />
+      <workItem from="1707403125117" duration="348000" />
+      <workItem from="1707403489267" duration="124000" />
+      <workItem from="1707403625210" duration="171000" />
+      <workItem from="1707403806687" duration="2808000" />
+      <workItem from="1707422803020" duration="5448000" />
+      <workItem from="1707456208531" duration="11769000" />
+      <workItem from="1707469509476" duration="6832000" />
+      <workItem from="1707479949955" duration="912000" />
+      <workItem from="1707481003029" duration="85000" />
+      <workItem from="1707481179412" duration="22911000" />
+      <workItem from="1707512242167" duration="6861000" />
+      <workItem from="1707542990364" duration="26495000" />
+      <workItem from="1707575543922" duration="766000" />
+      <workItem from="1707576652966" duration="265000" />
+      <workItem from="1707582577386" duration="928000" />
+      <workItem from="1707583543315" duration="310000" />
+      <workItem from="1707583994226" duration="309000" />
+      <workItem from="1707594380257" duration="2903000" />
+      <workItem from="1707599679467" duration="752000" />
+      <workItem from="1707600620114" duration="8000" />
+      <workItem from="1707600687805" duration="12628000" />
+      <workItem from="1707658403415" duration="2468000" />
+      <workItem from="1707660895976" duration="16113000" />
+      <workItem from="1707683351067" duration="2540000" />
+      <workItem from="1707685910926" duration="10623000" />
+      <workItem from="1707697238644" duration="576000" />
+      <workItem from="1707697863970" duration="1306000" />
+      <workItem from="1707700375145" duration="689000" />
+      <workItem from="1707701236165" duration="81000" />
+      <workItem from="1707742391499" duration="2446000" />
+      <workItem from="1707744993751" duration="3000" />
+      <workItem from="1707745023545" duration="8481000" />
+      <workItem from="1707753924352" duration="3442000" />
+      <workItem from="1707757545861" duration="14762000" />
+      <workItem from="1707777685435" duration="6635000" />
+    </task>
+    <task id="LOCAL-00001" summary="added try-catch in main">
+      <option name="closed" value="true" />
+      <created>1707582693342</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707582693342</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added try-catch in main">
+      <option name="closed" value="true" />
+      <created>1707582716293</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707582716293</updated>
+    </task>
+    <task id="LOCAL-00003" summary="moved annotations">
+      <option name="closed" value="true" />
+      <created>1707583044465</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707583044465</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed Add">
+      <option name="closed" value="true" />
+      <created>1707583462650</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707583462650</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bugfix">
+      <option name="closed" value="true" />
+      <created>1707583810327</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707583810327</updated>
+    </task>
+    <task id="LOCAL-00006" summary="removed Optional">
+      <option name="closed" value="true" />
+      <created>1707601888497</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707601888497</updated>
+    </task>
+    <task id="LOCAL-00007" summary="removed Optional">
+      <option name="closed" value="true" />
+      <created>1707601925832</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707601925832</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added markdowns">
+      <option name="closed" value="true" />
+      <created>1707605356999</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707605356999</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added commands, updated StorageObject.java">
+      <option name="closed" value="true" />
+      <created>1707676802885</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707676802885</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added commands, updated StorageObject.java">
+      <option name="closed" value="true" />
+      <created>1707676952672</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707676952672</updated>
+    </task>
+    <task id="LOCAL-00011" summary="bugfix">
+      <option name="closed" value="true" />
+      <created>1707677076790</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707677076790</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added generic type, reworked UpdateId logic (completely)">
+      <option name="closed" value="true" />
+      <created>1707697074227</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1707697074227</updated>
+    </task>
+    <task id="LOCAL-00013" summary="visual changes">
+      <option name="closed" value="true" />
+      <created>1707698113042</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1707698113042</updated>
+    </task>
+    <task id="LOCAL-00014" summary="small command list fix">
+      <option name="closed" value="true" />
+      <created>1707698543972</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1707698543972</updated>
+    </task>
+    <task id="LOCAL-00015" summary="small StorageObject.java fix">
+      <option name="closed" value="true" />
+      <created>1707700982426</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707700982426</updated>
+    </task>
+    <task id="LOCAL-00016" summary="removed printStackTrace (lol)">
+      <option name="closed" value="true" />
+      <created>1707701292465</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707701292465</updated>
+    </task>
+    <task id="LOCAL-00017" summary="upgraded IStore, added new commands">
+      <option name="closed" value="true" />
+      <created>1707751602285</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1707751602285</updated>
+    </task>
+    <task id="LOCAL-00018" summary="changed Info command">
+      <option name="closed" value="true" />
+      <created>1707753640588</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1707753640588</updated>
+    </task>
+    <task id="LOCAL-00019" summary="updated id initialization, added script execution">
+      <option name="closed" value="true" />
+      <created>1707761305761</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761305761</updated>
+    </task>
+    <task id="LOCAL-00020" summary="updated id initialization, added script execution">
+      <option name="closed" value="true" />
+      <created>1707761323263</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761323263</updated>
+    </task>
+    <task id="LOCAL-00021" summary="small fix">
+      <option name="closed" value="true" />
+      <created>1707761415765</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761415765</updated>
+    </task>
+    <task id="LOCAL-00022" summary="removed printStackTrace (again)">
+      <option name="closed" value="true" />
+      <created>1707761561705</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761561705</updated>
+    </task>
+    <task id="LOCAL-00023" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1707761648188</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761648188</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fixed FilterStartsWithName">
+      <option name="closed" value="true" />
+      <created>1707764881873</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1707764881873</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added try-catch in main" />
+    <MESSAGE value="moved annotations" />
+    <MESSAGE value="fixed Add" />
+    <MESSAGE value="removed Optional" />
+    <MESSAGE value="added markdowns" />
+    <MESSAGE value="Added commands, updated StorageObject.java" />
+    <MESSAGE value="bugfix" />
+    <MESSAGE value="Added generic type, reworked UpdateId logic (completely)" />
+    <MESSAGE value="visual changes" />
+    <MESSAGE value="small command list fix" />
+    <MESSAGE value="small StorageObject.java fix" />
+    <MESSAGE value="removed printStackTrace (lol)" />
+    <MESSAGE value="upgraded IStore, added new commands" />
+    <MESSAGE value="changed Info command" />
+    <MESSAGE value="updated id initialization, added script execution" />
+    <MESSAGE value="small fix" />
+    <MESSAGE value="removed printStackTrace (again)" />
+    <MESSAGE value="small changes" />
+    <MESSAGE value="fixed FilterStartsWithName" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed FilterStartsWithName" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="ru.lexender.project.exception.console.handler.InputHandleException" package="ru.lexender.project.exception.console.handler" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

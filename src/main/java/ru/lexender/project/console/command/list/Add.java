@@ -4,7 +4,7 @@ import ru.lexender.project.console.command.InteractiveCommand;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
-import ru.lexender.project.exception.console.handler.StorageObjectBuilderException;
+import ru.lexender.project.exception.console.handler.ObjectBuilderException;
 import ru.lexender.project.storage.object.StorageObject;
 
 import java.util.List;
@@ -26,13 +26,13 @@ public class Add extends InteractiveCommand {
 
     public void execute(Controller controller) throws CommandExecutionException {
         try {
-            StorageObject<?> object = getObjectBuilder().build(firstArguments, controller);
+            StorageObject<?> object = (StorageObject<?>) getObjectBuilder().build(firstArguments, controller);
             controller.getStorage().add(object);
-        } catch (StorageObjectBuilderException exception) {
+        } catch (ObjectBuilderException exception) {
             try {
-                StorageObject<?> object = getObjectBuilder().buildInLine(firstArguments, controller);
+                StorageObject<?> object = (StorageObject<?>) getObjectBuilder().buildInLine(firstArguments, controller);
                 controller.getStorage().add(object);
-            } catch (StorageObjectBuilderException exception1) {
+            } catch (ObjectBuilderException exception1) {
                 throw new CommandExecutionException(exception);
             }
         }

@@ -5,18 +5,21 @@ import ru.lexender.project.console.command.CommandGenerator;
 import ru.lexender.project.console.command.list.Add;
 import ru.lexender.project.console.command.list.AddIfMin;
 import ru.lexender.project.console.command.list.Clear;
+import ru.lexender.project.console.command.list.CountGreaterThanGroupAdmin;
 import ru.lexender.project.console.command.list.ExecuteFileScript;
 import ru.lexender.project.console.command.list.Exit;
 import ru.lexender.project.console.command.list.FilterStartsWithName;
 import ru.lexender.project.console.command.list.Help;
 import ru.lexender.project.console.command.list.History;
 import ru.lexender.project.console.command.list.Info;
+import ru.lexender.project.console.command.list.PrintFieldAscendingSemesterEnum;
 import ru.lexender.project.console.command.list.RemoveById;
 import ru.lexender.project.console.command.list.RemoveGreater;
 import ru.lexender.project.console.command.list.Save;
 import ru.lexender.project.console.command.list.Show;
 import ru.lexender.project.console.command.list.UpdateId;
 import ru.lexender.project.console.handler.builder.StorageObjectBuilder;
+import ru.lexender.project.console.handler.builder.list.PersonBuilder;
 import ru.lexender.project.exception.console.handler.InputHandleException;
 import ru.lexender.project.exception.console.handler.UnknownCommandException;
 
@@ -56,7 +59,9 @@ public class ConsoleHandler implements IHandle {
                     new RemoveGreater(arguments, builder),
                     new History(),
                     new ExecuteFileScript(arguments),
-                    new FilterStartsWithName(arguments)
+                    new FilterStartsWithName(arguments),
+                    new CountGreaterThanGroupAdmin(arguments, new PersonBuilder()),
+                    new PrintFieldAscendingSemesterEnum()
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {

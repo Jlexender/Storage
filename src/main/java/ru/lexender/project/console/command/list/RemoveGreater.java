@@ -25,7 +25,7 @@ public class RemoveGreater extends InteractiveCommand {
 
     public void execute(Controller controller) throws CommandExecutionException {
         try {
-            StorageObject<?> createdObject = getObjectBuilder().build(firstArguments, controller);
+            StorageObject<?> createdObject = (StorageObject<?>) getObjectBuilder().build(firstArguments, controller);
             Collection<StorageObject<?>> storage = controller.getStorage().getCollectionCopy();
             for (StorageObject<?> object: storage) {
                 if (object.compareTo(createdObject) < 0) controller.getStorage().remove(object);

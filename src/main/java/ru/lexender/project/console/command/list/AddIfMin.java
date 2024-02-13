@@ -16,17 +16,19 @@ import java.util.List;
  */
 public class AddIfMin extends InteractiveCommand {
     private final List<String> firstArguments;
+    private final StorageObjectBuilder objectBuilder;
 
     public AddIfMin(List<String> firstArguments, StorageObjectBuilder objectBuilder) {
         super("add_if_min",
                 "Adds element to collection if it's less than minimal element",
                 objectBuilder, 3);
         this.firstArguments = firstArguments;
+        this.objectBuilder = objectBuilder;
     }
 
     public void execute(Controller controller) throws CommandExecutionException {
         try {
-            StorageObject<?> object = getObjectBuilder().build(firstArguments, controller);
+            StorageObject<?> object = objectBuilder.build(firstArguments, controller);
             if (controller.getStorage().getMin().compareTo(object) < 0) controller.getStorage().add(object);
         } catch (Exception exception) {
             throw new CommandExecutionException(exception);
