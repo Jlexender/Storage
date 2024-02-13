@@ -8,5 +8,5 @@ public enum Semester implements Comparable<Semester> {
     SECOND,
     FOURTH,
     SIXTH,
-    EIGHTH;
+    EIGHTH
 }
