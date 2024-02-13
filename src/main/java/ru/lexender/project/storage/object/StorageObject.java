@@ -33,6 +33,7 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
     }
 
     public void update(@NonNull StorageObject<?> object) throws ClassCastException {
+        object.getObject().initialize(getId(), getCreationDate());
         this.object = (T)(object.getObject());
     }
 
