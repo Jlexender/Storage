@@ -47,10 +47,8 @@ public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable 
     }
 
     public void initialize(long id, LocalDateTime creationDate) {
-        if (this.creationDate == null) {
-            this.id = id;
-            this.creationDate = creationDate;
-        }
+        this.id = id;
+        this.creationDate = creationDate;
     }
 
     public int compareTo(StudyGroup group) {
