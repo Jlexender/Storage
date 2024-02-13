@@ -41,15 +41,10 @@ public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBui
 
     }
     public StorageObject<StudyGroup> build(List<String> arguments, Controller controller) throws ObjectBuilderException {
+        if (!checkInteractive(arguments)) {
+            return buildInLine(arguments, controller);
+        }
         try {
-            if (arguments.size() != getFirstArgumentsAmount()) {
-                throw new ObjectBuilderException(
-                        String.format(
-                                "Wrong field amount: %d arguments expected, got %d",
-                                getFirstArgumentsAmount(), arguments.size())
-                );
-            }
-
             List<Object> constructorArgs = new ArrayList<>();
 
             String name = arguments.get(0);
@@ -142,15 +137,14 @@ public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBui
     }
 
     public StorageObject<StudyGroup> buildInLine(List<String> arguments, Controller controller) throws ObjectBuilderException {
+        if (!checkInLine(arguments)) {
+            throw new ObjectBuilderException(
+                    String.format(
+                            "Wrong field amount: %d arguments expected (%d for interactive mode), got %d",
+                            getFirstArgumentsAmount(), getFieldNames().size(), arguments.size())
+            );
+        }
         try {
-            if (arguments.size() != getFieldNames().size()) {
-                throw new ObjectBuilderException(
-                        String.format(
-                                "Wrong field amount: %d arguments expected, got %d",
-                                getFieldNames().size(), arguments.size())
-                );
-            }
-
             String name = arguments.get(0);
             long studentsCount = Long.parseLong(arguments.get(1));
             Long averageMark = Long.parseLong(arguments.get(2));

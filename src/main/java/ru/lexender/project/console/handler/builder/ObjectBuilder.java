@@ -20,6 +20,14 @@ public abstract class ObjectBuilder implements IBuild {
         this.fieldNames = fieldNames;
     }
 
+    protected boolean checkInteractive(List<String> arguments) {
+        return arguments.size() == getFirstArgumentsAmount();
+    }
+
+    protected boolean checkInLine(List<String> arguments) {
+        return arguments.size() == fieldNames.size();
+    }
+
     public abstract Object build(List<String> arguments, Controller controller) throws ObjectBuilderException;
     public abstract Object buildInLine(List<String> arguments, Controller controller) throws ObjectBuilderException;
 }

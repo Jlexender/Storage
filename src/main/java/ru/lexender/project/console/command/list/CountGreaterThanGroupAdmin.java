@@ -21,30 +21,19 @@ public class CountGreaterThanGroupAdmin extends InteractiveCommand {
     public CountGreaterThanGroupAdmin(List<String> firstArguments, ObjectBuilder objectBuilder) {
         super("counter_greater_than_group_admin",
                 "Counts an amount of elements where groupAdmin is greater than specified groupAdmin",
-                objectBuilder, 12);
+                objectBuilder, 2);
         this.firstArguments = firstArguments;
     }
 
 
     public void execute(Controller controller) throws CommandExecutionException {
-
-        Person builtPerson;
         try {
-            builtPerson = (Person) getObjectBuilder().build(firstArguments, controller);
-        } catch (ObjectBuilderException exception) {
-            try {
-                builtPerson = (Person) getObjectBuilder().buildInLine(firstArguments, controller);
-            } catch (ObjectBuilderException exception1) {
-                throw new CommandExecutionException(exception);
-            }
-        }
-        try {
-            Person admin = builtPerson;
+            Person builtPerson = (Person) getObjectBuilder().build(firstArguments, controller);
             long counter = controller.
                     getStorage().
                     getCollectionCopy().
                     stream().
-                    filter((o) -> o.getObject().getGroupAdmin().compareTo(admin) < 0)
+                    filter((o) -> o.getObject().getGroupAdmin().compareTo(builtPerson) < 0)
                     .count();
             controller.getSender().send(counter);
         } catch (Exception exception) {

@@ -9,7 +9,175 @@
   <component name="ChangeListManager">
     <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="small fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/StudyGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/StudyGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-17.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-18.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-19.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-20.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-21.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-22.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/ConsoleApp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/Command.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/CommandGenerator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/InteractiveCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/NonStaticCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/AddIfMin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Clear.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/CountGreaterThanGroupAdmin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/ExecuteFileScript.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Exit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/FilterStartsWithName.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Help.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/History.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/PrintFieldAscendingSemesterEnum.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/RemoveById.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/RemoveGreater.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Save.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/Show.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/UpdateId.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/list/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/command/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/IControl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/ConsoleHandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/IHandle.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/IBuild.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/ObjectBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/StorageObjectBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/PersonBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/list/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/builder/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/handler/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/ConsoleReceiver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/IReceive.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/receiver/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/ConsoleSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/ISend.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/console/sender/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Color.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Coordinates.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Country.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/FormOfEducation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Person.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/Semester.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/StudyGroup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/description/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/CommandExecutionException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/command/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/InputHandleException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/ObjectBuilderException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/UnknownCommandException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/console/handler/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageIOException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageTransferException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/StorageTransformationException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/file/transferer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/AlreadyInitializedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/exception/storage/object/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/FileSystem.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/DefaultTransferer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/ITransfer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/IRead.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/ReaderViaScanner.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/reader/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/IWrite.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/WriteViaPrintWriter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/io/writer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/LocalDateTimeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/adapter/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StorageObjectParser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/GsonStorageSerializer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/ISerialize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/serializer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/EnvironmentVariable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/variable/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/IStore.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/TreeSetStorage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/StorageInitializable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/StorageObject.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/object/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/storage/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-3.6.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/CountGreaterThanGroupAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/CountGreaterThanGroupAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/UpdateId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/ObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/PersonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/PersonBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +332,8 @@
       <workItem from="1707777685435" duration="7058000" />
       <workItem from="1707785128216" duration="171000" />
       <workItem from="1707785424897" duration="263000" />
+      <workItem from="1707812412943" duration="297000" />
+      <workItem from="1707812729689" duration="2648000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />

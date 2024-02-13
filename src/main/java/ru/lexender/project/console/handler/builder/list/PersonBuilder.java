@@ -28,15 +28,11 @@ public class PersonBuilder extends ObjectBuilder {
 
     }
     public Person build(List<String> arguments, Controller controller) throws ObjectBuilderException {
-        try {
-            if (arguments.size() != getFirstArgumentsAmount()) {
-                throw new ObjectBuilderException(
-                        String.format(
-                                "Wrong field amount: %d arguments expected, got %d",
-                                getFirstArgumentsAmount(), arguments.size())
-                );
-            }
+        if (!checkInteractive(arguments)) {
+            return buildInLine(arguments, controller);
+        }
 
+        try {
             List<Object> constructorArgs = new ArrayList<>();
 
             String name = arguments.get(0);
@@ -63,6 +59,7 @@ public class PersonBuilder extends ObjectBuilder {
         } catch (Exception exception) {
             throw new ObjectBuilderException(exception);
         }
+
     }
 
     public Object capture(Controller controller, int pointer) {
@@ -95,15 +92,12 @@ public class PersonBuilder extends ObjectBuilder {
     }
 
     public Person buildInLine(List<String> arguments, Controller controller) throws ObjectBuilderException {
+        if (!checkInLine(arguments))
+            throw new ObjectBuilderException(String.format(
+                    "Wrong field amount: %d arguments expected (%d for interactive mode), got %d",
+                    getFieldNames().size(), getFieldNames().size(), arguments.size())
+            );
         try {
-            if (arguments.size() != getFieldNames().size()) {
-                throw new ObjectBuilderException(
-                        String.format(
-                                "Wrong field amount: %d arguments expected, got %d",
-                                getFieldNames().size(), arguments.size())
-                );
-            }
-
             String personName = arguments.get(0);
             int personWeight = Integer.parseInt(arguments.get(1));
             Color personEyeColor = Color.valueOf(arguments.get(2));

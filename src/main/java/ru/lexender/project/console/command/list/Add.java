@@ -19,7 +19,7 @@ public class Add extends InteractiveCommand {
     private final List<String> firstArguments;
 
     public Add(List<String> firstArguments, StorageObjectBuilder objectBuilder) {
-        super("add", "Adds new element to the collection", objectBuilder, 12);
+        super("add", "Adds new element to the collection", objectBuilder, 3);
         this.firstArguments = firstArguments;
     }
 
@@ -29,12 +29,7 @@ public class Add extends InteractiveCommand {
             StorageObject<?> object = (StorageObject<?>) getObjectBuilder().build(firstArguments, controller);
             controller.getStorage().add(object);
         } catch (ObjectBuilderException exception) {
-            try {
-                StorageObject<?> object = (StorageObject<?>) getObjectBuilder().buildInLine(firstArguments, controller);
-                controller.getStorage().add(object);
-            } catch (ObjectBuilderException exception1) {
-                throw new CommandExecutionException(exception);
-            }
+            throw new CommandExecutionException(exception);
         }
     }
 }
