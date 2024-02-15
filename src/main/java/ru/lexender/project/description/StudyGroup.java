@@ -1,14 +1,11 @@
 package ru.lexender.project.description;
 
 import com.google.gson.annotations.Expose;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import ru.lexender.project.storage.object.StorageInitializable;
-
-import java.time.LocalDateTime;
 
 /**
  * Description class, collection target.
@@ -44,19 +41,6 @@ public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable 
         this.formOfEducation = formOfEducation;
         this.semesterEnum = semesterEnum;
         this.groupAdmin = groupAdmin;
-    }
-
-    public StudyGroup(long id, String name,
-                      Coordinates coordinates,
-                      LocalDateTime creationDate,
-                      long studentsCount,
-                      Long averageMark,
-                      FormOfEducation formOfEducation,
-                      Semester semesterEnum,
-                      Person groupAdmin) throws IllegalAccessException {
-        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
-        if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
-        if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
     }
 
     public int compareTo(StudyGroup group) {

@@ -5,7 +5,6 @@ import lombok.NonNull;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * Object that is allowed to be stored in classes that implement IStore interface.
@@ -19,8 +18,6 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
     private final LocalDateTime creationDate;
 
     private T object;
-
-    private boolean fromFile;
 
     public static final StorageObject<?> nullObject = new StorageObject<>();
 
