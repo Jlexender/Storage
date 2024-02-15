@@ -35,7 +35,7 @@ public class ReaderViaScanner implements IRead {
 
         while (reader.hasNext()) {
             line = reader.nextLine();
-            s.append(line);
+            s.append(line).append('\n');
         }
         return s.toString();
     }

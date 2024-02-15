@@ -6,7 +6,7 @@ import ru.lexender.project.console.controller.Controller;
 import java.util.Queue;
 
 /**
- * Prints out 9 recent valid commands (without arguments).
+ * Prints out all recent valid commands (without arguments).
  * @see ru.lexender.project.console.command.InteractiveCommand
  * @see ru.lexender.project.console.command.NonStaticCommand
  * @see ru.lexender.project.console.command.Command
@@ -16,7 +16,7 @@ public class History extends Command {
         super("history", "Prints nine last executed commands");
     }
     public void execute(Controller controller) {
-        Queue<Command> history = controller.getHistory();
+        Queue<Command> history = controller.getHistory().getCollection();
         for (Command command: history) {
             controller.getSender().send(command.getAbbreviation());
         }

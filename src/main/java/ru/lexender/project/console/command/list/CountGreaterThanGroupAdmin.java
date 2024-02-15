@@ -5,7 +5,6 @@ import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.handler.builder.ObjectBuilder;
 import ru.lexender.project.description.Person;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
-import ru.lexender.project.exception.console.handler.ObjectBuilderException;
 
 import java.util.List;
 

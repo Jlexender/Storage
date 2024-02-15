@@ -1,5 +1,6 @@
 package ru.lexender.project.console.command.list;
 
+import ru.lexender.project.console.command.Command;
 import ru.lexender.project.console.command.NonStaticCommand;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.exception.console.command.CommandExecutionException;
@@ -24,19 +25,25 @@ public class ExecuteFileScript extends NonStaticCommand {
     }
     public void execute(Controller controller) throws CommandExecutionException {
         try {
+            controller.getExecutionScriptStack().add(this);
+
+            if (controller.getExecutionScriptStack().size() > 100) {
+                throw new CommandExecutionException("Recursion depth exceeded");
+            }
+
             if (arguments.size() != getArgumentsAmount())
                 throw new CommandExecutionException("Wrong field amount");
 
             File script = new File(arguments.get(0));
             Scanner scanner = new Scanner(script);
+
             while (scanner.hasNext()) {
                 String command = scanner.nextLine();
-                try {
-                    controller.execute(controller.getHandler().handle(command));
-                } catch (CommandExecutionException exception) {
-                    controller.getSender().send(String.format("Execution of '%s' failed.", command));
-                }
+                Command formattedCommand = controller.getHandler().handle(command);
+                controller.execute(formattedCommand);
             }
+
+            controller.getExecutionScriptStack().clear();
 
         } catch (Exception exception) {
             throw new CommandExecutionException(exception);

@@ -1,6 +1,7 @@
 package ru.lexender.project;
 
 import ru.lexender.project.console.command.Command;
+import ru.lexender.project.console.command.list.Init;
 import ru.lexender.project.console.controller.Controller;
 import ru.lexender.project.console.controller.IControl;
 import ru.lexender.project.console.handler.ConsoleHandler;
@@ -54,13 +55,7 @@ public class ConsoleApp implements Runnable {
      */
     public void run() {
 
-        Command init = new Command("init", "Initializes Console Application") {
-            @Override
-            public void execute(Controller controller) {
-                String initString = "Welcome!";
-                controller.getSender().send(initString);
-            }
-        };
+        Command init = new Init();
 
         try {
             controller.execute(init);

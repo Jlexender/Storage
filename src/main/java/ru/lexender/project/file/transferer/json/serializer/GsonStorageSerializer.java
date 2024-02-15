@@ -40,7 +40,6 @@ public class GsonStorageSerializer implements ISerialize {
 
             return gson.toJson(objects.toArray());
         } catch (Exception exception) {
-            exception.printStackTrace();
             throw new StorageTransformationException("Unexpected storage serializing exception");
         }
     }

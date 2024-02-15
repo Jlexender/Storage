@@ -12,6 +12,7 @@ import ru.lexender.project.console.command.list.FilterStartsWithName;
 import ru.lexender.project.console.command.list.Help;
 import ru.lexender.project.console.command.list.History;
 import ru.lexender.project.console.command.list.Info;
+import ru.lexender.project.console.command.list.Init;
 import ru.lexender.project.console.command.list.PrintFieldAscendingSemesterEnum;
 import ru.lexender.project.console.command.list.RemoveById;
 import ru.lexender.project.console.command.list.RemoveGreater;
@@ -61,7 +62,8 @@ public class ConsoleHandler implements IHandle {
                     new ExecuteFileScript(arguments),
                     new FilterStartsWithName(arguments),
                     new CountGreaterThanGroupAdmin(arguments, new PersonBuilder()),
-                    new PrintFieldAscendingSemesterEnum()
+                    new PrintFieldAscendingSemesterEnum(),
+                    new Init()
             );
 
             for (Command command: CommandGenerator.getCommandList().values()) {
