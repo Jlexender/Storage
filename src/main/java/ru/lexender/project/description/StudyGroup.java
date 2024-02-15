@@ -1,6 +1,7 @@
 package ru.lexender.project.description;
 
 import com.google.gson.annotations.Expose;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,15 +12,14 @@ import java.time.LocalDateTime;
 
 /**
  * Description class, collection target.
- *
  * @see ru.lexender.project.storage.object.StorageInitializable
  */
 @ToString @Getter @EqualsAndHashCode(callSuper = false)
 public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable {
-    @Expose private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    @ToString.Exclude @Expose private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose @NonNull private Coordinates coordinates; //Поле не может быть null
-    @Expose @NonNull private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @ToString.Exclude @Expose @NonNull private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     @Expose private long studentsCount; //Значение поля должно быть больше 0
     @Expose @NonNull private Long averageMark; //Значение поля должно быть больше 0, Поле может быть null
     @Expose @NonNull private FormOfEducation formOfEducation; //Поле может быть null
@@ -46,9 +46,17 @@ public class StudyGroup implements Comparable<StudyGroup>, StorageInitializable 
         this.groupAdmin = groupAdmin;
     }
 
-    public void initialize(long id, LocalDateTime creationDate) {
-        this.id = id;
-        this.creationDate = creationDate;
+    public StudyGroup(long id, String name,
+                      Coordinates coordinates,
+                      LocalDateTime creationDate,
+                      long studentsCount,
+                      Long averageMark,
+                      FormOfEducation formOfEducation,
+                      Semester semesterEnum,
+                      Person groupAdmin) throws IllegalAccessException {
+        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+        if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
+        if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
     }
 
     public int compareTo(StudyGroup group) {

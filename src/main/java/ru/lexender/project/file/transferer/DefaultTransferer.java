@@ -40,8 +40,6 @@ public class DefaultTransferer implements ITransfer {
                 storage.add(object);
             }
 
-            StorageObject.initializeID(data);
-
         } catch (Exception exception) {
             throw new StorageTransferException(exception);
         }

@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
  * @see ru.lexender.project.storage.object.StorageObject
  */
 public interface StorageInitializable {
-    public void initialize(long id, LocalDateTime creationDate);
     public long getId();
     public String getName();
+    public LocalDateTime getCreationDate();
     public Semester getSemesterEnum();
     public Person getGroupAdmin();
 }

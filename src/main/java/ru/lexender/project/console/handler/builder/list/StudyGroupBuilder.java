@@ -81,7 +81,7 @@ public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBui
                             (Color)constructorArgs.get(10),
                             (Country)constructorArgs.get(11)
                         )
-            ));
+            ), false);
         } catch (Exception exception) {
             throw new ObjectBuilderException(exception);
         }
@@ -184,7 +184,7 @@ public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBui
                             persoHairColor,
                             personNationality
                     )
-            ));
+            ), false);
         } catch (Exception exception) {
             throw new ObjectBuilderException(exception);
         }

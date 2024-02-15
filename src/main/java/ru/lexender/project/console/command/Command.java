@@ -22,8 +22,4 @@ public abstract class Command {
     }
 
     public abstract void execute(Controller controller) throws CommandExecutionException;
-
-    public String toString() {
-        return abbreviation;
-    }
 }

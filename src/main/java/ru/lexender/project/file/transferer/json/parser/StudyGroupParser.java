@@ -41,7 +41,7 @@ public class StudyGroupParser extends StorageObjectParser {
                 StudyGroup[] data = parsedData.get();
 
                 for (StudyGroup object: data) {
-                    transformedData.add(new StorageObject<>(object));
+                    transformedData.add(new StorageObject<>(object, true));
                 }
 
                 return transformedData;

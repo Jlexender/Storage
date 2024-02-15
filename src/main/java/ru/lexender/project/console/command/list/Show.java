@@ -19,7 +19,7 @@ public class Show extends Command {
     public void execute(Controller controller) {
         Collection<? extends StorageObject<?>> collection = controller.getStorage().getCollectionCopy();
         for (StorageObject<?> object: collection) {
-            controller.getSender().send(object.getObject());
+            controller.getSender().send(object);
         }
     }
 }
