@@ -29,12 +29,12 @@ public class HistoryParser extends Parser {
             IRead reader = new ReaderViaScanner(getFile());
             IHandle handler = new ConsoleHandler(new StorageObjectBuilder() {
                 @Override
-                public StorageObject<?> build(List<String> arguments, Controller controller) throws ObjectBuilderException {
+                public StorageObject<?> build(List<String> arguments, Controller controller) {
                     return StorageObject.nullObject;
                 }
 
                 @Override
-                public StorageObject<?> buildInLine(List<String> arguments, Controller controller) throws ObjectBuilderException {
+                public StorageObject<?> buildInLine(List<String> arguments, Controller controller) {
                     return StorageObject.nullObject;
                 }
             });

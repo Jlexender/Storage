@@ -28,7 +28,7 @@ public class ConsoleApp implements Runnable {
 
     /**
      * Initializes ConsoleApp with EnvironmentVariable object.
-     * @param pathToFile
+     * @param pathToFile environment variable name
      * @see ru.lexender.project.file.variable.EnvironmentVariable
      */
     public ConsoleApp(EnvironmentVariable pathToFile) {
