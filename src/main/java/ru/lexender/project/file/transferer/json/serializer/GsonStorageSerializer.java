@@ -31,14 +31,7 @@ public class GsonStorageSerializer implements ISerialize {
                     setPrettyPrinting().
                     registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
-            Function<StorageObject<?>, Object> toObject = StorageObject::getObject;
-            List<Object> objects = new ArrayList<>();
-            Collection<StorageObject<?>> collection = storage.getCollectionCopy();
-            for (StorageObject<?> object: collection) {
-                objects.add(toObject.apply(object));
-            }
-
-            return gson.toJson(objects.toArray());
+            return gson.toJson(storage.getCollectionCopy().toArray());
         } catch (Exception exception) {
             throw new StorageTransformationException("Unexpected storage serializing exception");
         }

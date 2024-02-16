@@ -2,31 +2,37 @@ package ru.lexender.project.file.transferer.json.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import lombok.NonNull;
+import com.google.gson.reflect.TypeToken;
 import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
 import ru.lexender.project.file.transferer.io.reader.IRead;
 import ru.lexender.project.file.transferer.io.reader.ReaderViaScanner;
 import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
+import ru.lexender.project.storage.object.StorageInitializable;
 import ru.lexender.project.storage.object.StorageObject;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 /**
- * StudyGroup class to StorageObject class parser.
- * @see ru.lexender.project.file.transferer.json.parser.StorageObjectParser
+ * Parses data from file to a list of StorageObject classes.
+ * @see ru.lexender.project.storage.object.StorageObject
  */
-public class StudyGroupParser extends StorageObjectParser {
 
-    public StudyGroupParser(File file) {
+public class GsonStorageParser extends Parser {
+    private final Type type;
+
+
+    public GsonStorageParser(File file, Type type) {
         super(file);
+        this.type = type;
     }
 
-    public @NonNull List<StorageObject<?>> parse() throws StorageTransformationException {
+    public List<StorageObject<?>> parse() throws StorageTransformationException {
         try {
             IRead reader = new ReaderViaScanner(getFile());
             Gson gson = new GsonBuilder()
@@ -34,22 +40,19 @@ public class StudyGroupParser extends StorageObjectParser {
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                     .create();
 
-            Optional<StudyGroup[]> parsedData = Optional.ofNullable(gson.fromJson(reader.read(), StudyGroup[].class));
+            Object[] parsedData = gson.fromJson(reader.read(), Object[].class);
+            if (parsedData == null) throw new NullPointerException();
+            List<StorageObject<?>> formattedData = new ArrayList<>();
 
-            if (parsedData.isPresent()) {
-                List<StorageObject<?>> transformedData = new ArrayList<>();
-                StudyGroup[] data = parsedData.get();
-
-                for (StudyGroup object: data) {
-                    transformedData.add(new StorageObject<>(object, true));
-                }
-
-                return transformedData;
+            for (Object object: parsedData) {
+                StorageObject<?> parsed = gson.fromJson(gson.toJson(object), type);
+                formattedData.add(parsed);
             }
-            else return new ArrayList<>();
 
+            return formattedData;
         } catch (Exception exception) {
             throw new StorageTransformationException("Can't parse from file storage");
         }
     }
+
 }

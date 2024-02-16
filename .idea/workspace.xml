@@ -7,15 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="added file-based history; recursion protection">
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="encapsulated id and creation date">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/command/list/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/console/handler/builder/list/StudyGroupBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StorageObjectParser.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StorageObjectParser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/ConsoleApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/StudyGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/description/StudyGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/DefaultTransferer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/DefaultTransferer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageInitializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageInitializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/parser/StorageObjectParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/parser/StudyGroupParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/parser/GsonStorageParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/serializer/GsonStorageSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/file/transferer/json/serializer/GsonStorageSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/storage/object/StorageObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +181,10 @@
       <workItem from="1707847751802" duration="11000" />
       <workItem from="1707847792189" duration="1275000" />
       <workItem from="1707991747253" duration="41000" />
-      <workItem from="1707991812441" duration="3450000" />
+      <workItem from="1707991812441" duration="3678000" />
+      <workItem from="1708032236766" duration="5466000" />
+      <workItem from="1708061556106" duration="184000" />
+      <workItem from="1708061756572" duration="2531000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />
@@ -414,7 +418,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707992678813</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="encapsulated id and creation date">
+      <option name="closed" value="true" />
+      <created>1707995333306</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995333306</updated>
+    </task>
+    <task id="LOCAL-00031" summary="encapsulated id and creation date">
+      <option name="closed" value="true" />
+      <created>1707995418193</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995418193</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +462,8 @@
     <MESSAGE value="added commands" />
     <MESSAGE value="small fix" />
     <MESSAGE value="added file-based history; recursion protection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added file-based history; recursion protection" />
+    <MESSAGE value="encapsulated id and creation date" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulated id and creation date" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

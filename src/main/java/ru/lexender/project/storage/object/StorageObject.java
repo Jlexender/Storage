@@ -1,5 +1,6 @@
 package ru.lexender.project.storage.object;
 
+import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
@@ -14,10 +15,10 @@ import java.time.LocalDateTime;
 @Getter @ToString
 public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
     private static long ID = 0;
-    private final long id;
-    private final LocalDateTime creationDate;
+    @Expose private final long id;
+    @Expose private final LocalDateTime creationDate;
 
-    private T object;
+    @Expose private T object;
 
     public static final StorageObject<?> nullObject = new StorageObject<>();
 
