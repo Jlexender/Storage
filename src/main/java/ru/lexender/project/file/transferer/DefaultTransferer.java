@@ -1,28 +1,20 @@
 package ru.lexender.project.file.transferer;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import lombok.NonNull;
 import ru.lexender.project.description.StudyGroup;
 import ru.lexender.project.exception.file.transferer.StorageIOException;
 import ru.lexender.project.exception.file.transferer.StorageTransferException;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
-import ru.lexender.project.exception.file.transferer.TransformationException;
 import ru.lexender.project.file.FileSystem;
 import ru.lexender.project.file.transferer.io.writer.IWrite;
 import ru.lexender.project.file.transferer.io.writer.WriteViaPrintWriter;
-import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
 import ru.lexender.project.file.transferer.json.parser.GsonStorageParser;
-import ru.lexender.project.file.transferer.json.parser.Parser;
 import ru.lexender.project.file.transferer.json.serializer.GsonStorageSerializer;
 import ru.lexender.project.file.transferer.json.serializer.ISerialize;
 import ru.lexender.project.storage.IStore;
 import ru.lexender.project.storage.object.StorageObject;
 
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

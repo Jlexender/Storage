@@ -5,13 +5,8 @@ import com.google.gson.GsonBuilder;
 import ru.lexender.project.exception.file.transferer.StorageTransformationException;
 import ru.lexender.project.file.transferer.json.adapter.LocalDateTimeAdapter;
 import ru.lexender.project.storage.IStore;
-import ru.lexender.project.storage.object.StorageObject;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
 
 /**
  * Class provided with ISerialize in order to serialize IStore classes. Implementation with Google Gson.
