@@ -1,7 +1,6 @@
 package ru.lexender.project.server.command.list;
 
 import ru.lexender.project.server.command.Command;
-import ru.lexender.project.server.exception.file.transferer.StorageIOException;
 import ru.lexender.project.server.invoker.Invoker;
 
 /**

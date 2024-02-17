@@ -1,7 +1,7 @@
 package ru.lexender.project.server.command.list;
 
-import ru.lexender.project.server.command.InteractiveCommand;
 import ru.lexender.project.client.handler.builder.ObjectBuilder;
+import ru.lexender.project.server.command.InteractiveCommand;
 import ru.lexender.project.server.description.Person;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.invoker.Invoker;
