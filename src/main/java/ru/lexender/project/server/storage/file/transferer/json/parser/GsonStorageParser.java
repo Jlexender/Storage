@@ -2,7 +2,7 @@ package ru.lexender.project.server.storage.file.transferer.json.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ru.lexender.project.server.exception.file.transferer.StorageTransformationException;
+import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
 import ru.lexender.project.server.storage.file.transferer.io.reader.IRead;
 import ru.lexender.project.server.storage.file.transferer.io.reader.ReaderViaScanner;
 import ru.lexender.project.server.storage.file.transferer.json.adapter.LocalDateTimeAdapter;
@@ -28,7 +28,7 @@ public class GsonStorageParser extends Parser {
         this.type = type;
     }
 
-    public List<StorageObject<?>> parse() throws StorageTransformationException {
+    public List<StorageObject> parse() throws StorageTransformationException {
         try {
             IRead reader = new ReaderViaScanner();
             Gson gson = new GsonBuilder()
@@ -38,10 +38,10 @@ public class GsonStorageParser extends Parser {
 
             Object[] parsedData = gson.fromJson(reader.read(getFile()), Object[].class);
             if (parsedData == null) throw new NullPointerException();
-            List<StorageObject<?>> formattedData = new ArrayList<>();
+            List<StorageObject> formattedData = new ArrayList<>();
 
             for (Object object: parsedData) {
-                StorageObject<?> parsed = gson.fromJson(gson.toJson(object), type);
+                StorageObject parsed = gson.fromJson(gson.toJson(object), type);
                 formattedData.add(parsed);
             }
 

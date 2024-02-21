@@ -4,25 +4,24 @@ import com.google.gson.annotations.Expose;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
+import ru.lexender.project.server.storage.description.StudyGroup;
 
 import java.time.LocalDateTime;
 
 /**
  * Object that is allowed to be stored in classes that implement IStore interface.
- * @param <T> is a collection target class.
- * @see ru.lexender.project.server.storage.object.StorageInitializable
  */
 @Getter @ToString
-public class StorageObject<T extends Comparable<T> & StorageInitializable> implements Comparable<StorageObject<?>> {
+public class StorageObject implements Comparable<StorageObject> {
     private static long ID = 0;
     @Expose private final long id;
     @Expose private final LocalDateTime creationDate;
 
-    @Expose private T object;
+    @Expose private StudyGroup object;
 
-    public static final StorageObject<?> nullObject = new StorageObject<>();
+    public static final StorageObject nullObject = new StorageObject();
 
-    public StorageObject(T object, boolean fromFile) {
+    public StorageObject(StudyGroup object, boolean fromFile) {
         this.object = object;
         if (fromFile) {
             this.id = object.getId();
@@ -41,16 +40,16 @@ public class StorageObject<T extends Comparable<T> & StorageInitializable> imple
         this.creationDate = LocalDateTime.now();
     }
 
-    public void update(@NonNull StorageObject<?> object) throws ClassCastException {
-        this.object = (T)(object.getObject());
+    public void update(@NonNull StorageObject object) {
+        this.object = object.getObject();
     }
 
     public boolean isNull() {
         return (this == nullObject);
     }
 
-    public int compareTo(StorageObject<?> obj) throws ClassCastException {
-        return object.compareTo(((StorageObject<T>) obj).getObject());
+    public int compareTo(StorageObject obj) {
+        return object.compareTo(obj.getObject());
     }
 
 

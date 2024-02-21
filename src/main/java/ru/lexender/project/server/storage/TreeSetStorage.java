@@ -13,13 +13,13 @@ import java.util.TreeSet;
  * @see ru.lexender.project.server.storage.IStore
  */
 public class TreeSetStorage implements IStore {
-    private final TreeSet<StorageObject<?>> collection;
+    private final TreeSet<StorageObject> collection;
 
     public TreeSetStorage() {
         collection = new TreeSet<>();
     }
 
-    public void add(@NonNull StorageObject<?> element) throws ClassCastException {
+    public void add(@NonNull StorageObject element) throws ClassCastException {
         collection.add(element);
     }
 
@@ -27,8 +27,8 @@ public class TreeSetStorage implements IStore {
         collection.clear();
     }
 
-    public StorageObject<?> getById(long id) throws NoSuchElementException {
-        for (StorageObject<?> object: collection) {
+    public StorageObject getById(long id) throws NoSuchElementException {
+        for (StorageObject object: collection) {
             if (object.getId() == id) return object;
         }
         throw new NoSuchElementException("No such element");
@@ -38,7 +38,7 @@ public class TreeSetStorage implements IStore {
         return collection.size();
     }
 
-    public boolean remove(StorageObject<?> object) {
+    public boolean remove(StorageObject object) {
         if (collection.contains(object)) {
             collection.remove(object);
             return true;
@@ -46,14 +46,14 @@ public class TreeSetStorage implements IStore {
         return false;
     }
 
-    public StorageObject<?> getMin() throws NoSuchElementException {
-        Optional<StorageObject<?>> object = collection.stream().min(Comparator.naturalOrder());
+    public StorageObject getMin() throws NoSuchElementException {
+        Optional<StorageObject> object = collection.stream().min(Comparator.naturalOrder());
         if (object.isEmpty()) throw new NoSuchElementException("Collection is empty, no min element provided");
         return object.get();
     }
 
-    public TreeSet<StorageObject<?>> getCollectionCopy() {
-        TreeSet<StorageObject<?>> dataCopy = new TreeSet<>();
+    public TreeSet<StorageObject> getCollectionCopy() {
+        TreeSet<StorageObject> dataCopy = new TreeSet<>();
         dataCopy.addAll(collection);
         return dataCopy;
     }

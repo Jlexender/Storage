@@ -1,6 +1,6 @@
 package ru.lexender.project.server.storage.file.transferer;
 
-import ru.lexender.project.server.exception.file.transferer.StorageTransferException;
+import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 
 /**
  * Transfers data from file and storage in both ways.

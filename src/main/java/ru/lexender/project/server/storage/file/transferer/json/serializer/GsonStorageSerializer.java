@@ -2,7 +2,7 @@ package ru.lexender.project.server.storage.file.transferer.json.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ru.lexender.project.server.exception.file.transferer.StorageTransformationException;
+import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
 import ru.lexender.project.server.storage.file.transferer.json.adapter.LocalDateTimeAdapter;
 import ru.lexender.project.server.storage.IStore;
 
