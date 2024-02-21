@@ -3,10 +3,10 @@ package ru.lexender.project.server.invoker;
 import lombok.Getter;
 import ru.lexender.project.client.receiver.IReceive;
 import ru.lexender.project.inbetween.Bridge;
-import ru.lexender.project.inbetween.sender.ISend;
 import ru.lexender.project.server.command.Command;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.file.FileSystem;
+import ru.lexender.project.server.sender.ISend;
 import ru.lexender.project.server.storage.IStore;
 
 import java.util.Stack;
