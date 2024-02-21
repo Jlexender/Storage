@@ -1,13 +1,10 @@
 package ru.lexender.project.server.storage.file.transferer.io.reader;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 public class ReaderViaScanner implements IRead {
 

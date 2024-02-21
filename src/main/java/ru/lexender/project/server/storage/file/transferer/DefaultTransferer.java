@@ -1,20 +1,18 @@
 package ru.lexender.project.server.storage.file.transferer;
 
-import com.google.gson.reflect.TypeToken;
-import ru.lexender.project.server.storage.description.StudyGroup;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageIOException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
+import ru.lexender.project.server.storage.IStore;
+import ru.lexender.project.server.storage.description.StudyGroup;
 import ru.lexender.project.server.storage.file.FileSystem;
 import ru.lexender.project.server.storage.file.transferer.io.writer.IWrite;
 import ru.lexender.project.server.storage.file.transferer.io.writer.WriteViaPrintWriter;
 import ru.lexender.project.server.storage.file.transferer.json.parser.GsonStorageParser;
 import ru.lexender.project.server.storage.file.transferer.json.serializer.GsonStorageSerializer;
 import ru.lexender.project.server.storage.file.transferer.json.serializer.ISerialize;
-import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.object.StorageObject;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 public class DefaultTransferer implements ITransfer {

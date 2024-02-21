@@ -6,9 +6,8 @@ import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.ObjectBuilder;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
-import ru.lexender.project.server.storage.description.Person;
 import ru.lexender.project.server.invoker.Invoker;
-import ru.lexender.project.server.storage.object.StorageObject;
+import ru.lexender.project.server.storage.description.Person;
 
 import java.util.List;
 

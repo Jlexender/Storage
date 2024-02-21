@@ -8,7 +8,6 @@ import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Prints out elements of the collection.
