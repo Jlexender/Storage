@@ -1,10 +1,27 @@
 package ru.lexender.project.inbetween;
 
+import ru.lexender.project.client.Client;
+import ru.lexender.project.server.Server;
+
 /**
- * Transferring between server and client.
+ * client-server
  */
 
-public interface Bridge {
-    public void send(Request request);
-    public void send(Response response);
+public class Bridge {
+    private final Client client;
+    private final Server server;
+
+    public Bridge(Client client, Server server) {
+        this.client = client;
+        this.server = server;
+    }
+
+
+    public void send(Request request) {
+        server.getRequest(request);
+    }
+
+    public void send(Response response) {
+        client.getResponse(response);
+    }
 }

@@ -3,8 +3,8 @@ package ru.lexender.project.server.command.list;
 import ru.lexender.project.server.command.Command;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.exception.file.transferer.StorageTransferException;
-import ru.lexender.project.server.file.transferer.DefaultTransferer;
-import ru.lexender.project.server.file.transferer.ITransfer;
+import ru.lexender.project.server.storage.file.transferer.DefaultTransferer;
+import ru.lexender.project.server.storage.file.transferer.ITransfer;
 import ru.lexender.project.server.invoker.Invoker;
 
 /**
