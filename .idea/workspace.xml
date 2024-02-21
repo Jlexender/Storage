@@ -7,17 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="updated README.md">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/Input.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/StringInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/transcriber/ITranscribe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/sender/ISend.java" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="added non-compilable stuff">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/exception/ConnectionNotEstablishedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/DefaultBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/DefaultBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/ExecuteFileScript.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/exception/handler/InputHandleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/handler/InputHandleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/exception/handler/ObjectBuilderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/handler/ObjectBuilderException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/exception/handler/UnknownCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/handler/UnknownCommandException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/builder/IBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/builder/IBuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/builder/ObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/builder/ObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/builder/StorageObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/builder/StorageObjectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/builder/list/PersonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/builder/list/PersonBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/builder/list/StudyGroupBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/IReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/IReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/StringInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/StringInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/receiver/StringInputReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/StringInputReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/transcriber/ITranscribe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/decoder/ITranscribe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/InteractiveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/InteractiveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/CountGreaterThanGroupAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/CountGreaterThanGroupAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/RemoveGreater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/command/list/UpdateId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/Invoker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +44,8 @@
         <option value="Enum" />
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -208,7 +221,7 @@
       <workItem from="1708206804631" duration="2701000" />
       <workItem from="1708441902045" duration="6000" />
       <workItem from="1708441912605" duration="54000" />
-      <workItem from="1708499082041" duration="6075000" />
+      <workItem from="1708499082041" duration="7627000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />
@@ -482,7 +495,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708196472169</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added non-compilable stuff">
+      <option name="closed" value="true" />
+      <created>1708505944271</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1708505944271</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +534,8 @@
     <MESSAGE value="encapsulated id and creation date" />
     <MESSAGE value="reworked parser and transferring" />
     <MESSAGE value="updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated README.md" />
+    <MESSAGE value="added non-compilable stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="added non-compilable stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

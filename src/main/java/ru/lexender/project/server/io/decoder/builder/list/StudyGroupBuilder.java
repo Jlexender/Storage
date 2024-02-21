@@ -1,8 +1,8 @@
-package ru.lexender.project.client.handler.builder.list;
+package ru.lexender.project.server.io.decoder.builder.list;
 
-import ru.lexender.project.client.exception.handler.ObjectBuilderException;
-import ru.lexender.project.client.handler.builder.ObjectBuilder;
-import ru.lexender.project.client.handler.builder.StorageObjectBuilder;
+import ru.lexender.project.server.exception.handler.ObjectBuilderException;
+import ru.lexender.project.server.io.decoder.builder.ObjectBuilder;
+import ru.lexender.project.server.io.decoder.builder.StorageObjectBuilder;
 import ru.lexender.project.server.description.Color;
 import ru.lexender.project.server.description.Coordinates;
 import ru.lexender.project.server.description.Country;
@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * Class for initializing a StorageObject object when StudyGroup is parameter.
- * @see ru.lexender.project.client.handler.builder.StorageObjectBuilder
+ * @see ru.lexender.project.server.io.decoder.builder.StorageObjectBuilder
  */
 public class StudyGroupBuilder extends ObjectBuilder implements StorageObjectBuilder {
 

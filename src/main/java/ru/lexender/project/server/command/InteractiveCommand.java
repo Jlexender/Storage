@@ -2,7 +2,7 @@ package ru.lexender.project.server.command;
 
 import lombok.Getter;
 import lombok.NonNull;
-import ru.lexender.project.client.handler.builder.IBuild;
+import ru.lexender.project.server.io.decoder.builder.IBuild;
 
 /**
  * Interactive command, extension of Command abstract class.

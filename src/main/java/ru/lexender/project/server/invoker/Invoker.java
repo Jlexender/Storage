@@ -1,7 +1,7 @@
 package ru.lexender.project.server.invoker;
 
 import lombok.Getter;
-import ru.lexender.project.client.receiver.IReceive;
+import ru.lexender.project.server.io.IReceive;
 import ru.lexender.project.inbetween.Bridge;
 import ru.lexender.project.server.command.Command;
 import ru.lexender.project.server.exception.command.CommandExecutionException;

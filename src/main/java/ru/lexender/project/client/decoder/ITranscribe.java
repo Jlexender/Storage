@@ -1,4 +1,4 @@
-package ru.lexender.project.client.transcriber;
+package ru.lexender.project.client.decoder;
 
 /**
  * Response -> Output

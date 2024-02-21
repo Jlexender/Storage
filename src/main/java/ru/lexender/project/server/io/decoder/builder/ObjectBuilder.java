@@ -1,7 +1,7 @@
-package ru.lexender.project.client.handler.builder;
+package ru.lexender.project.server.io.decoder.builder;
 
 import lombok.Getter;
-import ru.lexender.project.client.exception.handler.ObjectBuilderException;
+import ru.lexender.project.server.exception.handler.ObjectBuilderException;
 import ru.lexender.project.server.invoker.Invoker;
 
 import java.util.List;

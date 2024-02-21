@@ -1,7 +1,7 @@
-package ru.lexender.project.client.handler.builder.list;
+package ru.lexender.project.server.io.decoder.builder.list;
 
-import ru.lexender.project.client.exception.handler.ObjectBuilderException;
-import ru.lexender.project.client.handler.builder.ObjectBuilder;
+import ru.lexender.project.server.exception.handler.ObjectBuilderException;
+import ru.lexender.project.server.io.decoder.builder.ObjectBuilder;
 import ru.lexender.project.server.description.Color;
 import ru.lexender.project.server.description.Country;
 import ru.lexender.project.server.description.Person;
@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Class for initializing a Person object.
- * @see ru.lexender.project.client.handler.builder.ObjectBuilder
+ * @see ru.lexender.project.server.io.decoder.builder.ObjectBuilder
  */
 public class PersonBuilder extends ObjectBuilder {
 

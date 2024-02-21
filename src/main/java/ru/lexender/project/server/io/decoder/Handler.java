@@ -1,6 +1,6 @@
-package ru.lexender.project.client.handler;
+package ru.lexender.project.server.io.decoder;
 
-import ru.lexender.project.client.handler.builder.ObjectBuilder;
+import ru.lexender.project.server.io.decoder.builder.ObjectBuilder;
 
 /**
  * Input -> Request

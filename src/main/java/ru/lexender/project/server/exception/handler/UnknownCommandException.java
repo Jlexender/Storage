@@ -1,4 +1,4 @@
-package ru.lexender.project.client.exception.handler;
+package ru.lexender.project.server.exception.handler;
 
 import lombok.Getter;
 

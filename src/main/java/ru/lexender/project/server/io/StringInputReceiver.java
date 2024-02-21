@@ -1,4 +1,4 @@
-package ru.lexender.project.client.receiver;
+package ru.lexender.project.server.io;
 
 import java.util.Optional;
 import java.util.Scanner;
