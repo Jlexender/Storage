@@ -1,7 +1,6 @@
 package ru.lexender.project.server;
 
 import lombok.Getter;
-import ru.lexender.project.inbetween.Bridge;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
@@ -21,7 +20,6 @@ import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.file.transferer.DefaultTransferer;
 import ru.lexender.project.server.storage.file.transferer.ITransfer;
 
-import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.List;
