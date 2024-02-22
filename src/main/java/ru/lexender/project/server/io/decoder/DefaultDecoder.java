@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Request -> Command
+ * Request -> DATA
  */
 public class DefaultDecoder implements IDecode {
     public List<String> decode(Request request)  {

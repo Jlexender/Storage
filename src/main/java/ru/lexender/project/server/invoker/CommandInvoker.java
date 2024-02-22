@@ -5,9 +5,8 @@ import ru.lexender.project.server.handler.command.Command;
 
 import java.util.List;
 
-public interface IInvoke {
+public interface CommandInvoker {
     public Response invoke(Command command, List<String> args);
     public List<Command> getHistory();
-
     public Command peekPreviousCommand();
 }

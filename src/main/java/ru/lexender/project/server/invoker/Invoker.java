@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Class provided for IExecute interface.
+ * Class provided for CommandInvoker interface.
  * NOTE: 1 request - 1 response.
  * Except: Constructor commands: 1 input - 1 response.
- * @see IInvoke
+ * @see CommandInvoker
  */
 
 @Getter
-public class Invoker implements IInvoke {
+public class Invoker implements CommandInvoker {
     private final IStore storage;
     private final FileSystem fileSystem;
     private final Stack<Command> history;
