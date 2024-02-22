@@ -7,5 +7,5 @@ public enum Country {
     UNITED_KINGDOM,
     VATICAN,
     ITALY,
-    JAPAN;
+    JAPAN
 }

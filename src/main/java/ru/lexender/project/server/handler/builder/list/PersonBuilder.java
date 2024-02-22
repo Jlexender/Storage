@@ -27,66 +27,6 @@ public class PersonBuilder extends ObjectBuilder {
         ));
 
     }
-//    public Person build(List<String> arguments, Invoker invoker) throws IllegalAccessException {
-//        if (!isValid(arguments)) {
-//            return buildInLine(arguments, invoker);
-//        }
-//
-//        List<Object> constructorArgs = new ArrayList<>();
-//
-//        String name = arguments.get(0);
-//        int weight = Integer.parseInt(arguments.get(1));
-//
-//        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
-//        if (weight <= 0) throw new IllegalAccessException("Weight must be positive");
-//
-//        constructorArgs.add(name);
-//        constructorArgs.add(weight);
-//
-//        for (int i = getFirstArgumentsAmount(); i < getFieldNames().size(); ++i) {
-//            Object newArgument = capture(invoker, i);
-//            constructorArgs.add(newArgument);
-//        }
-//
-//        return new Person(
-//                (String)constructorArgs.get(0),
-//                (int)constructorArgs.get(1),
-//                (Color)constructorArgs.get(2),
-//                (Color)constructorArgs.get(3),
-//                (Country)constructorArgs.get(4)
-//        );
-//
-//
-//    }
-//
-//    public Object capture(Invoker invoker, int pointer) {
-//        for (;;) {
-//            invoker.getSender().send("Enter " + getFieldNames().get(pointer) + ':');
-//
-//            switch (pointer) {
-//                case 2,3:
-//                    invoker.getSender().send(Arrays.asList(Color.values()));
-//                    break;
-//                case 4:
-//                    invoker.getSender().send(Arrays.asList(Country.values()));
-//                    break;
-//            }
-//
-//            String message = invoker.getReceiver().receive().toString();
-//
-//            try {
-//                return switch (pointer) {
-//                    case 2, 3: yield Color.valueOf(message);
-//                    case 4: yield Country.valueOf(message);
-//                    default: throw new Exception();
-//                };
-//            } catch (IllegalAccessException exception) {
-//                invoker.getSender().send(exception.getMessage());
-//            } catch (Exception exception) {
-//                invoker.getSender().send("Invalid argument. Please enter valid argument.");
-//            }
-//        }
-//    }
 
     public boolean validateArgument(String argument, int pointer) {
         try {

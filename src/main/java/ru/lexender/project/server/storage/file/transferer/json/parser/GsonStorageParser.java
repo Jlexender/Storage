@@ -9,7 +9,6 @@ import ru.lexender.project.server.storage.file.transferer.json.adapter.LocalDate
 import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +19,10 @@ import java.util.List;
  */
 
 public class GsonStorageParser extends Parser {
-    private final Type type;
 
 
-    public GsonStorageParser(File file, Type type) {
+    public GsonStorageParser(File file) {
         super(file);
-        this.type = type;
     }
 
     public List<StorageObject> parse() throws StorageTransformationException {
@@ -41,7 +38,7 @@ public class GsonStorageParser extends Parser {
             List<StorageObject> formattedData = new ArrayList<>();
 
             for (Object object: parsedData) {
-                StorageObject parsed = gson.fromJson(gson.toJson(object), type);
+                StorageObject parsed = gson.fromJson(gson.toJson(object), StorageObject.class);
                 formattedData.add(parsed);
             }
 

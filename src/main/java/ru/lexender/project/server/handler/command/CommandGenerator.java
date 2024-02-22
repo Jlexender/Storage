@@ -1,9 +1,11 @@
 package ru.lexender.project.server.handler.command;
 
 import lombok.Getter;
+import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Class that generates a Command object with defined arguments.
@@ -19,6 +21,12 @@ public class CommandGenerator {
                 commandList.replace(command.getAbbreviation(), command);
             else commandList.put(command.getAbbreviation(), command);
         }
+    }
+
+    public static Command get(String command) throws InvalidCommandException {
+        Optional<Command> commandOptional = Optional.ofNullable(commandList.get(command));
+        if (commandOptional.isEmpty()) throw new InvalidCommandException("Unknown command", command);
+        return commandOptional.get();
     }
 
 }

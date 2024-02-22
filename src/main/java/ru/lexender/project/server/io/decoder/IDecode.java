@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IDecode {
     public List<String> decode(Request request);
+    public List<String> getArguments(Request request);
 }

@@ -1,8 +1,11 @@
 package ru.lexender.project.server.handler;
 
-import ru.lexender.project.server.exception.io.handling.UnknownCommandException;
+import ru.lexender.project.server.exception.io.handling.InvalidArgumentsException;
+import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
 import ru.lexender.project.server.handler.builder.list.PersonBuilder;
+import ru.lexender.project.server.handler.builder.list.StudyGroupBuilder;
+import ru.lexender.project.server.handler.command.ArgumentedCommand;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandGenerator;
 import ru.lexender.project.server.handler.command.list.Add;
@@ -25,13 +28,8 @@ import java.util.List;
 public class DefaultHandler implements IHandle {
     private final StorageObjectBuilder builder;
 
-    public DefaultHandler(StorageObjectBuilder builder) {
-        this.builder = builder;
-    }
-
-    public Command handle(List<String> args) throws UnknownCommandException {
-        String command = args.get(0);
-        args.remove(0);
+    public DefaultHandler() {
+        this.builder = new StudyGroupBuilder();
 
         CommandGenerator.generate(
                 new Help(),
@@ -49,11 +47,18 @@ public class DefaultHandler implements IHandle {
                 new CountGreaterThanGroupAdmin(new PersonBuilder()),
                 new PrintFieldAscendingSemesterEnum()
         );
+    }
 
-        try {
-            return CommandGenerator.getCommandList().get(command);
-        } catch (Exception exception) {
-            throw new UnknownCommandException(exception.getMessage(), command);
+    public Command handle(List<String> args) throws InvalidArgumentsException, InvalidCommandException {
+        String word = args.get(0);
+
+
+        Command command = CommandGenerator.get(word);
+        if (command instanceof ArgumentedCommand) return command;
+
+        if (command.getArgumentsAmount() != args.size()-1) {
+            throw new InvalidArgumentsException("Invalid arguments amount");
         }
+        return command;
     }
 }

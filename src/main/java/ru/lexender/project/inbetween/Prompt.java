@@ -3,9 +3,7 @@ package ru.lexender.project.inbetween;
 public enum Prompt {
     INVALID_AMOUNT,
     INVALID_ARGUMENT,
-    RESTRICTED_ARGUMENT,
-    SERVER_IO_ERROR,
-    SERVER_PARSE_ERROR,
+    INVALID_COMMAND,
     ALL_OK,
     UNEXPECTED_ERROR,
     STORAGE_FILE_UNAVAILABLE,

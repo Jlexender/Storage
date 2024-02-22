@@ -13,4 +13,9 @@ public class DefaultDecoder implements IDecode {
         String rawMessage = request.getRawMessage();
         return Arrays.stream(rawMessage.split(" ")).toList();
     }
+
+    public List<String> getArguments(Request request) {
+        List<String> message = decode(request);
+        return message.subList(1, message.size());
+    }
 }

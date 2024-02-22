@@ -6,18 +6,18 @@ import lombok.Getter;
  * An exception that occurs due to Handler input handling failure.
  */
 @Getter
-public class InputHandleException extends Exception {
+public class InvalidArgumentsException extends Exception {
     String input;
-    public InputHandleException(String message, String input) {
+    public InvalidArgumentsException(String message, String input) {
         super(message);
         this.input = input;
     }
 
-    public InputHandleException(Exception exception) {
+    public InvalidArgumentsException(Exception exception) {
         super(exception.getMessage());
     }
 
-    public InputHandleException(String message) {
+    public InvalidArgumentsException(String message) {
         super(message);
     }
 }

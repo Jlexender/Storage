@@ -16,11 +16,13 @@ public abstract class Command {
     private final String info;
     private final String abbreviation;
     private CommandStatus status;
+    protected int argumentsAmount;
 
     public Command(@NonNull String abbreviation, @NonNull String info) {
         this.abbreviation = abbreviation;
         this.info = info;
         this.status = CommandStatus.IN_QUEUE;
+        this.argumentsAmount = 0;
     }
 
     public abstract Response invoke(Invoker invoker);

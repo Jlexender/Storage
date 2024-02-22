@@ -9,8 +9,6 @@ import java.util.List;
 
 @Getter
 public abstract class ArgumentedCommand extends Command {
-    private final int argumentsAmount;
-
     public ArgumentedCommand(String abbreviation, String info, int argumentsAmount) {
         super(abbreviation, info);
         this.argumentsAmount = argumentsAmount;

@@ -8,6 +8,7 @@ import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Prints out elements of the collection.
@@ -19,11 +20,12 @@ public class Show extends Command {
 
     public Response invoke(Invoker invoker) {
         try {
+
             Collection<? extends StorageObject> collection = invoker.getStorage().getCollectionCopy();
-            String descriptions = collection.stream().map((o) -> o.toString() + "\n").toString();
+            List<String> descriptions = collection.stream().map((o) -> o.toString() + "\n").toList();
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.ALL_OK, descriptions);
+            return new Response(Prompt.ALL_OK, descriptions.toString());
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

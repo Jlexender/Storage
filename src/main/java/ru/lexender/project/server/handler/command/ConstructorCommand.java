@@ -16,13 +16,15 @@ public abstract class ConstructorCommand extends ArgumentedCommand {
         this.objectBuilder = objectBuilder;
     }
 
-    protected final boolean initialize(Invoker invoker, List<String> arguments) {
-        recentArguments = arguments;
-
+    protected final int getInvalidArgId(Invoker invoker, List<String> arguments) {
         for (int i = 0; i < arguments.size(); ++i) {
-            if (!getObjectBuilder().validateArgument(arguments.get(i), i))
-                return false;
+            if (!objectBuilder.validateArgument(arguments.get(i), i)) {
+                recentArguments = arguments.subList(0, i);
+                return i;
+            }
         }
-        return true;
+
+        recentArguments = arguments;
+        return arguments.size();
     }
 }

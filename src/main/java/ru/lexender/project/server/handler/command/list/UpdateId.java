@@ -17,7 +17,7 @@ import java.util.List;
 public class UpdateId extends ConstructorCommand {
 
     public UpdateId(StorageObjectBuilder objectBuilder) {
-        super("add", "Adds new element to the collection", objectBuilder, 12);
+        super("update_id", "Updates collection element by id", objectBuilder, 13);
     }
 
 
@@ -29,10 +29,7 @@ public class UpdateId extends ConstructorCommand {
 
             List<String> buildArguments = arguments.subList(1, arguments.size());
 
-            if (!initialize(invoker, buildArguments)) {
-                setStatus(CommandStatus.FAIL);
-                return new Response(Prompt.INVALID_ARGUMENT);
-            }
+            getInvalidArgId(invoker, arguments);
 
             if (buildArguments.size() != getArgumentsAmount()-1) {
                 setStatus(CommandStatus.WAITING_FOR_ARGUMENT);

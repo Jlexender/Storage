@@ -6,10 +6,10 @@ import lombok.Getter;
  * An exception that occurs due to command recognizing failure.
  */
 @Getter
-public class UnknownCommandException extends InputHandleException {
+public class InvalidCommandException extends Exception {
     private final String command;
 
-    public UnknownCommandException(String message, String command) {
+    public InvalidCommandException(String message, String command) {
         super(message);
         this.command = command;
     }
