@@ -11,17 +11,17 @@ import lombok.ToString;
  */
 @ToString @Getter
 public class Person implements Comparable<Person> {
-    @Expose @NonNull private String name; //Поле не может быть null, Строка не может быть пустой
+    @Expose private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose private int weight; //Значение поля должно быть больше 0
-    @Expose @NonNull private Color eyeColor; //Поле не может быть null
-    @Expose @NonNull private Color hairColor; //Поле не может быть null
-    @Expose @NonNull private Country nationality; //Поле не может быть null
+    @Expose private Color eyeColor; //Поле не может быть null
+    @Expose private Color hairColor; //Поле не может быть null
+    @Expose private Country nationality; //Поле не может быть null
 
-    public Person(String name,
+    public Person(@NonNull String name,
                   int weight,
-                  Color eyeColor,
-                  Color hairColor,
-                  Country nationality) throws IllegalAccessException {
+                  @NonNull Color eyeColor,
+                  @NonNull Color hairColor,
+                  @NonNull Country nationality) throws IllegalAccessException {
         if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
         if (weight < 0) throw new IllegalAccessException("Weight must be positive");
 

@@ -17,6 +17,7 @@ public class Save extends Command {
         super("save", "Writes current collection to chosen FileSystem");
     }
     public Response invoke(Invoker invoker) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), invoker.getStorage());
             transferer.transferOut();

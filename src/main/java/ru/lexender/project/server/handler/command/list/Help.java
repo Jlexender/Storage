@@ -18,11 +18,11 @@ public class Help extends Command {
     }
 
     public Response invoke(Invoker invoker) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             StringBuilder helpString = new StringBuilder("AVAILABLE COMMANDS:\n\n");
             for (Command command: CommandGenerator.getCommandList().values()) {
-                helpString.append("Command: ").append(command.getAbbreviation())
-                        .append('\n').append("Usage: ").append(command.getInfo()).append("\n\n");
+                helpString.append(command.describe()).append("\n\n");
             }
 
             setStatus(CommandStatus.SUCCESS);

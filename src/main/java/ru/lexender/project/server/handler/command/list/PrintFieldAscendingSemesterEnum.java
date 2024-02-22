@@ -22,6 +22,7 @@ public class PrintFieldAscendingSemesterEnum extends Command {
                 "Prints out semesterEnum fields in ascending order");
     }
     public Response invoke(Invoker invoker) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             Collection<StorageObject> collection = invoker.getStorage().getCollectionCopy();
 

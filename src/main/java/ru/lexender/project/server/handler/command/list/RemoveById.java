@@ -18,6 +18,7 @@ public class RemoveById extends ArgumentedCommand {
         super("remove", "Removes collection element with specified id", 1);
     }
     public Response invoke(Invoker invoker, List<String> arguments) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             if (arguments.size() != getArgumentsAmount()) {
                 setStatus(CommandStatus.FAIL);

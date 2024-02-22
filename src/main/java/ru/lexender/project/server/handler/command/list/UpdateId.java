@@ -22,6 +22,7 @@ public class UpdateId extends ConstructorCommand {
 
 
     public Response invoke(Invoker invoker, List<String> arguments) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             long id = Long.parseLong(arguments.get(0));
 

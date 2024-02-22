@@ -15,6 +15,7 @@ public class Info extends Command {
         super("info", "Prints collection info");
     }
     public Response invoke(Invoker invoker) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             StringBuilder stringBuilder = new StringBuilder();
 

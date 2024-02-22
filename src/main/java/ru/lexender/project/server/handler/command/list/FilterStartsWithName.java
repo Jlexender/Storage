@@ -18,6 +18,8 @@ public class FilterStartsWithName extends ArgumentedCommand {
         super("filter_starts_with_name", "Print object that has the same name", 1);
     }
     public Response invoke(Invoker invoker, List<String> arguments) {
+        setStatus(CommandStatus.IN_PROCESS);
+
         try {
             if (arguments.size() != getArgumentsAmount()) {
                 setStatus(CommandStatus.FAIL);

@@ -33,8 +33,10 @@ public class PersonBuilder extends ObjectBuilder {
             var value = switch (pointer) {
                 case 0:
                     if (argument.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+                    yield argument;
                 case 1:
                     if (Long.parseLong(argument) <= 0) throw new IllegalAccessException("Weight must be positive");
+                    yield Long.parseLong(argument);
                 case 2, 3: yield Color.valueOf(argument);
                 case 4: yield Country.valueOf(argument);
                 default: throw new Exception();

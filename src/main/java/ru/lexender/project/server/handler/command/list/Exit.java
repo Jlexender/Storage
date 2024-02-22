@@ -3,6 +3,7 @@ package ru.lexender.project.server.handler.command.list;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.handler.command.Command;
+import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
 
 /**
@@ -13,9 +14,9 @@ public class Exit extends Command {
         super("exit", "Exits from the application");
     }
     public Response invoke(Invoker invoker) {
-        String exitString = "Goodbye!";
+        setStatus(CommandStatus.IN_PROCESS);
 
-        System.exit(0);
-        return new Response(Prompt.ALL_OK, exitString);
+        String exitString = "Disconnected.";
+        return new Response(Prompt.DISCONNECTED, exitString);
     }
 }

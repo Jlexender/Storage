@@ -7,5 +7,6 @@ public enum Prompt {
     ALL_OK,
     UNEXPECTED_ERROR,
     STORAGE_FILE_UNAVAILABLE,
-    ADD_ARGUMENT;
+    ADD_ARGUMENT,
+    DISCONNECTED;
 }

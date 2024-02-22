@@ -14,6 +14,7 @@ public class Clear extends Command {
         super("clear", "Clears the collection");
     }
     public Response invoke(Invoker invoker) {
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             invoker.getStorage().clear();
 

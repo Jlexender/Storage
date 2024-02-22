@@ -2,7 +2,8 @@ package ru.lexender.project.server.handler.command;
 
 public enum CommandStatus {
     SUCCESS,
-    IN_QUEUE,
+    NOT_USED,
+    IN_PROCESS,
     WAITING_FOR_ARGUMENT,
     FAIL;
 }

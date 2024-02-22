@@ -14,20 +14,20 @@ public class StudyGroup implements Comparable<StudyGroup> {
     @ToString.Exclude private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     @Expose private String name; //Поле не может быть null, Строка не может быть пустой
     @Expose private Coordinates coordinates; //Поле не может быть null
-    @ToString.Exclude @NonNull private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @ToString.Exclude private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     @Expose private long studentsCount; //Значение поля должно быть больше 0
-    @Expose @NonNull private Long averageMark; //Значение поля должно быть больше 0, Поле может быть null
-    @Expose @NonNull private FormOfEducation formOfEducation; //Поле может быть null
-    @Expose @NonNull private Semester semesterEnum; //Поле может быть null
-    @Expose @NonNull private Person groupAdmin; //Поле не может быть null
+    @Expose private Long averageMark; //Значение поля должно быть больше 0, Поле может быть null
+    @Expose private FormOfEducation formOfEducation; //Поле может быть null
+    @Expose private Semester semesterEnum; //Поле может быть null
+    @Expose private Person groupAdmin; //Поле не может быть null
 
-    public StudyGroup(String name,
-                  Coordinates coordinates,
+    public StudyGroup(@NonNull String name,
+                  @NonNull Coordinates coordinates,
                   long studentsCount,
-                  Long averageMark,
-                  FormOfEducation formOfEducation,
-                  Semester semesterEnum,
-                  Person groupAdmin) throws IllegalAccessException {
+                  @NonNull Long averageMark,
+                  @NonNull FormOfEducation formOfEducation,
+                  @NonNull Semester semesterEnum,
+                  @NonNull Person groupAdmin) throws IllegalAccessException {
         if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
         if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
         if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");

@@ -23,7 +23,7 @@ public class AddIfMin extends ConstructorCommand {
     }
 
     public Response invoke(Invoker invoker, List<String> arguments) {
-
+        setStatus(CommandStatus.IN_PROCESS);
         try {
             getInvalidArgId(invoker,arguments);
 
