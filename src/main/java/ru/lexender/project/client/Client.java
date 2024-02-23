@@ -1,20 +1,18 @@
 package ru.lexender.project.client;
 
-import ru.lexender.project.client.io.StringInput;
-import ru.lexender.project.client.io.receiver.IReceive;
-import ru.lexender.project.inbetween.Bridge;
-import ru.lexender.project.inbetween.Response;
+import lombok.Getter;
+import ru.lexender.project.client.io.respondent.IRespond;
 
+
+@Getter
 public class Client {
-    public Client() {
+    private final String hostname;
+    private final int port;
+    private final IRespond respondent;
 
+    public Client(IRespond respondent, String hostname, int port) {
+        this.hostname = hostname;
+        this.port = port;
+        this.respondent = respondent;
     }
-
-    public void getResponse(Response response) {
-
-    }
-
-
 }
-
-// TBD

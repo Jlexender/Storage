@@ -15,8 +15,4 @@ public class Bridge {
         this.client = client;
         this.server = server;
     }
-
-    public void send(Request request) {
-        client.getResponse(server.getRequest(request));
-    }
 }
