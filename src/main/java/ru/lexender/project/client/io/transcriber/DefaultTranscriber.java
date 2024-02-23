@@ -9,7 +9,7 @@ public class DefaultTranscriber implements ITranscribe {
         return new Output(response) {
             @Override
             public String get() {
-                return response.getMessage();
+                return String.format("Message: %s\nStatus: %s",response.getMessage(), response.getPrompt());
             }
         };
     }

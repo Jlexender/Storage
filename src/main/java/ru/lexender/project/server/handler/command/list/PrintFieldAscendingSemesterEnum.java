@@ -10,6 +10,8 @@ import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Function;
 
 /**
@@ -28,7 +30,7 @@ public class PrintFieldAscendingSemesterEnum extends Command {
 
             Function<StorageObject, Semester> toSemester = (c -> c.getObject().getSemesterEnum());
 
-            List<Semester> semesters = collection.stream().map(toSemester).sorted().toList();
+            Set<Semester> semesters = new TreeSet<>(collection.stream().map(toSemester).sorted().toList());
             StringBuilder stringBuilder = new StringBuilder();
             for (Semester semester: semesters) {
                 stringBuilder.append(semester).append(' ');

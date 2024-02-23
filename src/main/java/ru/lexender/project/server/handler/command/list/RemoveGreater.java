@@ -9,6 +9,7 @@ import ru.lexender.project.server.handler.command.ConstructorCommand;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.storage.object.StorageObject;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,15 +24,21 @@ public class RemoveGreater extends ConstructorCommand {
     public Response invoke(Invoker invoker, List<String> arguments) {
         setStatus(CommandStatus.IN_PROCESS);
         try {
-            getInvalidArgId(invoker, arguments);
-
-            if (arguments.size() != getArgumentsAmount()) {
+            int i = getInvalidArgId(invoker, arguments);
+            if (i != getArgumentsAmount()) {
                 setStatus(CommandStatus.WAITING_FOR_ARGUMENT);
 
+                StringBuilder responseString = new StringBuilder();
 
-                int i = arguments.size();
+                if (i != arguments.size()) responseString.append("Invalid argument").append('\n');
+                responseString.append(String.format("Add %s", getObjectBuilder().getFieldNames().get(i)));
+                if (getObjectBuilder().suggest(i).length != 0)
+                    responseString.append('\n').append(String.format("List: %s",
+                            Arrays.stream(getObjectBuilder().suggest(i)).toList()));
+
+
                 return new Response(Prompt.ADD_ARGUMENT,
-                        String.format("Enter %s", getObjectBuilder().getFieldNames().get(i)));
+                        responseString.toString());
             }
 
 

@@ -53,7 +53,11 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         try {
                 var value = switch (pointer) {
                     case 0: yield argument;
-                    case 1,2,3: yield Long.parseLong(argument);
+                    case 1,2:
+                        if (Long.parseLong(argument) <= 0)
+                            throw new IllegalAccessException("Must be positive");
+                        yield Long.parseLong(argument);
+                    case 3: yield Long.parseLong(argument);
                     case 4:
                         long yCoordinate = Long.parseLong(argument);
                         if (yCoordinate < 159) yield yCoordinate;
