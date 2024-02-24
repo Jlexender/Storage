@@ -34,7 +34,6 @@ public class DefaultTransferer implements ITransfer {
             }
 
         } catch (Exception exception) {
-            exception.printStackTrace();
             throw new StorageTransferException(exception);
         }
     }

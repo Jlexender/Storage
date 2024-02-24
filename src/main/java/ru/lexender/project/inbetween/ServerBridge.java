@@ -3,6 +3,8 @@ package ru.lexender.project.inbetween;
 import ru.lexender.project.server.Server;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,28 +15,47 @@ import java.net.Socket;
 public class ServerBridge extends Thread {
     private final Server server;
     private final int port;
+    private final ServerSocket socket;
 
-    public ServerBridge(Server server, int port) {
+    public ServerBridge(Server server, int port) throws IOException {
         this.server = server;
         this.port = port;
+        socket = new ServerSocket(port);
+    }
+
+    public void send(Response response, Socket socket) {
+        try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+            outputStream.writeObject(response);
+        } catch (IOException exception) {
+            // logs
+        }
+    }
+
+    public Request get(Socket socket) {
+        try {
+            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+            return (Request) inputStream.readObject();
+        } catch (Exception exception) {
+            return null;
+        }
     }
 
 
     public void run() {
         try {
-            ServerSocket serverSocket = new ServerSocket(port);
             System.out.printf("Server listening on port %d\n", port);
-            while (true) {
-                Socket socket = serverSocket.accept();
+            Socket acceptedSocket = socket.accept();
+            Response response;
+            do {
+                Request deserialized = get(acceptedSocket);
+                response = server.getRequest(deserialized);
+                send(response, acceptedSocket);
+            } while (response.getPrompt() != Prompt.DISCONNECTED);
 
-                //
-                // Handle client actions
-                //
-
-                socket.close();
-            }
+            acceptedSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

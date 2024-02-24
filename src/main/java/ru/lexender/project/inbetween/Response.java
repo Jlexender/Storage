@@ -2,8 +2,10 @@ package ru.lexender.project.inbetween;
 
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public class Response {
+public class Response implements Serializable {
     Prompt prompt;
     String message;
 
