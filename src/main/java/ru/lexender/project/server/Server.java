@@ -74,7 +74,7 @@ public class Server {
         }
     }
 
-    private void save() {
+    public void save() {
         Command save = new Save();
         invoker.invoke(save, null);
     }

@@ -46,6 +46,7 @@ public class SocketHandler extends Thread {
                 send(response, socket);
             } while (response.getPrompt() != Prompt.DISCONNECTED);
 
+            serverBridge.getServer().save();
             socket.close();
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
