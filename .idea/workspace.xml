@@ -7,16 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="minor update">
-      <change afterPath="$PROJECT_DIR$/schemas/client_schema.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/client_schema.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/server_schema.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/server_schema.svg" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="arbuziki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMPLEMENTATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMPLEMENTATION.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Bridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,43 +49,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Maven.lab5-1700 [clean].executor": "Run",
-    "Maven.lab5-1700 [compile].executor": "Run",
-    "Maven.lab5-1700 [deploy].executor": "Run",
-    "Maven.lab5-1700 [install].executor": "Run",
-    "Maven.lab5-1700 [package].executor": "Run",
-    "Maven.lab5-1700 [site].executor": "Run",
-    "Maven.lab5-1700 [test].executor": "Run",
-    "Maven.lab5-1700 [validate].executor": "Run",
-    "Maven.lab5-1700 [verify].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "beta",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/alex/IdeaProjects/Storage",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.36206895",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Maven.lab5-1700 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;beta&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alex/IdeaProjects/Storage&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/encoder" />
@@ -112,13 +106,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ru.lexender.project.console.command.list" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-3c5dfc45" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -219,12 +206,15 @@
       <workItem from="1708720443346" duration="3007000" />
       <workItem from="1708752235669" duration="1060000" />
       <workItem from="1708753642394" duration="70000" />
-      <workItem from="1708753768984" duration="6664000" />
-      <workItem from="1708764135890" duration="1854000" />
-      <workItem from="1708766013411" duration="55000" />
-      <workItem from="1708766072867" duration="3249000" />
-      <workItem from="1708769335629" duration="847000" />
-      <workItem from="1708770242734" duration="2377000" />
+      <workItem from="1708753768984" duration="5558000" />
+    </task>
+    <task id="LOCAL-00001" summary="added try-catch in main">
+      <option name="closed" value="true" />
+      <created>1707582693342</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707582693342</updated>
     </task>
     <task id="LOCAL-00002" summary="added try-catch in main">
       <option name="closed" value="true" />
@@ -602,23 +592,7 @@
       <option name="project" value="LOCAL" />
       <updated>1708756582723</updated>
     </task>
-    <task id="LOCAL-00049" summary="arbuziki 2">
-      <option name="closed" value="true" />
-      <created>1708759848861</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1708759848861</updated>
-    </task>
-    <task id="LOCAL-00050" summary="minor update">
-      <option name="closed" value="true" />
-      <created>1708760724695</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1708760724696</updated>
-    </task>
-    <option name="localTasksCounter" value="51" />
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +610,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="upgraded IStore, added new commands" />
+    <MESSAGE value="changed Info command" />
+    <MESSAGE value="updated id initialization, added script execution" />
     <MESSAGE value="removed printStackTrace (again)" />
     <MESSAGE value="small changes" />
     <MESSAGE value="fixed FilterStartsWithName" />
@@ -659,10 +635,7 @@
     <MESSAGE value="added init" />
     <MESSAGE value="minor fix" />
     <MESSAGE value="arbuziki" />
-    <MESSAGE value="resolving multiple connections" />
-    <MESSAGE value="arbuziki 2" />
-    <MESSAGE value="minor update" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor update" />
+    <option name="LAST_COMMIT_MESSAGE" value="arbuziki" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

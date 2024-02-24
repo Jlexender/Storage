@@ -43,7 +43,7 @@ public class InitApp {
                     IStore s = new TreeSetStorage();
                     FileSystem fs = new FileSystem(new File("Storage.json"));
                     Invoker i = new Invoker(s, fs);
-                    Server server = new Server(i);
+                    Server server = new Server(s, i);
                     ServerBridge sBridge = new ServerBridge(server, Integer.parseInt(scanner.next()));
                     sBridge.run();
                     break;

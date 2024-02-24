@@ -27,15 +27,17 @@ import java.util.List;
 
 @Getter
 public class Server {
+    private final IStore storage;
     private final Invoker invoker;
 
-    public Server(Invoker invoker) {
+    public Server(IStore storage, Invoker invoker) {
+        this.storage = storage;
         this.invoker = invoker;
 
         Command init = new Command("init", "Transfers storage into collection.") {
             public Response invoke(Invoker invoker) {
                 try {
-                    ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), invoker.getStorage());
+                    ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), storage);
                     transferer.transferIn();
 
                     setStatus(CommandStatus.SUCCESS);
