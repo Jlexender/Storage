@@ -60,11 +60,12 @@ public class ClientBridge extends Thread {
 
     public void run() {
         System.out.printf("Connection to %s:%d has been established!\n", hostname, port);
-        while (true) {
+        Response deserialized;
+        do {
             send(client.getRequest());
-            Response deserialized = get();
+            deserialized = get();
             client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
-        }
+        } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
     }
 
 }

@@ -45,15 +45,17 @@ public class ServerBridge extends Thread {
     public void run() {
         try {
             System.out.printf("Server listening on port %d\n", port);
-            Socket acceptedSocket = socket.accept();
-            Response response;
-            do {
-                Request deserialized = get(acceptedSocket);
-                response = server.getRequest(deserialized);
-                send(response, acceptedSocket);
-            } while (response.getPrompt() != Prompt.DISCONNECTED);
+            for (;;) {
+                Socket acceptedSocket = socket.accept();
+                Response response;
+                do {
+                    Request deserialized = get(acceptedSocket);
+                    response = server.getRequest(deserialized);
+                    send(response, acceptedSocket);
+                } while (response.getPrompt() != Prompt.DISCONNECTED);
 
-            acceptedSocket.close();
+                acceptedSocket.close();
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
