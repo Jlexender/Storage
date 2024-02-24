@@ -7,9 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="minor fix">
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="arbuziki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Bridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SocketHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +206,7 @@
       <workItem from="1708720443346" duration="3007000" />
       <workItem from="1708752235669" duration="1060000" />
       <workItem from="1708753642394" duration="70000" />
-      <workItem from="1708753768984" duration="2776000" />
+      <workItem from="1708753768984" duration="5558000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />
@@ -583,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708754580068</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="arbuziki">
+      <option name="closed" value="true" />
+      <created>1708756582723</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1708756582723</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +610,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed printStackTrace (lol)" />
     <MESSAGE value="upgraded IStore, added new commands" />
     <MESSAGE value="changed Info command" />
     <MESSAGE value="updated id initialization, added script execution" />
@@ -626,7 +634,8 @@
     <MESSAGE value="added primitive connection; splitting bridge" />
     <MESSAGE value="added init" />
     <MESSAGE value="minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
+    <MESSAGE value="arbuziki" />
+    <option name="LAST_COMMIT_MESSAGE" value="arbuziki" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

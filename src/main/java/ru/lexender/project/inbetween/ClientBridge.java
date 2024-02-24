@@ -12,7 +12,7 @@ import java.net.Socket;
  * client-server
  */
 
-public class ClientBridge extends Thread {
+public class ClientBridge {
     private final Client client;
     private final Socket socket;
     private final String hostname;

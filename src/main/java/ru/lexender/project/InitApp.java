@@ -35,7 +35,7 @@ public class InitApp {
                             new SoutRespondent(),
                             new DefaultTranscriber());
                     ClientBridge cBridge = new ClientBridge(client, scanner.next(), Integer.parseInt(scanner.next()));
-                    cBridge.start();
+                    cBridge.run();
                     break;
                 case "2":
                     String serverMessage = "Enter port number";
@@ -45,7 +45,7 @@ public class InitApp {
                     Invoker i = new Invoker(s, fs);
                     Server server = new Server(s, i);
                     ServerBridge sBridge = new ServerBridge(server, Integer.parseInt(scanner.next()));
-                    sBridge.start();
+                    sBridge.run();
                     break;
                 default:
                     throw new Exception("Client/server initialization failed");

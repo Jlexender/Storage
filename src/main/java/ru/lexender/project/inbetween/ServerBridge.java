@@ -1,10 +1,9 @@
 package ru.lexender.project.inbetween;
 
+import lombok.Getter;
 import ru.lexender.project.server.Server;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -12,7 +11,8 @@ import java.net.Socket;
  * client-server
  */
 
-public class ServerBridge extends Thread {
+@Getter
+public class ServerBridge {
     private final Server server;
     private final int port;
     private final ServerSocket socket;
@@ -23,41 +23,16 @@ public class ServerBridge extends Thread {
         socket = new ServerSocket(port);
     }
 
-    public void send(Response response, Socket socket) {
-        try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            outputStream.writeObject(response);
-        } catch (IOException exception) {
-            // logs
-        }
-    }
-
-    public Request get(Socket socket) {
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-            return (Request) inputStream.readObject();
-        } catch (Exception exception) {
-            return null;
-        }
-    }
-
-
     public void run() {
         try {
             System.out.printf("Server listening on port %d\n", port);
             for (;;) {
                 Socket acceptedSocket = socket.accept();
-                Response response;
-                do {
-                    Request deserialized = get(acceptedSocket);
-                    response = server.getRequest(deserialized);
-                    send(response, acceptedSocket);
-                } while (response.getPrompt() != Prompt.DISCONNECTED);
-
-                acceptedSocket.close();
+                SocketHandler handler = new SocketHandler(this, acceptedSocket);
+                handler.start();
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 }
