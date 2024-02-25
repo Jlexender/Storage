@@ -1,7 +1,7 @@
 package ru.lexender.project.client.io.receiver;
 
-import ru.lexender.project.client.io.Input;
 import ru.lexender.project.client.io.StringInput;
+import ru.lexender.project.inbetween.Input;
 
 import java.util.Optional;
 import java.util.Scanner;

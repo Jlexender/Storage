@@ -1,6 +1,6 @@
 package ru.lexender.project.client.io.receiver;
 
-import ru.lexender.project.client.io.Input;
+import ru.lexender.project.inbetween.Input;
 
 /**
  * Receives user input.

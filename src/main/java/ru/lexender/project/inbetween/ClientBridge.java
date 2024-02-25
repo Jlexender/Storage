@@ -1,11 +1,8 @@
 package ru.lexender.project.inbetween;
 
 import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
-import ru.lexender.project.client.io.StringInput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -71,6 +68,15 @@ public class ClientBridge {
             channel = SocketChannel.open(address);
         } catch (IOException exception) {
             String msg = String.format("Can't connect: is server %s:%d really running?", hostname, port);
+            client.getRespondent().respond(new Output(msg) {
+                @Override
+                public String get() {
+                    return msg;
+                }
+            });
+            return;
+        } catch (IllegalArgumentException exception) {
+            String msg = "Port is out of range";
             client.getRespondent().respond(new Output(msg) {
                 @Override
                 public String get() {

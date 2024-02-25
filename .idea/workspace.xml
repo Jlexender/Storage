@@ -9,14 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="moved to NIO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/StringInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/StringInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/receiver/IReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/receiver/IReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/receiver/StringInputReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/io/receiver/StringInputReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Response.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/DefaultTransferer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/DefaultTransferer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "beta",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/alex/IdeaProjects/Storage",
+    "last_opened_file_path": "/home/alex/IdeaProjects/2/Storage",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -116,7 +115,7 @@
       <recent name="ru.lexender.project.console.command.list" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main 3">
+  <component name="RunManager">
     <configuration name="Main 1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
       <module name="ServerStorage" />
@@ -251,6 +250,7 @@
       <workItem from="1708876083844" duration="432000" />
       <workItem from="1708876518867" duration="9281000" />
       <workItem from="1708886403932" duration="1931000" />
+      <workItem from="1708889377680" duration="704000" />
     </task>
     <task id="LOCAL-00002" summary="added try-catch in main">
       <option name="closed" value="true" />

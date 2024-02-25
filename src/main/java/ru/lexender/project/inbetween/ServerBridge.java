@@ -3,7 +3,6 @@ package ru.lexender.project.inbetween;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lexender.project.client.io.Input;
 import ru.lexender.project.server.Server;
 
 import java.io.ByteArrayOutputStream;
@@ -65,7 +64,7 @@ public class ServerBridge {
                     accepted.close();
                 }
             }
-        } catch (IOException exception) {
+        } catch (IOException | IllegalArgumentException exception) {
             logger.error(exception.getMessage());
         }
     }

@@ -1,4 +1,4 @@
-package ru.lexender.project.client.io;
+package ru.lexender.project.inbetween;
 
 import lombok.Getter;
 
