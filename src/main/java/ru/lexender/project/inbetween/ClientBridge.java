@@ -1,32 +1,38 @@
 package ru.lexender.project.inbetween;
 
+import lombok.Getter;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.nio.channels.SocketChannel;
 
 /**
  * client-server
  */
 
+@Getter
 public class ClientBridge {
     private final Client client;
     private final Socket socket;
     private final String hostname;
     private final int port;
+    private final SocketChannel channel;
 
     public ClientBridge(Client client, String hostname, int port) throws IOException {
         this.client = client;
         this.hostname = hostname;
         this.port = port;
-        try {
-            socket = new Socket(hostname, port);
-        } catch (IOException exception) {
-            throw new IOException("Connection failed: is server really running?");
-        }
+
+        socket = new Socket(hostname, port);
+
+        SocketAddress address = new InetSocketAddress(hostname, port);
+        this.channel = SocketChannel.open(address);
     }
 
     public void send(Request request) {

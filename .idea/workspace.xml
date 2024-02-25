@@ -8,10 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="arbuziki">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Session.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Bridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SocketHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/exception/ConnectionNotEstablishedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/exception/ConnectionNotEstablishedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/reader/ReaderViaScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/reader/ReaderViaScanner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Main 1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main 2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main 3.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
     &quot;Maven.lab5-1700 [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.lab5-1700 [compile].executor&quot;: &quot;Run&quot;,
@@ -106,6 +114,34 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ru.lexender.project.console.command.list" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.Main 3">
+    <configuration name="Main 1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
+      <module name="ServerStorage" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main 2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
+      <module name="ServerStorage" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main 3" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
+      <module name="ServerStorage" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main 1" />
+      <item itemvalue="Application.Main 2" />
+      <item itemvalue="Application.Main 3" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -207,6 +243,10 @@
       <workItem from="1708752235669" duration="1060000" />
       <workItem from="1708753642394" duration="70000" />
       <workItem from="1708753768984" duration="5558000" />
+      <workItem from="1708786783182" duration="5002000" />
+      <workItem from="1708792034132" duration="799000" />
+      <workItem from="1708801129764" duration="17063000" />
+      <workItem from="1708819590337" duration="8741000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />

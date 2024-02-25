@@ -10,7 +10,6 @@ public class ReaderViaScanner implements IRead {
 
     public String read(File file) throws IOException {
         try (FileChannel channel = FileChannel.open(file.toPath())) {
-
             StringBuilder stringBuilder = new StringBuilder();
             ByteBuffer buffer = ByteBuffer.allocate(1024);
 

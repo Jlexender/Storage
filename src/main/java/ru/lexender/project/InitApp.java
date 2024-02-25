@@ -51,6 +51,7 @@ public class InitApp {
                     throw new Exception("Client/server initialization failed");
             }
         } catch (Exception exception) {
+            exception.printStackTrace();
             System.out.println("Initialization FAILED.");
             System.out.println(exception.getMessage());
         }
