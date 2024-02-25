@@ -7,15 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="arbuziki">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Session.java" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="minor additions, changed transfer logic">
+      <change afterPath="$PROJECT_DIR$/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/InitApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SocketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/exception/ConnectionNotEstablishedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/exception/ConnectionNotEstablishedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/reader/ReaderViaScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/reader/ReaderViaScanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Session.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,46 +53,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main 1.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main 2.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main 3.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Maven.lab5-1700 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [site].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab5-1700 [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;beta&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alex/IdeaProjects/Storage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main 1.executor": "Run",
+    "Application.Main 2.executor": "Run",
+    "Application.Main 3.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Maven.lab5-1700 [clean].executor": "Run",
+    "Maven.lab5-1700 [compile].executor": "Run",
+    "Maven.lab5-1700 [deploy].executor": "Run",
+    "Maven.lab5-1700 [install].executor": "Run",
+    "Maven.lab5-1700 [package].executor": "Run",
+    "Maven.lab5-1700 [site].executor": "Run",
+    "Maven.lab5-1700 [test].executor": "Run",
+    "Maven.lab5-1700 [validate].executor": "Run",
+    "Maven.lab5-1700 [verify].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "beta",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/alex/IdeaProjects/Storage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.36206895",
+    "settings.editor.selected.configurable": "http.proxy",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/encoder" />
@@ -115,7 +115,7 @@
       <recent name="ru.lexender.project.console.command.list" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main 3">
+  <component name="RunManager" selected="Application.Main 2">
     <configuration name="Main 1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
       <module name="ServerStorage" />
@@ -246,7 +246,9 @@
       <workItem from="1708786783182" duration="5002000" />
       <workItem from="1708792034132" duration="799000" />
       <workItem from="1708801129764" duration="17063000" />
-      <workItem from="1708819590337" duration="8741000" />
+      <workItem from="1708819590337" duration="9078000" />
+      <workItem from="1708876083844" duration="432000" />
+      <workItem from="1708876518867" duration="8938000" />
     </task>
     <task id="LOCAL-00001" summary="added try-catch in main">
       <option name="closed" value="true" />
@@ -632,7 +634,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708756582723</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="minor additions, changed transfer logic">
+      <option name="closed" value="true" />
+      <created>1708828921360</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1708828921360</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +660,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="upgraded IStore, added new commands" />
     <MESSAGE value="changed Info command" />
     <MESSAGE value="updated id initialization, added script execution" />
     <MESSAGE value="removed printStackTrace (again)" />
@@ -675,7 +684,8 @@
     <MESSAGE value="added init" />
     <MESSAGE value="minor fix" />
     <MESSAGE value="arbuziki" />
-    <option name="LAST_COMMIT_MESSAGE" value="arbuziki" />
+    <MESSAGE value="minor additions, changed transfer logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor additions, changed transfer logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

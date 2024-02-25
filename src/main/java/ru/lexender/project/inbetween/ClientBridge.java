@@ -4,12 +4,13 @@ import lombok.Getter;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.net.SocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 /**
@@ -19,7 +20,6 @@ import java.nio.channels.SocketChannel;
 @Getter
 public class ClientBridge {
     private final Client client;
-    private final Socket socket;
     private final String hostname;
     private final int port;
     private final SocketChannel channel;
@@ -29,16 +29,16 @@ public class ClientBridge {
         this.hostname = hostname;
         this.port = port;
 
-        socket = new Socket(hostname, port);
-
         SocketAddress address = new InetSocketAddress(hostname, port);
         this.channel = SocketChannel.open(address);
     }
 
     public void send(Request request) {
         try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-            outputStream.writeObject(request);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(request);
+            channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
         } catch (IOException exception) {
             client.getRespondent().respond(new Output("Unable to send request") {
                 @Override
@@ -51,7 +51,7 @@ public class ClientBridge {
 
     public Response get() {
         try {
-            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+            ObjectInputStream inputStream = new ObjectInputStream(channel.socket().getInputStream());
             return (Response) inputStream.readObject();
         } catch (Exception exception) {
             client.getRespondent().respond(new Output("Can't get response") {
@@ -68,7 +68,8 @@ public class ClientBridge {
         System.out.printf("Connection to %s:%d has been established!\n", hostname, port);
         Response deserialized;
         do {
-            send(client.getRequest());
+            Request query = client.getRequest();
+            send(query);
             deserialized = get();
             client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
         } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
