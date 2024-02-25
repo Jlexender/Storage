@@ -35,7 +35,6 @@ public class DefaultTransferer implements ITransfer {
             }
 
         } catch (Exception exception) {
-            Server.logger.error("Can't serialize collection");
             throw new StorageTransferException(exception);
         }
     }
@@ -48,7 +47,7 @@ public class DefaultTransferer implements ITransfer {
         } catch (StorageTransformationException exception) {
             throw new StorageTransferException(exception);
         } catch (StorageIOException exception) {
-            throw new StorageTransferException("Loading storage from file failed");
+            throw new StorageTransferException("Serializing to file failed");
         }
     }
 }

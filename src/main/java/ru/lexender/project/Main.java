@@ -51,6 +51,6 @@ public class Main {
                 default:
                     throw new IOException("Client/server initialization failed");
             }
-        } catch (IOException exception) {}
+        } catch (IOException ignored) {}
     }
 }
