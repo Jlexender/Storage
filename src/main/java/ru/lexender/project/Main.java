@@ -13,6 +13,7 @@ import ru.lexender.project.server.storage.TreeSetStorage;
 import ru.lexender.project.server.storage.file.FileSystem;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -48,8 +49,8 @@ public class Main {
                     sBridge.run();
                     break;
                 default:
-                    throw new Exception("Client/server initialization failed");
+                    throw new IOException("Client/server initialization failed");
             }
-        } catch (Exception ignored) {}
+        } catch (IOException exception) {}
     }
 }

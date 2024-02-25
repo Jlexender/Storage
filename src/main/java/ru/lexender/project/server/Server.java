@@ -1,6 +1,8 @@
 package ru.lexender.project.server;
 
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
@@ -27,6 +29,8 @@ import java.util.List;
 
 @Getter
 public class Server {
+    public static final Logger logger = LoggerFactory.getLogger(Server.class);
+
     private final IStore storage;
     private final Invoker invoker;
 
@@ -39,10 +43,13 @@ public class Server {
                 try {
                     ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), storage);
                     transferer.transferIn();
+                    logger.info("Data transfer OK");
 
                     setStatus(CommandStatus.SUCCESS);
                     return new Response(Prompt.ALL_OK);
                 } catch (StorageTransferException exception) {
+                    logger.warn("Can't parse file storage");
+
                     setStatus(CommandStatus.FAIL);
                     return new Response(Prompt.STORAGE_FILE_UNAVAILABLE, "Can't parse");
                 }
@@ -60,21 +67,27 @@ public class Server {
                 newArgs.add(request.getRawMessage());
                 return invoker.invoke(previousCommand, newArgs);
             }
-        } catch (EmptyStackException ignored) {}
+        } catch (EmptyStackException exception) {
+            logger.warn("Can't restore peeked command");
+        }
 
         IDecode decoder = new DefaultDecoder();
         IHandle handler = new DefaultHandler();
         try {
             Command command = handler.handle(decoder.decode(request));
+            logger.info("Command handled as {}", command);
             return invoker.invoke(command, decoder.getArguments(request));
         } catch (InvalidCommandException exception) {
+            logger.warn("Command identified as invalid");
             return new Response(Prompt.INVALID_COMMAND);
         } catch (InvalidArgumentsException exception) {
+            logger.warn("Command arguments are not valid");
             return new Response(Prompt.INVALID_AMOUNT);
         }
     }
 
     public void save() {
+        logger.info("Collection has been saved to file");
         Command save = new Save();
         invoker.invoke(save, null);
     }

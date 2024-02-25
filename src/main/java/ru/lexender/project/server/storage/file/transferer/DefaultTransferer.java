@@ -1,5 +1,6 @@
 package ru.lexender.project.server.storage.file.transferer;
 
+import ru.lexender.project.server.Server;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageIOException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
@@ -34,6 +35,7 @@ public class DefaultTransferer implements ITransfer {
             }
 
         } catch (Exception exception) {
+            Server.logger.error("Can't serialize collection");
             throw new StorageTransferException(exception);
         }
     }

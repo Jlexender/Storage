@@ -1,11 +1,12 @@
 package ru.lexender.project.inbetween;
 
 import lombok.Getter;
+import lombok.ToString;
 import ru.lexender.project.client.io.Input;
 
 import java.io.Serializable;
 
-@Getter
+@Getter @ToString
 public class Request implements Serializable {
     private final String rawMessage;
 

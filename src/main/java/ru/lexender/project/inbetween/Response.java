@@ -1,10 +1,11 @@
 package ru.lexender.project.inbetween;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
-@Getter
+@Getter @ToString
 public class Response implements Serializable {
     Prompt prompt;
     String message;

@@ -1,8 +1,11 @@
 package ru.lexender.project.inbetween;
 
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
+import ru.lexender.project.client.io.StringInput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,18 +25,15 @@ public class ClientBridge {
     private final Client client;
     private final String hostname;
     private final int port;
-    private final SocketChannel channel;
 
     public ClientBridge(Client client, String hostname, int port) throws IOException {
         this.client = client;
         this.hostname = hostname;
         this.port = port;
 
-        SocketAddress address = new InetSocketAddress(hostname, port);
-        this.channel = SocketChannel.open(address);
     }
 
-    public void send(Request request) {
+    public void send(Request request, SocketChannel channel) {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
@@ -49,7 +49,7 @@ public class ClientBridge {
         }
     }
 
-    public Response get() {
+    public Response get(SocketChannel channel) {
         try {
             ObjectInputStream inputStream = new ObjectInputStream(channel.socket().getInputStream());
             return (Response) inputStream.readObject();
@@ -65,12 +65,28 @@ public class ClientBridge {
     }
 
     public void run() {
+        SocketChannel channel;
+        try {
+            SocketAddress address = new InetSocketAddress(hostname, port);
+            channel = SocketChannel.open(address);
+        } catch (IOException exception) {
+            String msg = String.format("Can't connect: is server %s:%d really running?", hostname, port);
+            client.getRespondent().respond(new Output(msg) {
+                @Override
+                public String get() {
+                    return msg;
+                }
+            });
+            return;
+        }
+
+
         System.out.printf("Connection to %s:%d has been established!\n", hostname, port);
         Response deserialized;
         do {
             Request query = client.getRequest();
-            send(query);
-            deserialized = get();
+            send(query, channel);
+            deserialized = get(channel);
             client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
         } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
     }

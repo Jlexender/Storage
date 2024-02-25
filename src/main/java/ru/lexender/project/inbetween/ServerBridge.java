@@ -38,32 +38,33 @@ public class ServerBridge {
         try (ServerSocketChannel channel = ServerSocketChannel.open()) {
             SocketAddress address = new InetSocketAddress(port);
             channel.bind(address);
+
             channel.configureBlocking(false);
+            logger.info("Blocking mode {}", channel.isBlocking());
 
             Selector serverSelector = Selector.open();
             channel.register(serverSelector, SelectionKey.OP_ACCEPT);
 
-
-            logger.info(String.format("Server running on PORT %d", port));
+            logger.info("Started on port {}", port);
 
             for (;;) {
                 SocketChannel accepted = channel.accept();
                 if (accepted != null) {
-                    logger.info("New connection");
+                    logger.info("New channel {}", accepted);
 
                     Response response;
                     do {
                         Request query = getRequest(accepted);
+                        logger.info("Received {}", query);
                         response = server.getRequest(query);
+                        logger.info("Generated {}", query);
                         sendResponse(accepted, response);
+                        logger.info("{} sent to {}", response, accepted);
                     } while (response.getPrompt() != Prompt.DISCONNECTED);
-
-                    logger.info("Received request: " + getRequest(accepted));
+                    logger.info("Closing connection " + accepted);
+                    accepted.close();
                 }
             }
-
-
-
         } catch (IOException exception) {
             logger.error(exception.getMessage());
         }
@@ -75,6 +76,7 @@ public class ServerBridge {
             ObjectInputStream objectInputStream = new ObjectInputStream(channel.socket().getInputStream());
             return (Request) objectInputStream.readObject();
         } catch (Exception exception) {
+            logger.error(String.format("Unable to get request from %s, using empty request", channel));
             return new Request(new Input("") {
                 @Override
                 public String get() {
@@ -91,7 +93,7 @@ public class ServerBridge {
             objectOutputStream.writeObject(response);
             channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
         } catch (IOException exception) {
-            System.out.println(exception.getMessage());
+            logger.error(String.format("Unable to send response %s to %s", response, channel));
         }
     }
 
