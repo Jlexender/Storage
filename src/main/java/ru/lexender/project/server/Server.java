@@ -14,7 +14,6 @@ import ru.lexender.project.server.handler.IHandle;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
-import ru.lexender.project.server.handler.command.list.Exit;
 import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;

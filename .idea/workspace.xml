@@ -7,25 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="added 2 factor validation">
-      <change afterPath="$PROJECT_DIR$/diagram.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/arc_new.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/arc_new.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/client_schema.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schemas/server_schema.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/AdminConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMPLEMENTATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMPLEMENTATION.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Storage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Storage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Prompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="readme + implementation + console + diagram + schemas">
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/io/handling/InvalidCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/io/handling/InvalidCommandException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/DefaultDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/DefaultDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/writer/WriteViaPrintWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/writer/WriteViaPrintWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,23 +243,7 @@
       <workItem from="1708890871051" duration="50000" />
       <workItem from="1708890929244" duration="40000" />
       <workItem from="1708901065223" duration="629000" />
-      <workItem from="1708903443168" duration="14037000" />
-    </task>
-    <task id="LOCAL-00004" summary="fixed Add">
-      <option name="closed" value="true" />
-      <created>1707583462650</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1707583462650</updated>
-    </task>
-    <task id="LOCAL-00005" summary="bugfix">
-      <option name="closed" value="true" />
-      <created>1707583810327</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1707583810327</updated>
+      <workItem from="1708903443168" duration="14509000" />
     </task>
     <task id="LOCAL-00006" summary="removed Optional">
       <option name="closed" value="true" />
@@ -654,7 +621,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708912602769</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="readme + implementation + console + diagram + schemas">
+      <option name="closed" value="true" />
+      <created>1708917663196</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1708917663196</updated>
+    </task>
+    <task id="LOCAL-00054" summary="readme + implementation + console + diagram + schemas">
+      <option name="closed" value="true" />
+      <created>1708917680189</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1708917680189</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removed printStackTrace (again)" />
     <MESSAGE value="small changes" />
     <MESSAGE value="fixed FilterStartsWithName" />
     <MESSAGE value="added commands" />
@@ -698,7 +680,8 @@
     <MESSAGE value="minor additions, changed transfer logic" />
     <MESSAGE value="moved to NIO" />
     <MESSAGE value="added 2 factor validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 2 factor validation" />
+    <MESSAGE value="readme + implementation + console + diagram + schemas" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme + implementation + console + diagram + schemas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
