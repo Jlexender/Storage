@@ -18,6 +18,7 @@ public class AdminConsole extends Thread {
     private final Server server;
 
     public AdminConsole(Server server) {
+        super.setName("serverside");
         this.server = server;
     }
     public void run() {

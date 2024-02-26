@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="fixed validation for client">
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="vi ka">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,23 +258,7 @@
       <workItem from="1708955657965" duration="69000" />
       <workItem from="1708956174943" duration="287000" />
       <workItem from="1708956726144" duration="3646000" />
-      <workItem from="1708963611382" duration="948000" />
-    </task>
-    <task id="LOCAL-00012" summary="Added generic type, reworked UpdateId logic (completely)">
-      <option name="closed" value="true" />
-      <created>1707697074227</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1707697074227</updated>
-    </task>
-    <task id="LOCAL-00013" summary="visual changes">
-      <option name="closed" value="true" />
-      <created>1707698113042</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1707698113042</updated>
+      <workItem from="1708963611382" duration="1577000" />
     </task>
     <task id="LOCAL-00014" summary="small command list fix">
       <option name="closed" value="true" />
@@ -654,7 +636,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708960208897</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="vi ka">
+      <option name="closed" value="true" />
+      <created>1708964826767</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1708964826768</updated>
+    </task>
+    <task id="LOCAL-00062" summary="vi ka">
+      <option name="closed" value="true" />
+      <created>1708964850039</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1708964850039</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="encapsulated id and creation date" />
     <MESSAGE value="reworked parser and transferring" />
     <MESSAGE value="updated README.md" />
     <MESSAGE value="added non-compilable stuff" />
@@ -698,7 +695,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="bananchiki" />
     <MESSAGE value="fixed validation for client" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed validation for client" />
+    <MESSAGE value="vi ka" />
+    <option name="LAST_COMMIT_MESSAGE" value="vi ka" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
