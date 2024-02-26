@@ -7,11 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="bananchiki">
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="fixed validation for client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/validator/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/PersonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/PersonBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/StudyGroupBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,7 @@
       <recent name="ru.lexender.project.console.command.list" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
       <module name="ServerStorage" />
@@ -260,15 +259,8 @@
       <workItem from="1708949996087" duration="403000" />
       <workItem from="1708955657965" duration="69000" />
       <workItem from="1708956174943" duration="287000" />
-      <workItem from="1708956726144" duration="3352000" />
-    </task>
-    <task id="LOCAL-00011" summary="bugfix">
-      <option name="closed" value="true" />
-      <created>1707677076790</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1707677076790</updated>
+      <workItem from="1708956726144" duration="3646000" />
+      <workItem from="1708963611382" duration="948000" />
     </task>
     <task id="LOCAL-00012" summary="Added generic type, reworked UpdateId logic (completely)">
       <option name="closed" value="true" />
@@ -654,7 +646,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708956405476</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="fixed validation for client">
+      <option name="closed" value="true" />
+      <created>1708960208896</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1708960208897</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added file-based history; recursion protection" />
     <MESSAGE value="encapsulated id and creation date" />
     <MESSAGE value="reworked parser and transferring" />
     <MESSAGE value="updated README.md" />
@@ -698,7 +697,8 @@
     <MESSAGE value="bugfix 2" />
     <MESSAGE value="update" />
     <MESSAGE value="bananchiki" />
-    <option name="LAST_COMMIT_MESSAGE" value="bananchiki" />
+    <MESSAGE value="fixed validation for client" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed validation for client" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

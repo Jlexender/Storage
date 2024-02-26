@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.lexender.project.server.Server;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -79,9 +80,14 @@ public class ServerBridge {
 
                     Response response;
                     do {
-                        Request query = getRequest(accepted);
+                        Request query;
+                        do {
+                            query = getRequest(accepted);
+                        } while (query == null);
+
                         logger.info("Received {}", query);
                         response = server.getRequest(query);
+
                         logger.info("Generated {}", query);
                         try {
                             sendResponse(accepted, response);
@@ -103,16 +109,14 @@ public class ServerBridge {
 
     public Request getRequest(SocketChannel channel) {
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(channel.socket().getInputStream());
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            channel.read(buffer);
+            buffer.flip();
+            ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
+            ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
             return (Request) objectInputStream.readObject();
         } catch (Exception exception) {
-            logger.error(String.format("Unable to get request from %s, using empty request", channel));
-            return new Request(new Input("") {
-                @Override
-                public String get() {
-                    return "";
-                }
-            });
+            return null;
         }
     }
 
