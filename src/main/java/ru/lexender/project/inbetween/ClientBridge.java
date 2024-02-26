@@ -59,7 +59,7 @@ public class ClientBridge {
                     return getOutputObject().toString();
                 }
             });
-            return null;
+            return new Response(Prompt.DISCONNECTED);
         }
     }
 
