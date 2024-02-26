@@ -15,6 +15,7 @@ import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
 import ru.lexender.project.server.handler.command.list.Exit;
+import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
 import ru.lexender.project.server.io.decoder.IDecode;
@@ -78,7 +79,7 @@ public class Server {
         try {
             Command command = handler.handle(decoder.decode(request));
             logger.info("Command handled as {}", command);
-            if (command.equals(new Exit()))
+            if (command.equals(new Save()))
                 throw new InvalidCommandException();
             return invoker.invoke(command, decoder.getArguments(request));
         } catch (InvalidCommandException exception) {
