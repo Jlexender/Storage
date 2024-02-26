@@ -77,9 +77,9 @@ public class Server {
         IHandle handler = new DefaultHandler();
         try {
             Command command = handler.handle(decoder.decode(request));
-            logger.info("Command handled as {}", command);
             if (command.equals(new Save()))
                 throw new InvalidCommandException();
+            logger.info("Command handled as {}", command);
             return invoker.invoke(command, decoder.getArguments(request));
         } catch (InvalidCommandException exception) {
             logger.warn("Command identified as invalid");

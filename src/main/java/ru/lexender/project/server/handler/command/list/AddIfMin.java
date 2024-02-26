@@ -27,7 +27,7 @@ public class AddIfMin extends ConstructorCommand {
     public Response invoke(Invoker invoker, List<String> arguments) {
         setStatus(CommandStatus.IN_PROCESS);
         try {
-            int i = getInvalidArgId(invoker, arguments);
+            int i = getInvalidArgId(arguments);
             if (i != getArgumentsAmount()) {
                 setStatus(CommandStatus.WAITING_FOR_ARGUMENT);
 

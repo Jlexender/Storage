@@ -32,7 +32,7 @@ public class UpdateId extends ConstructorCommand {
             }
             setStatus(CommandStatus.IN_PROCESS);
 
-            int i = getInvalidArgId(invoker, arguments);
+            int i = getInvalidArgId(arguments);
             if (i != getArgumentsAmount() - 1) {
                 setStatus(CommandStatus.WAITING_FOR_ARGUMENT);
 

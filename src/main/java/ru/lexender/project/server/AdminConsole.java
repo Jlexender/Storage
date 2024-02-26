@@ -47,7 +47,7 @@ public class AdminConsole extends Thread {
                 response = new Response(Prompt.INVALID_AMOUNT);
             }
 
-            Server.logger.debug(server.getRequest(request).toString());
+            Server.logger.debug(response.toString());
         }
     }
 

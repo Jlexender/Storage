@@ -2,7 +2,6 @@ package ru.lexender.project.server.handler.command;
 
 import lombok.Getter;
 import ru.lexender.project.server.handler.builder.ObjectBuilder;
-import ru.lexender.project.server.invoker.Invoker;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public abstract class ConstructorCommand extends ArgumentedCommand {
         this.objectBuilder = objectBuilder;
     }
 
-    protected final int getInvalidArgId(Invoker invoker, List<String> arguments) {
+    protected final int getInvalidArgId(List<String> arguments) {
         for (int i = 0; i < arguments.size(); ++i) {
             if (!objectBuilder.validateArgument(arguments.get(i), i)) {
                 recentArguments = arguments.subList(0, i);
