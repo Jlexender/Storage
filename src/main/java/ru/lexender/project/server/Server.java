@@ -3,8 +3,6 @@ package ru.lexender.project.server;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lexender.project.client.io.StringInput;
-import ru.lexender.project.inbetween.Input;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
@@ -17,7 +15,6 @@ import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
 import ru.lexender.project.server.handler.command.list.Exit;
-import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
 import ru.lexender.project.server.io.decoder.IDecode;
@@ -28,7 +25,6 @@ import ru.lexender.project.server.storage.file.transferer.ITransfer;
 import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 
 @Getter
