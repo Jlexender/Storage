@@ -4,6 +4,7 @@ import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
+import ru.lexender.project.server.handler.builder.list.StudyGroupBuilder;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
 import ru.lexender.project.server.invoker.Invoker;
@@ -40,7 +41,7 @@ public class AddIfMin extends ConstructorCommand {
 
 
                 return new Response(Prompt.ADD_ARGUMENT,
-                        responseString.toString());
+                        responseString.toString(), StudyGroupBuilder.validators.get(i));
             }
 
 

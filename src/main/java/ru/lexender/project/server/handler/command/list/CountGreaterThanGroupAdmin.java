@@ -4,6 +4,7 @@ import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.ObjectBuilder;
+import ru.lexender.project.server.handler.builder.list.PersonBuilder;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
 import ru.lexender.project.server.invoker.Invoker;
@@ -41,7 +42,7 @@ public class CountGreaterThanGroupAdmin extends ConstructorCommand {
 
 
                 return new Response(Prompt.ADD_ARGUMENT,
-                        responseString.toString());
+                        responseString.toString(), PersonBuilder.validators.get(i));
             }
 
             Person builtPerson = (Person) getObjectBuilder().build(arguments);

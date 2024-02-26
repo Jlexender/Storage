@@ -57,7 +57,12 @@ public class ServerBridge {
                         logger.info("Received {}", query);
                         response = server.getRequest(query);
                         logger.info("Generated {}", query);
-                        sendResponse(accepted, response);
+                        try {
+                            sendResponse(accepted, response);
+                        } catch (IOException exception) {
+                            logger.error("Unable to send response {} to {}, closing...", response, channel);
+                            response = new Response(Prompt.DISCONNECTED);
+                        }
                         logger.info("{} sent to {}", response, accepted);
                     } while (response.getPrompt() != Prompt.DISCONNECTED);
                     logger.info("Closing connection " + accepted);
@@ -85,15 +90,11 @@ public class ServerBridge {
         }
     }
 
-    public void sendResponse(SocketChannel channel, Response response) {
-        try {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(response);
-            channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
-        } catch (IOException exception) {
-            logger.error(String.format("Unable to send response %s to %s", response, channel));
-        }
+    public void sendResponse(SocketChannel channel, Response response) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        objectOutputStream.writeObject(response);
+        channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
     }
 
 }

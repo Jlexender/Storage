@@ -3,6 +3,7 @@ package ru.lexender.project.inbetween;
 import lombok.Getter;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
+import ru.lexender.project.inbetween.validator.Validator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -89,10 +90,12 @@ public class ClientBridge {
 
         System.out.printf("Connection to %s:%d has been established!\n", hostname, port);
         Response deserialized;
+        Validator recentValidator = new Validator();
         do {
-            Request query = client.getRequest();
+            Request query = client.getRequest(recentValidator);
             send(query, channel);
             deserialized = get(channel);
+            recentValidator = deserialized.getValidator();
             client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
         } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
     }

@@ -2,6 +2,7 @@ package ru.lexender.project.server.handler.builder.list;
 
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
+import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.storage.description.Color;
 import ru.lexender.project.server.storage.description.Coordinates;
 import ru.lexender.project.server.storage.description.Country;
@@ -13,6 +14,7 @@ import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class for initializing a StorageObject object when StudyGroup is parameter.
@@ -20,6 +22,20 @@ import java.util.List;
  * @see ru.lexender.project.server.handler.builder.StorageObjectBuilder
  */
 public class StudyGroupBuilder extends StorageObjectBuilder {
+    public static final List<Validator> validators = Arrays.asList(
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Long.parseLong(o) == Long.parseLong(o)),
+            new Validator(o -> Long.parseLong(o) < 159),
+            new Validator(o -> FormOfEducation.valueOf(o) == FormOfEducation.valueOf(o)),
+            new Validator(o -> Semester.valueOf(o) == Semester.valueOf(o)),
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
+            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
+            new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
+    );
 
     public StudyGroupBuilder() {
         super(3, Arrays.asList(
@@ -51,31 +67,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
 
     public boolean validateArgument(String argument, int pointer) {
         try {
-                var value = switch (pointer) {
-                    case 0: yield argument;
-                    case 1,2:
-                        if (Long.parseLong(argument) <= 0)
-                            throw new IllegalAccessException("Must be positive");
-                        yield Long.parseLong(argument);
-                    case 3: yield Long.parseLong(argument);
-                    case 4:
-                        long yCoordinate = Long.parseLong(argument);
-                        if (yCoordinate < 159) yield yCoordinate;
-                        throw new IllegalAccessException("Y value must be less than 159");
-                    case 5: yield FormOfEducation.valueOf(argument);
-                    case 6: yield Semester.valueOf(argument);
-                    case 7:
-                        if (argument.isBlank()) throw new IllegalAccessException("Name can't be empty string");
-                        yield argument;
-                    case 8:
-                        int personWeight = Integer.parseInt(argument);
-                        if (personWeight > 0) yield personWeight;
-                        throw new IllegalAccessException("Weight must be positive");
-                    case 9, 10: yield Color.valueOf(argument);
-                    case 11: yield Country.valueOf(argument);
-                    default: throw new Exception();
-                };
-            return true;
+            return validators.get(pointer).test(argument);
         } catch (Exception exception) {
             return false;
         }

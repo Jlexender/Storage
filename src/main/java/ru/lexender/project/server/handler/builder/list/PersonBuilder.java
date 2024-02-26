@@ -2,12 +2,14 @@ package ru.lexender.project.server.handler.builder.list;
 
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.ObjectBuilder;
+import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.storage.description.Color;
 import ru.lexender.project.server.storage.description.Country;
 import ru.lexender.project.server.storage.description.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class for initializing a Person object.
@@ -16,6 +18,13 @@ import java.util.List;
  * @see ru.lexender.project.server.handler.builder.ObjectBuilder
  */
 public class PersonBuilder extends ObjectBuilder {
+    public static final List<Validator> validators = Arrays.asList(
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
+            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
+            new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
+    );
 
     public PersonBuilder() {
         super(2, Arrays.asList(
@@ -30,18 +39,7 @@ public class PersonBuilder extends ObjectBuilder {
 
     public boolean validateArgument(String argument, int pointer) {
         try {
-            var value = switch (pointer) {
-                case 0:
-                    if (argument.isBlank()) throw new IllegalAccessException("Name can't be empty string");
-                    yield argument;
-                case 1:
-                    if (Long.parseLong(argument) <= 0) throw new IllegalAccessException("Weight must be positive");
-                    yield Long.parseLong(argument);
-                case 2, 3: yield Color.valueOf(argument);
-                case 4: yield Country.valueOf(argument);
-                default: throw new Exception();
-            };
-            return true;
+            return validators.get(pointer).test(argument);
         } catch (Exception exception) {
             return false;
         }
