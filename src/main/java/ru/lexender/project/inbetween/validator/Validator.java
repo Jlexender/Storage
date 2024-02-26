@@ -14,10 +14,10 @@ public class Validator implements Serializable {
     }
 
     public boolean test(String object) {
-        return predicate.test(object);
-    }
-
-    public SerializablePredicate<String> toPredicate() {
-        return predicate;
+        try {
+            return predicate.test(object);
+        } catch (Exception exception) {
+            return false;
+        }
     }
 }

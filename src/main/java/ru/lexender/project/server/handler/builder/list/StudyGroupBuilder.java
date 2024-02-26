@@ -28,6 +28,21 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
             new Validator(o -> Long.parseLong(o) > 0),
             new Validator(o -> Long.parseLong(o) == Long.parseLong(o)),
             new Validator(o -> Long.parseLong(o) < 159),
+            new Validator(),
+            new Validator(),
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(),
+            new Validator(),
+            new Validator()
+    );
+
+    private static final List<Validator> serverValidators = Arrays.asList(
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(o -> Long.parseLong(o) == Long.parseLong(o)),
+            new Validator(o -> Long.parseLong(o) < 159),
             new Validator(o -> FormOfEducation.valueOf(o) == FormOfEducation.valueOf(o)),
             new Validator(o -> Semester.valueOf(o) == Semester.valueOf(o)),
             new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
@@ -36,6 +51,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
             new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
             new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
     );
+
 
     public StudyGroupBuilder() {
         super(3, Arrays.asList(
@@ -65,9 +81,10 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         };
     }
 
+
     public boolean validateArgument(String argument, int pointer) {
         try {
-            return validators.get(pointer).test(argument);
+            return serverValidators.get(pointer).test(argument);
         } catch (Exception exception) {
             return false;
         }

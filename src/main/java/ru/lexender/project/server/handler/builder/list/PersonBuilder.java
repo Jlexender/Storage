@@ -21,6 +21,14 @@ public class PersonBuilder extends ObjectBuilder {
     public static final List<Validator> validators = Arrays.asList(
             new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
             new Validator(o -> Long.parseLong(o) > 0),
+            new Validator(),
+            new Validator(),
+            new Validator()
+    );
+
+    public static final List<Validator> serverValidators = Arrays.asList(
+            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
+            new Validator(o -> Long.parseLong(o) > 0),
             new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
             new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
             new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
@@ -39,7 +47,7 @@ public class PersonBuilder extends ObjectBuilder {
 
     public boolean validateArgument(String argument, int pointer) {
         try {
-            return validators.get(pointer).test(argument);
+            return serverValidators.get(pointer).test(argument);
         } catch (Exception exception) {
             return false;
         }
