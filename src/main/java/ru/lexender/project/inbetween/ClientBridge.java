@@ -13,6 +13,7 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.Optional;
 
 /**
  * client-server
@@ -58,7 +59,7 @@ public class ClientBridge {
                     return getOutputObject().toString();
                 }
             });
-            return new Response(Prompt.DISCONNECTED);
+            return null;
         }
     }
 
@@ -87,8 +88,18 @@ public class ClientBridge {
             return;
         }
 
+        client.getRespondent().respond(new Output(String.format("Connection to %s:%d has been established!\n", hostname, port)) {
+            @Override
+            public String get() {
+                return getOutputObject().toString();
+            }
+        });
 
-        System.out.printf("Connection to %s:%d has been established!\n", hostname, port);
+        Optional<Response> handshakeResponse = Optional.ofNullable(get(channel));
+        if (handshakeResponse.isPresent())
+            client.getRespondent().respond(client.getTranscriber().transcribe(handshakeResponse.get()));
+
+
         Response deserialized;
         Validator recentValidator = new Validator();
         do {

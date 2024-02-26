@@ -7,7 +7,9 @@ import lombok.Getter;
  */
 @Getter
 public class InvalidCommandException extends Exception {
-    private final String command;
+    private String command;
+
+    public InvalidCommandException() {}
 
     public InvalidCommandException(String message, String command) {
         super(message);

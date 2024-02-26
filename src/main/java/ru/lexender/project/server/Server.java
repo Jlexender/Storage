@@ -3,6 +3,8 @@ package ru.lexender.project.server;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.lexender.project.client.io.StringInput;
+import ru.lexender.project.inbetween.Input;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
@@ -14,6 +16,7 @@ import ru.lexender.project.server.handler.IHandle;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.handler.command.ConstructorCommand;
+import ru.lexender.project.server.handler.command.list.Exit;
 import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
@@ -25,6 +28,7 @@ import ru.lexender.project.server.storage.file.transferer.ITransfer;
 import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 
 @Getter
@@ -33,10 +37,12 @@ public class Server {
 
     private final IStore storage;
     private final Invoker invoker;
+    private final AdminConsole console;
 
     public Server(IStore storage, Invoker invoker) {
         this.storage = storage;
         this.invoker = invoker;
+        this.console = new AdminConsole(this);
 
         Command init = new Command("init", "Transfers storage into collection.") {
             public Response invoke(Invoker invoker) {
@@ -76,6 +82,8 @@ public class Server {
         try {
             Command command = handler.handle(decoder.decode(request));
             logger.info("Command handled as {}", command);
+            if (command.equals(new Exit()))
+                throw new InvalidCommandException();
             return invoker.invoke(command, decoder.getArguments(request));
         } catch (InvalidCommandException exception) {
             logger.warn("Command identified as invalid");
@@ -84,12 +92,6 @@ public class Server {
             logger.warn("Command arguments are not valid");
             return new Response(Prompt.INVALID_AMOUNT);
         }
-    }
-
-    public void save() {
-        logger.info("Collection has been saved to file");
-        Command save = new Save();
-        invoker.invoke(save, null);
     }
 
 }

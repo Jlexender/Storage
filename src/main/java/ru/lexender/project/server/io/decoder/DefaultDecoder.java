@@ -18,4 +18,8 @@ public class DefaultDecoder implements IDecode {
         List<String> message = decode(request);
         return message.subList(1, message.size());
     }
+
+    public List<String> decode(String rawMessage) {
+        return Arrays.stream(rawMessage.split(" ")).toList();
+    }
 }

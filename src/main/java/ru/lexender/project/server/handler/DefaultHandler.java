@@ -20,6 +20,7 @@ import ru.lexender.project.server.handler.command.list.Info;
 import ru.lexender.project.server.handler.command.list.PrintFieldAscendingSemesterEnum;
 import ru.lexender.project.server.handler.command.list.RemoveById;
 import ru.lexender.project.server.handler.command.list.RemoveGreater;
+import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.handler.command.list.Show;
 import ru.lexender.project.server.handler.command.list.UpdateId;
 
@@ -35,7 +36,7 @@ public class DefaultHandler implements IHandle {
                 new Help(),
                 new Info(),
                 new Show(),
-//                new Save(),
+                new Save(),
                 new Exit(),
                 new History(),
                 new Add(builder),

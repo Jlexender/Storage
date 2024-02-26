@@ -7,21 +7,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="moved to NIO">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/validator/SerializablePredicate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/validator/Validator.java" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="added 2 factor validation">
+      <change afterPath="$PROJECT_DIR$/diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/arc_new.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/arc_new.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/client_schema.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/server_schema.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/AdminConsole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMPLEMENTATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/IMPLEMENTATION.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Storage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Prompt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/PersonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/PersonBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/StudyGroupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/builder/list/StudyGroupBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/AddIfMin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/CountGreaterThanGroupAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/CountGreaterThanGroupAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/RemoveGreater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/UpdateId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/io/handling/InvalidCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/exception/io/handling/InvalidCommandException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/DefaultDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/decoder/DefaultDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/writer/WriteViaPrintWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/storage/file/transferer/io/writer/WriteViaPrintWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +38,8 @@
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,6 +65,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Client.executor": "Run",
     "Application.Main 1.executor": "Run",
     "Application.Main 2.executor": "Run",
@@ -123,7 +128,7 @@
       <recent name="ru.lexender.project.console.command.list" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
       <module name="ServerStorage" />
@@ -255,23 +260,7 @@
       <workItem from="1708890871051" duration="50000" />
       <workItem from="1708890929244" duration="40000" />
       <workItem from="1708901065223" duration="629000" />
-      <workItem from="1708903443168" duration="9054000" />
-    </task>
-    <task id="LOCAL-00002" summary="added try-catch in main">
-      <option name="closed" value="true" />
-      <created>1707582716293</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1707582716293</updated>
-    </task>
-    <task id="LOCAL-00003" summary="moved annotations">
-      <option name="closed" value="true" />
-      <created>1707583044465</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1707583044465</updated>
+      <workItem from="1708903443168" duration="14037000" />
     </task>
     <task id="LOCAL-00004" summary="fixed Add">
       <option name="closed" value="true" />
@@ -649,7 +638,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708886219515</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="added 2 factor validation">
+      <option name="closed" value="true" />
+      <created>1708912585577</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1708912585578</updated>
+    </task>
+    <task id="LOCAL-00052" summary="added 2 factor validation">
+      <option name="closed" value="true" />
+      <created>1708912602769</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1708912602769</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +672,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated id initialization, added script execution" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="removed printStackTrace (again)" />
     <MESSAGE value="small changes" />
     <MESSAGE value="fixed FilterStartsWithName" />
@@ -692,7 +697,8 @@
     <MESSAGE value="arbuziki" />
     <MESSAGE value="minor additions, changed transfer logic" />
     <MESSAGE value="moved to NIO" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved to NIO" />
+    <MESSAGE value="added 2 factor validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 2 factor validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
