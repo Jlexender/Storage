@@ -1,8 +1,8 @@
 package ru.lexender.project.server.handler.builder.list;
 
+import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
-import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.storage.description.Color;
 import ru.lexender.project.server.storage.description.Coordinates;
 import ru.lexender.project.server.storage.description.Country;

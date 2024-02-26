@@ -1,7 +1,6 @@
 package ru.lexender.project.inbetween.validator;
 
 import java.io.Serializable;
-import java.util.function.Predicate;
 
 public class Validator implements Serializable {
     private final SerializablePredicate<String> predicate;

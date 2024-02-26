@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import ru.lexender.project.inbetween.validator.Validator;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.util.function.Predicate;
 
 @Getter @ToString
 public class Response implements Serializable {
