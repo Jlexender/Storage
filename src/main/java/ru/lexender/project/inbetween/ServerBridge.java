@@ -57,7 +57,7 @@ public class ServerBridge {
     public void run() {
         server.getConsole().start();
 
-        try (ServerSocketChannel serverSocket = ServerSocketChannel.open();) {
+        try (ServerSocketChannel serverSocket = ServerSocketChannel.open()) {
             serverSocket.bind(new InetSocketAddress(port));
             serverSocket.configureBlocking(false);
 
