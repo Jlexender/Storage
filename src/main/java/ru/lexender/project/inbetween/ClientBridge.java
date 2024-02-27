@@ -5,6 +5,7 @@ import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
 import ru.lexender.project.inbetween.validator.Validator;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,7 +14,6 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.util.Optional;
 
 /**
  * client-server
@@ -37,7 +37,9 @@ public class ClientBridge {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(request);
-            channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
+            ByteBuffer buffer = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
+            while (buffer.hasRemaining())
+                channel.write(buffer);
         } catch (IOException exception) {
             client.getRespondent().respond(new Output("Unable to send request") {
                 @Override
@@ -50,24 +52,24 @@ public class ClientBridge {
 
     public Response get(SocketChannel channel) {
         try {
-            ObjectInputStream inputStream = new ObjectInputStream(channel.socket().getInputStream());
-            return (Response) inputStream.readObject();
+            ByteBuffer buffer = ByteBuffer.allocate(4096);
+            channel.read(buffer);
+            buffer.flip();
+            ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
+            ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
+            return (Response) objectInputStream.readObject();
         } catch (Exception exception) {
-            client.getRespondent().respond(new Output("Can't get response") {
-                @Override
-                public String get() {
-                    return getOutputObject().toString();
-                }
-            });
-            return new Response(Prompt.DISCONNECTED);
+            return null;
         }
     }
 
     public void run() {
         SocketChannel channel;
         try {
+            channel = SocketChannel.open();
             SocketAddress address = new InetSocketAddress(hostname, port);
-            channel = SocketChannel.open(address);
+            channel.connect(address);
+            channel.configureBlocking(false);
         } catch (IOException exception) {
             String msg = String.format("Can't connect: is server %s:%d really running?", hostname, port);
             client.getRespondent().respond(new Output(msg) {
@@ -95,20 +97,23 @@ public class ClientBridge {
             }
         });
 
-        Optional<Response> handshakeResponse = Optional.ofNullable(get(channel));
-        if (handshakeResponse.isPresent())
-            client.getRespondent().respond(client.getTranscriber().transcribe(handshakeResponse.get()));
-
-
         Response deserialized;
+        do {
+            deserialized = get(channel);
+        } while (deserialized == null);
+        client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
+
         Validator recentValidator = new Validator();
         do {
             Request query = client.getRequest(recentValidator);
             send(query, channel);
-            deserialized = get(channel);
+            do {
+                deserialized = get(channel);
+            } while (deserialized == null);
             recentValidator = deserialized.getValidator();
             client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
         } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
+
     }
 
 }

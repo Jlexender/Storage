@@ -11,15 +11,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.Iterator;
 
 /**
  * client-server
@@ -60,49 +57,48 @@ public class ServerBridge {
     public void run() {
         server.getConsole().start();
 
-        try (ServerSocketChannel channel = ServerSocketChannel.open()) {
-            SocketAddress address = new InetSocketAddress(port);
-            channel.bind(address);
+        try (ServerSocketChannel serverSocket = ServerSocketChannel.open();) {
+            serverSocket.bind(new InetSocketAddress(port));
+            serverSocket.configureBlocking(false);
 
-            channel.configureBlocking(false);
-            logger.info("Blocking mode {}", channel.isBlocking());
+            logger.info("Server started on port {}", port);
 
-            Selector serverSelector = Selector.open();
-            channel.register(serverSelector, SelectionKey.OP_ACCEPT);
+            Selector selector = Selector.open();
+            serverSocket.register(selector, SelectionKey.OP_ACCEPT);
 
-            logger.info("Started on port {}", port);
-            Map<SelectionKey, SocketChannel> connections = new HashMap<>();
-            for (;;) {
-                serverSelector.select();
+            while (true) {
+                selector.select();
 
-                Set<SelectionKey> keys = serverSelector.selectedKeys();
-                logger.info("{}", keys);
-                for (SelectionKey key: keys) {
+                Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+                while (iterator.hasNext()) {
+                    SelectionKey key = iterator.next();
+                    iterator.remove();
+
                     if (key.isAcceptable()) {
-                        SocketChannel accepted = channel.accept();
-                        connections.put(key, accepted);
-                        logger.info("Accepted new connection {}", accepted);
-                        sendResponse(accepted, new Response(Prompt.CONNECTED, putin));
-                    }
+                        SocketChannel client = serverSocket.accept();
+                        client.configureBlocking(false);
+                        client.register(selector, SelectionKey.OP_READ);
 
-                    SocketChannel accepted = connections.get(key);
-                    Request query = getRequest(accepted);
-                    if (query != null) {
-                        logger.info("Received {}", query);
-                        Response response = server.getRequest(query);
+                        sendResponse(client, new Response(Prompt.CONNECTED, putin));
 
-                        logger.info("Generated {}", query);
-                        try {
-                            sendResponse(connections.get(key), response);
-                        } catch (IOException exception) {
-                            logger.error("Unable to send response {} to {}, closing...", response, channel);
-                            accepted.close();
+                        logger.info("New channel {} registered", client);
+                    } else if (key.isReadable()) {
+                        SocketChannel client = (SocketChannel) key.channel();
+
+                        Request request = getRequest(client);
+                        if (request != null) {
+                            logger.info("Got request {}", request);
+
+                            Response response = server.getRequest(request);
+                            logger.info("Transformed {} into {}", request, response);
+
+                            sendResponse(client, response);
+                            logger.info("{} sent to {}", response, client);
                         }
                     }
                 }
             }
-
-        } catch (IOException | IllegalArgumentException exception) {
+        } catch (Exception exception) {
             logger.error(exception.getMessage());
         }
     }
@@ -125,7 +121,9 @@ public class ServerBridge {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(response);
-        channel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
+        ByteBuffer buffer = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
+        while (buffer.hasRemaining())
+            channel.write(buffer);
     }
 
 }
