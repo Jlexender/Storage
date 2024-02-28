@@ -3,7 +3,6 @@ package ru.lexender.project.inbetween;
 import lombok.Getter;
 import ru.lexender.project.client.Client;
 import ru.lexender.project.client.io.Output;
-import ru.lexender.project.inbetween.validator.Validator;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,9 +10,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * client-server
@@ -32,7 +34,7 @@ public class ClientBridge {
 
     }
 
-    public void send(Request request, SocketChannel channel) {
+    public void sendRequest(Request request, SocketChannel channel) {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
@@ -50,7 +52,7 @@ public class ClientBridge {
         }
     }
 
-    public Response get(SocketChannel channel) {
+    public Response getResponse(SocketChannel channel) {
         try {
             ByteBuffer buffer = ByteBuffer.allocate(4096);
             channel.read(buffer);
@@ -64,55 +66,49 @@ public class ClientBridge {
     }
 
     public void run() {
-        SocketChannel channel;
-        try {
-            channel = SocketChannel.open();
-            SocketAddress address = new InetSocketAddress(hostname, port);
+        try (SocketChannel channel = SocketChannel.open()) {
+            InetSocketAddress address = new InetSocketAddress(hostname, port);
             channel.connect(address);
             channel.configureBlocking(false);
-        } catch (IOException exception) {
-            String msg = String.format("Can't connect: is server %s:%d really running?", hostname, port);
-            client.getRespondent().respond(new Output(msg) {
-                @Override
-                public String get() {
-                    return msg;
-                }
-            });
-            return;
-        } catch (IllegalArgumentException exception) {
-            String msg = "Port is out of range";
-            client.getRespondent().respond(new Output(msg) {
-                @Override
-                public String get() {
-                    return msg;
-                }
-            });
-            return;
-        }
 
-        client.getRespondent().respond(new Output(String.format("Connection to %s:%d has been established!\n", hostname, port)) {
-            @Override
-            public String get() {
-                return getOutputObject().toString();
+            Selector selector = Selector.open();
+            channel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+
+            while (true) {
+                selector.select();
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                while (iterator.hasNext()) {
+                    SelectionKey key = iterator.next();
+                    iterator.remove();
+
+                    if (key.isReadable()) {
+                        Response response = getResponse((SocketChannel) key.channel());
+                        getClient().getRespondent().respond(getClient().getTranscriber().transcribe(response));
+                        if (response.getPrompt() == Prompt.DISCONNECTED) return;
+                        Input input = client.getReceiver().receive();
+                        while (!response.getValidator().test(input.get())) {
+                            client.getRespondent().respond(new Output("Invalid argument") {
+                                @Override
+                                public String get() {
+                                    return getOutputObject().toString();
+                                }
+                            });
+                            input = client.getReceiver().receive();
+                        }
+                        Request request = new Request(input);
+                        sendRequest(request, (SocketChannel) key.channel());
+                    }
+                }
             }
-        });
-
-        Response deserialized;
-        do {
-            deserialized = get(channel);
-        } while (deserialized == null);
-        client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
-
-        Validator recentValidator = new Validator();
-        do {
-            Request query = client.getRequest(recentValidator);
-            send(query, channel);
-            do {
-                deserialized = get(channel);
-            } while (deserialized == null);
-            recentValidator = deserialized.getValidator();
-            client.getRespondent().respond(client.getTranscriber().transcribe(deserialized));
-        } while (deserialized.getPrompt() != Prompt.DISCONNECTED);
+        } catch (IOException exception) {
+            getClient().getRespondent().respond(new Output(exception.getMessage()) {
+                @Override
+                public String get() {
+                    return getOutputObject().toString();
+                }
+            });
+        }
 
     }
 

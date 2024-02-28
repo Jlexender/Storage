@@ -7,12 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="multisocket handling">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9e1dec8a-8711-477e-b792-2f28a6a89595" name="Changes" comment="removed session">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Storage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ClientBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/ServerBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/inbetween/SessionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/AdminConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/AdminConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/DefaultHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/IHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/IHandle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/CommandGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/handler/command/list/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/CommandInvoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/CommandInvoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/invoker/Invoker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +33,8 @@
         <option value="package-info" />
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -50,51 +58,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Client.executor": "Run",
-    "Application.Guest.executor": "Run",
-    "Application.Main 1.executor": "Run",
-    "Application.Main 2.executor": "Run",
-    "Application.Main 3.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Attach to process.pid 132914.executor": "ProcessAttachDebug",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Maven.lab5-1700 [clean].executor": "Run",
-    "Maven.lab5-1700 [compile].executor": "Run",
-    "Maven.lab5-1700 [deploy].executor": "Run",
-    "Maven.lab5-1700 [install].executor": "Run",
-    "Maven.lab5-1700 [package].executor": "Run",
-    "Maven.lab5-1700 [site].executor": "Run",
-    "Maven.lab5-1700 [test].executor": "Run",
-    "Maven.lab5-1700 [validate].executor": "Run",
-    "Maven.lab5-1700 [verify].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "beta",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/alex/IdeaProjects/Storage2/Storage",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.36206895",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Guest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main 1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main 2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main 3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Attach to process.pid 132914.executor&quot;: &quot;ProcessAttachDebug&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Maven.lab5-1700 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab5-1700 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;beta&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alex/IdeaProjects/Storage2/Storage&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/alex/IdeaProjects/lab5678/src/main/java/ru/lexender/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36206895&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/ru/lexender/project/server/io/encoder" />
@@ -117,7 +125,7 @@
       <recent name="ru.lexender.project.console.command.list" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Guest">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ru.lexender.project.Main" />
       <module name="lab6" />
@@ -266,23 +274,8 @@
       <workItem from="1708963611382" duration="1577000" />
       <workItem from="1709040698566" duration="7565000" />
       <workItem from="1709052929802" duration="3827000" />
-      <workItem from="1709057163646" duration="1603000" />
-    </task>
-    <task id="LOCAL-00016" summary="removed printStackTrace (lol)">
-      <option name="closed" value="true" />
-      <created>1707701292465</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1707701292465</updated>
-    </task>
-    <task id="LOCAL-00017" summary="upgraded IStore, added new commands">
-      <option name="closed" value="true" />
-      <created>1707751602285</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1707751602285</updated>
+      <workItem from="1709057163646" duration="2215000" />
+      <workItem from="1709071403745" duration="9268000" />
     </task>
     <task id="LOCAL-00018" summary="changed Info command">
       <option name="closed" value="true" />
@@ -660,7 +653,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709043442047</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="multisocket handling">
+      <option name="closed" value="true" />
+      <created>1709059012222</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1709059012223</updated>
+    </task>
+    <task id="LOCAL-00066" summary="removed session">
+      <option name="closed" value="true" />
+      <created>1709059052584</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1709059052584</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +688,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated README.md" />
     <MESSAGE value="added non-compilable stuff" />
     <MESSAGE value="encapsulated" />
     <MESSAGE value="reworked storage.file.io methods" />
@@ -704,7 +712,8 @@
     <MESSAGE value="fixed validation for client" />
     <MESSAGE value="vi ka" />
     <MESSAGE value="multisocket handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="multisocket handling" />
+    <MESSAGE value="removed session" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed session" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

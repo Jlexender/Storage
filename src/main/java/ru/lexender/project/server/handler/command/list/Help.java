@@ -4,7 +4,6 @@ package ru.lexender.project.server.handler.command.list;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.handler.command.Command;
-import ru.lexender.project.server.handler.command.CommandGenerator;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
 
@@ -21,7 +20,8 @@ public class Help extends Command {
         setStatus(CommandStatus.IN_PROCESS);
         try {
             StringBuilder helpString = new StringBuilder("AVAILABLE COMMANDS:\n\n");
-            for (Command command: CommandGenerator.getCommandList().values()) {
+
+            for (Command command: invoker.getAllowedCommands()) {
                 helpString.append(command.describe()).append("\n\n");
             }
 

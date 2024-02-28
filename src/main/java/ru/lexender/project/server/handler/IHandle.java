@@ -7,5 +7,7 @@ import ru.lexender.project.server.handler.command.Command;
 import java.util.List;
 
 public interface IHandle {
+    public void registerCommands(Command... commands);
+
     public Command handle(List<String> args) throws InvalidCommandException, InvalidArgumentsException;
 }

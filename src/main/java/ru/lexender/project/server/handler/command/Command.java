@@ -13,7 +13,7 @@ import ru.lexender.project.server.invoker.Invoker;
 
 @Getter @ToString
 @EqualsAndHashCode
-public abstract class Command {
+public abstract class Command implements Comparable<Command> {
     private final String info;
     private final String abbreviation;
     private CommandStatus status;
@@ -49,5 +49,9 @@ public abstract class Command {
 
     protected void setStatus(CommandStatus status) {
         this.status = status;
+    }
+
+    public int compareTo(Command command) {
+        return abbreviation.compareTo(command.getAbbreviation());
     }
 }

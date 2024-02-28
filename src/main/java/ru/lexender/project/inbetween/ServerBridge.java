@@ -89,7 +89,7 @@ public class ServerBridge {
                         if (request != null) {
                             logger.info("Got request {}", request);
 
-                            Response response = server.getRequest(request);
+                            Response response = server.handle(request);
                             logger.info("Transformed {} into {}", request, response);
 
                             sendResponse(client, response);

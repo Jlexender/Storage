@@ -20,5 +20,49 @@
         "nationality": "VATICAN"
       }
     }
+  },
+  {
+    "id": 3,
+    "creationDate": "28::Feb::2024 03::33::45",
+    "object": {
+      "name": "888",
+      "coordinates": {
+        "x": -123,
+        "y": -123
+      },
+      "studentsCount": 231,
+      "averageMark": 88,
+      "formOfEducation": "EVENING_CLASSES",
+      "semesterEnum": "FOURTH",
+      "groupAdmin": {
+        "name": "kkkk",
+        "weight": 999,
+        "eyeColor": "ORANGE",
+        "hairColor": "ORANGE",
+        "nationality": "VATICAN"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "creationDate": "28::Feb::2024 03::29::25",
+    "object": {
+      "name": "show",
+      "coordinates": {
+        "x": 67,
+        "y": -135
+      },
+      "studentsCount": 452,
+      "averageMark": 77,
+      "formOfEducation": "EVENING_CLASSES",
+      "semesterEnum": "SECOND",
+      "groupAdmin": {
+        "name": "EIGHTH",
+        "weight": 999,
+        "eyeColor": "RED",
+        "hairColor": "YELLOW",
+        "nationality": "VATICAN"
+      }
+    }
   }
 ]
