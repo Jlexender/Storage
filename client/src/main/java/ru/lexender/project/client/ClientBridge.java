@@ -7,7 +7,6 @@ import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -15,11 +14,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * client-server
@@ -57,7 +52,7 @@ public class ClientBridge {
     }
 
     public Response getResponse(Socket socket) {
-        try {;
+        try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             return (Response) objectInputStream.readObject();
         } catch (Exception exception) {
