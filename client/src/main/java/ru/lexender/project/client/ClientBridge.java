@@ -55,9 +55,9 @@ public class ClientBridge {
         }
     }
 
-    public Response getResponse(SocketChannel channel) {
+    public Response getResponse(SocketChannel channel, int coefficient) {
         try {
-            ByteBuffer buffer = ByteBuffer.allocate(4096);
+            ByteBuffer buffer = ByteBuffer.allocate(4096*coefficient);
             channel.read(buffer);
             buffer.flip();
             ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
@@ -86,7 +86,10 @@ public class ClientBridge {
                     iterator.remove();
 
                     if (key.isReadable()) {
-                        Response response = getResponse((SocketChannel) key.channel());
+                        Response response;
+                        int multiplier = 1;
+                        while ((response = getResponse((SocketChannel) key.channel(), multiplier)) == null)
+                            multiplier++;
                         getClient().getRespondent().respond(getClient().getTranscriber().transcribe(response));
                         if (response.getPrompt() == Prompt.DISCONNECTED) return;
                         Input input = client.getReceiver().receive();

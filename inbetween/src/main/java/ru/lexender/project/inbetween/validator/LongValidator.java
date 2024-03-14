@@ -1,9 +1,9 @@
 package ru.lexender.project.inbetween.validator;
 
-public class IntervalValidator extends Validator{
+public class LongValidator extends Validator{
     private final Long min, max;
 
-    public IntervalValidator(Long min, Long max) {
+    public LongValidator(Long min, Long max) {
         this.min = min;
         this.max = max;
     }

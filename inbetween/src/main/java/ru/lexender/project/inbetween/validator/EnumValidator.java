@@ -1,15 +1,16 @@
 package ru.lexender.project.inbetween.validator;
 
-public class ArrayValidator extends Validator {
+public class EnumValidator extends Validator {
     private final Object[] values;
 
-    public ArrayValidator(Object[] values) {
+    public EnumValidator(Object[] values) {
         this.values = values;
     }
 
-    public boolean test(Object object) {
-        try {
-            
+    public boolean test(String object) {
+        for (Object o: values) {
+            if (object.equals(o.toString())) return true;
         }
+        return false;
     }
 }

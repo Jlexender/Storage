@@ -1,5 +1,8 @@
 package ru.lexender.project.server.handler.builder.list;
 
+import ru.lexender.project.inbetween.validator.EnumValidator;
+import ru.lexender.project.inbetween.validator.LongValidator;
+import ru.lexender.project.inbetween.validator.NameValidator;
 import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
@@ -14,7 +17,6 @@ import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Class for initializing a StorageObject object when StudyGroup is parameter.
@@ -23,33 +25,33 @@ import java.util.Objects;
  */
 public class StudyGroupBuilder extends StorageObjectBuilder {
     public static final List<Validator> validators = Arrays.asList(
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Long.parseLong(o) == Long.parseLong(o)),
-            new Validator(o -> Long.parseLong(o) < 159),
+            new NameValidator(),
+            new LongValidator((long) 1, null),
+            new LongValidator((long) 1, null),
+            new LongValidator(null, null),
+            new LongValidator(null, (long) 158),
             new Validator(),
             new Validator(),
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
+            new NameValidator(),
+            new LongValidator((long) 1, null),
             new Validator(),
             new Validator(),
             new Validator()
     );
 
     private static final List<Validator> serverValidators = Arrays.asList(
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Long.parseLong(o) == Long.parseLong(o)),
-            new Validator(o -> Long.parseLong(o) < 159),
-            new Validator(o -> FormOfEducation.valueOf(o) == FormOfEducation.valueOf(o)),
-            new Validator(o -> Semester.valueOf(o) == Semester.valueOf(o)),
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
-            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
-            new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
+            new NameValidator(),
+            new LongValidator((long) 1, null),
+            new LongValidator((long) 1, null),
+            new LongValidator(null, null),
+            new LongValidator(null, (long) 158),
+            new EnumValidator(FormOfEducation.values()),
+            new EnumValidator(Semester.values()),
+            new NameValidator(),
+            new LongValidator((long) 1, null),
+            new EnumValidator(Color.values()),
+            new EnumValidator(Color.values()),
+            new EnumValidator(Country.values())
     );
 
 

@@ -26,9 +26,7 @@ public class Response implements Serializable {
 
     public Response(Prompt prompt) {
         this.prompt = prompt;
-        this.message = "";
+        this.message = "No message provided";
         this.validator = new Validator();
     }
 }
-
-// TBD

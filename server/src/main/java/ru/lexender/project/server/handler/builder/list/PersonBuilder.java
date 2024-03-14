@@ -1,5 +1,8 @@
 package ru.lexender.project.server.handler.builder.list;
 
+import ru.lexender.project.inbetween.validator.EnumValidator;
+import ru.lexender.project.inbetween.validator.LongValidator;
+import ru.lexender.project.inbetween.validator.NameValidator;
 import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.ObjectBuilder;
@@ -9,7 +12,6 @@ import ru.lexender.project.server.storage.description.Person;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Class for initializing a Person object.
@@ -19,19 +21,19 @@ import java.util.Objects;
  */
 public class PersonBuilder extends ObjectBuilder {
     public static final List<Validator> validators = Arrays.asList(
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
+            new NameValidator(),
+            new LongValidator((long) 1, null),
             new Validator(),
             new Validator(),
             new Validator()
     );
 
     public static final List<Validator> serverValidators = Arrays.asList(
-            new Validator(o -> Objects.nonNull(o) && !o.isBlank()),
-            new Validator(o -> Long.parseLong(o) > 0),
-            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
-            new Validator(o -> Color.valueOf(o) == Color.valueOf(o)),
-            new Validator(o -> Country.valueOf(o) == Country.valueOf(o))
+            new NameValidator(),
+            new LongValidator((long) 1, null),
+            new EnumValidator(Color.values()),
+            new EnumValidator(Color.values()),
+            new EnumValidator(Country.values())
     );
 
     public PersonBuilder() {
