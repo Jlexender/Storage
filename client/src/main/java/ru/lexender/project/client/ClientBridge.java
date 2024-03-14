@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -55,13 +56,9 @@ public class ClientBridge {
         }
     }
 
-    public Response getResponse(SocketChannel channel, int coefficient) {
-        try {
-            ByteBuffer buffer = ByteBuffer.allocate(4096*coefficient);
-            channel.read(buffer);
-            buffer.flip();
-            ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
-            ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
+    public Response getResponse(Socket socket) {
+        try {;
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             return (Response) objectInputStream.readObject();
         } catch (Exception exception) {
             return null;
@@ -72,40 +69,24 @@ public class ClientBridge {
         try (SocketChannel channel = SocketChannel.open()) {
             InetSocketAddress address = new InetSocketAddress(hostname, port);
             channel.connect(address);
-            channel.configureBlocking(false);
-
-            Selector selector = Selector.open();
-            channel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
 
             while (true) {
-                selector.select();
-                Set<SelectionKey> selectionKeys = selector.selectedKeys();
-                Iterator<SelectionKey> iterator = selectionKeys.iterator();
-                while (iterator.hasNext()) {
-                    SelectionKey key = iterator.next();
-                    iterator.remove();
+                Response response = getResponse(channel.socket());
+                getClient().getRespondent().respond(getClient().getTranscriber().transcribe(response));
+                if (response.getPrompt() == Prompt.DISCONNECTED) return;
 
-                    if (key.isReadable()) {
-                        Response response;
-                        int multiplier = 1;
-                        while ((response = getResponse((SocketChannel) key.channel(), multiplier)) == null)
-                            multiplier++;
-                        getClient().getRespondent().respond(getClient().getTranscriber().transcribe(response));
-                        if (response.getPrompt() == Prompt.DISCONNECTED) return;
-                        Input input = client.getReceiver().receive();
-                        while (!response.getValidator().test(input.get())) {
-                            client.getRespondent().respond(new Output("Invalid argument") {
-                                @Override
-                                public String get() {
-                                    return getOutputObject().toString();
-                                }
-                            });
-                            input = client.getReceiver().receive();
+                Input input = client.getReceiver().receive();
+                while (!response.getValidator().test(input.get())) {
+                    client.getRespondent().respond(new Output("Invalid argument") {
+                        @Override
+                        public String get() {
+                            return getOutputObject().toString();
                         }
-                        Request request = new Request(input);
-                        sendRequest(request, (SocketChannel) key.channel());
-                    }
+                    });
+                    input = client.getReceiver().receive();
                 }
+                Request request = new Request(input);
+                sendRequest(request, channel);
             }
         } catch (IOException exception) {
             getClient().getRespondent().respond(new Output(exception.getMessage()) {
