@@ -13,7 +13,7 @@ import ru.lexender.project.server.storage.description.FormOfEducation;
 import ru.lexender.project.server.storage.description.Person;
 import ru.lexender.project.server.storage.description.Semester;
 import ru.lexender.project.server.storage.description.StudyGroup;
-import ru.lexender.project.server.storage.object.StorageObject;
+import ru.lexender.project.server.storage.StorageObject;
 
 import java.util.Arrays;
 import java.util.List;

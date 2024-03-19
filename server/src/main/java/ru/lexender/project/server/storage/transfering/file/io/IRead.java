@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.io.reader;
+package ru.lexender.project.server.storage.transfering.file.io;
 
 import java.io.File;
 import java.io.IOException;

@@ -53,7 +53,7 @@ public class AdminConsole extends Thread {
             DefaultDecoder decoder = new DefaultDecoder();
             DefaultHandler handler = new DefaultHandler();
             Invoker userInvoker = server.getInvoker();
-            Invoker rootInvoker = new Invoker(userInvoker.getStorage(), userInvoker.getFileSystem());
+            Invoker rootInvoker = new Invoker(userInvoker.getStorage(), userInvoker.getTransferer());
 
             Command[] rootCommands = {
                     new Help(),

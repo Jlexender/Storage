@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.io.reader;
+package ru.lexender.project.server.storage.transfering.file.io;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 
-public class ReaderViaScanner implements IRead {
+public class Reader implements IRead {
 
     public String read(File file) throws IOException {
         try (FileChannel channel = FileChannel.open(file.toPath())) {

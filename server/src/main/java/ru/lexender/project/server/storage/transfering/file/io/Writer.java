@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.io.writer;
+package ru.lexender.project.server.storage.transfering.file.io;
 
 import ru.lexender.project.server.exception.storage.file.transferer.StorageIOException;
 
@@ -10,7 +10,7 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.StandardOpenOption;
 
-public class WriteViaPrintWriter implements IWrite {
+public class Writer implements IWrite {
     public void write(String data, File file) throws StorageIOException {
 
         try (FileChannel channel = FileChannel.open(file.toPath(), StandardOpenOption.WRITE)) {

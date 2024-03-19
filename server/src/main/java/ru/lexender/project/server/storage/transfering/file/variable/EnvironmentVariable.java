@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.variable;
+package ru.lexender.project.server.storage.transfering.file.variable;
 
 import lombok.Getter;
 

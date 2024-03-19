@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.json.serializer;
+package ru.lexender.project.server.storage.transfering.file.json.serializer;
 
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
 

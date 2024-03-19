@@ -1,7 +1,6 @@
 package ru.lexender.project.server.storage;
 
 import lombok.NonNull;
-import ru.lexender.project.server.storage.object.StorageObject;
 
 import java.util.Comparator;
 import java.util.NoSuchElementException;
@@ -12,10 +11,10 @@ import java.util.TreeSet;
  * Class provided for storing elements.
  * @see ru.lexender.project.server.storage.IStore
  */
-public class TreeSetStorage implements IStore {
+public class Storage implements IStore {
     private final TreeSet<StorageObject> collection;
 
-    public TreeSetStorage() {
+    public Storage() {
         collection = new TreeSet<>();
     }
 

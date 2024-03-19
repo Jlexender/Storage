@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.json.adapter;
+package ru.lexender.project.server.storage.transfering.file.json.adapter;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

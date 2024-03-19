@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.object;
+package ru.lexender.project.server.storage;
 
 import com.google.gson.annotations.Expose;
 import lombok.Getter;

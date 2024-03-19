@@ -7,8 +7,8 @@ import ru.lexender.project.server.exception.storage.file.transferer.StorageTrans
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
-import ru.lexender.project.server.storage.file.transferer.DefaultTransferer;
-import ru.lexender.project.server.storage.file.transferer.ITransfer;
+import ru.lexender.project.server.storage.transfering.file.FileTransferer;
+import ru.lexender.project.server.storage.transfering.ITransfer;
 
 /**
  * Exits the application. Saves history to file.
@@ -20,7 +20,7 @@ public class Exit extends Command {
     public Response invoke(Invoker invoker) {
         setStatus(CommandStatus.IN_PROCESS);
         try {
-            ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), invoker.getStorage());
+            ITransfer transferer = invoker.getTransferer();
             transferer.transferOut();
 
             Server.logger.info("Data transfer on disconnect OK");

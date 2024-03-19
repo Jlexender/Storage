@@ -7,7 +7,8 @@ import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.handler.command.ArgumentedCommand;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.storage.IStore;
-import ru.lexender.project.server.storage.file.FileSystem;
+import ru.lexender.project.server.storage.transfering.ITransfer;
+import ru.lexender.project.server.storage.transfering.file.FileBridge;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
@@ -26,13 +27,13 @@ import java.util.TreeSet;
 @Getter
 public class Invoker implements CommandInvoker {
     private final IStore storage;
-    private final FileSystem fileSystem;
+    private final ITransfer transferer;
     private final Stack<Command> history;
     private final Set<Command> allowedCommands;
 
-    public Invoker(IStore storage, FileSystem fileSystem) {
+    public Invoker(IStore storage, ITransfer transferer) {
         this.storage = storage;
-        this.fileSystem = fileSystem;
+        this.transferer = transferer;
         history = new Stack<>();
         allowedCommands = new TreeSet<>();
     }

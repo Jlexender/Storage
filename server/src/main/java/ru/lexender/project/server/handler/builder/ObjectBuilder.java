@@ -2,12 +2,13 @@ package ru.lexender.project.server.handler.builder;
 
 import lombok.Getter;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
+import ru.lexender.project.server.storage.StorageObject;
 
 import java.util.List;
 
 /**
  * Tries to initialize an instance of some class by provided arguments (in java.lang.String form)
- * @see ru.lexender.project.server.storage.object.StorageObject
+ * @see StorageObject
  */
 
 @Getter

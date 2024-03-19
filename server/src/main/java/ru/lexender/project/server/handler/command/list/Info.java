@@ -17,15 +17,12 @@ public class Info extends Command {
     public Response invoke(Invoker invoker) {
         setStatus(CommandStatus.IN_PROCESS);
         try {
-            StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder
-                    .append(String.format("Elements amount: %d", invoker.getStorage().size()))
-                    .append('\n')
-                    .append(String.format("Last modified: %s", invoker.getFileSystem().getModificationDate()));
+            String stringBuilder = String.format("Elements amount: %d", invoker.getStorage().size()) +
+                    '\n';
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.ALL_OK, stringBuilder.toString());
+            return new Response(Prompt.ALL_OK, stringBuilder);
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

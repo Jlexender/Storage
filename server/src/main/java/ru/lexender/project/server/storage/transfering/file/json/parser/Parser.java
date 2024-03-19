@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer.json.parser;
+package ru.lexender.project.server.storage.transfering.file.json.parser;
 
 import lombok.Getter;
 import lombok.NonNull;

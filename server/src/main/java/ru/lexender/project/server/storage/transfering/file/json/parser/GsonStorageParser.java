@@ -1,12 +1,12 @@
-package ru.lexender.project.server.storage.file.transferer.json.parser;
+package ru.lexender.project.server.storage.transfering.file.json.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
-import ru.lexender.project.server.storage.file.transferer.io.reader.IRead;
-import ru.lexender.project.server.storage.file.transferer.io.reader.ReaderViaScanner;
-import ru.lexender.project.server.storage.file.transferer.json.adapter.LocalDateTimeAdapter;
-import ru.lexender.project.server.storage.object.StorageObject;
+import ru.lexender.project.server.storage.transfering.file.io.IRead;
+import ru.lexender.project.server.storage.transfering.file.io.Reader;
+import ru.lexender.project.server.storage.transfering.file.json.adapter.LocalDateTimeAdapter;
+import ru.lexender.project.server.storage.StorageObject;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Parses data from file to a list of StorageObject classes.
- * @see ru.lexender.project.server.storage.object.StorageObject
+ * @see StorageObject
  */
 
 public class GsonStorageParser extends Parser {
@@ -27,7 +27,7 @@ public class GsonStorageParser extends Parser {
 
     public List<StorageObject> parse() throws StorageTransformationException {
         try {
-            IRead reader = new ReaderViaScanner();
+            IRead reader = new Reader();
             Gson gson = new GsonBuilder()
                     .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())

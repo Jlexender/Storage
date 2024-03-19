@@ -1,8 +1,8 @@
-package ru.lexender.project.server.storage.file;
+package ru.lexender.project.server.storage.transfering.file;
 
 import lombok.Getter;
 import lombok.NonNull;
-import ru.lexender.project.server.storage.file.variable.EnvironmentVariable;
+import ru.lexender.project.server.storage.transfering.file.variable.EnvironmentVariable;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,11 +15,11 @@ import java.time.ZoneId;
  * Provides information about file and its last modification date.
  */
 @Getter
-public class FileSystem {
-    private final @NonNull File file;
-    private final @NonNull LocalDateTime modificationDate;
+public class FileBridge {
+    private final File file;
+    private final LocalDateTime modificationDate;
 
-    public FileSystem(File file) {
+    public FileBridge(@NonNull File file) {
         this.file = file;
 
         LocalDateTime creationTime;
@@ -32,7 +32,7 @@ public class FileSystem {
         modificationDate = creationTime;
     }
 
-    public FileSystem(EnvironmentVariable variable) {
+    public FileBridge(EnvironmentVariable variable) {
         this(variable.getFile());
     }
 }

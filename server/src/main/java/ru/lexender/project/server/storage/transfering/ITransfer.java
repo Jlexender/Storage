@@ -1,4 +1,4 @@
-package ru.lexender.project.server.storage.file.transferer;
+package ru.lexender.project.server.storage.transfering;
 
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 

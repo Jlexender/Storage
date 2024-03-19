@@ -1,32 +1,32 @@
-package ru.lexender.project.server.storage.file.transferer;
+package ru.lexender.project.server.storage.transfering.file;
 
 import ru.lexender.project.server.exception.storage.file.transferer.StorageIOException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
 import ru.lexender.project.server.storage.IStore;
-import ru.lexender.project.server.storage.file.FileSystem;
-import ru.lexender.project.server.storage.file.transferer.io.writer.IWrite;
-import ru.lexender.project.server.storage.file.transferer.io.writer.WriteViaPrintWriter;
-import ru.lexender.project.server.storage.file.transferer.json.parser.GsonStorageParser;
-import ru.lexender.project.server.storage.file.transferer.json.serializer.GsonStorageSerializer;
-import ru.lexender.project.server.storage.file.transferer.json.serializer.ISerialize;
-import ru.lexender.project.server.storage.object.StorageObject;
+import ru.lexender.project.server.storage.transfering.file.io.IWrite;
+import ru.lexender.project.server.storage.transfering.file.io.Writer;
+import ru.lexender.project.server.storage.transfering.file.json.parser.GsonStorageParser;
+import ru.lexender.project.server.storage.transfering.file.json.serializer.GsonStorageSerializer;
+import ru.lexender.project.server.storage.transfering.file.json.serializer.ISerialize;
+import ru.lexender.project.server.storage.StorageObject;
+import ru.lexender.project.server.storage.transfering.ITransfer;
 
 import java.util.List;
 
-public class DefaultTransferer implements ITransfer {
-    FileSystem fileSystem;
+public class FileTransferer implements ITransfer {
+    FileBridge fileBridge;
     IStore storage;
 
-    public DefaultTransferer(FileSystem fileSystem, IStore storage) {
-        this.fileSystem = fileSystem;
+    public FileTransferer(FileBridge fileBridge, IStore storage) {
+        this.fileBridge = fileBridge;
         this.storage = storage;
     }
 
     public void transferIn() throws StorageTransferException {
         storage.clear();
         try {
-            GsonStorageParser parser = new GsonStorageParser(fileSystem.getFile());
+            GsonStorageParser parser = new GsonStorageParser(fileBridge.getFile());
             List<StorageObject> data = parser.parse();
 
             for (StorageObject object: data) {
@@ -40,9 +40,9 @@ public class DefaultTransferer implements ITransfer {
 
     public void transferOut() throws StorageTransferException {
         try {
-            IWrite writer = new WriteViaPrintWriter();
+            IWrite writer = new Writer();
             ISerialize serializer = new GsonStorageSerializer(storage);
-            writer.write(serializer.serialize(), fileSystem.getFile());
+            writer.write(serializer.serialize(), fileBridge.getFile());
         } catch (StorageTransformationException exception) {
             throw new StorageTransferException(exception);
         } catch (StorageIOException exception) {

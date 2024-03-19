@@ -34,8 +34,8 @@ import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
 import ru.lexender.project.server.io.decoder.IDecode;
 import ru.lexender.project.server.storage.IStore;
-import ru.lexender.project.server.storage.file.transferer.DefaultTransferer;
-import ru.lexender.project.server.storage.file.transferer.ITransfer;
+import ru.lexender.project.server.storage.transfering.file.FileTransferer;
+import ru.lexender.project.server.storage.transfering.ITransfer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class Server {
         this.console = new AdminConsole(this);
 
         try {
-            ITransfer transferer = new DefaultTransferer(invoker.getFileSystem(), storage);
+            ITransfer transferer = invoker.getTransferer();
             transferer.transferIn();
             logger.info("Data transfer OK");
         } catch (StorageTransferException exception) {
