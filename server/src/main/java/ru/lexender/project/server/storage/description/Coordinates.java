@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Description class.
  */
@@ -18,5 +21,12 @@ public class Coordinates {
         if (y > 159) throw new IllegalAccessException("Y value must be less that 159");
         this.x = x;
         this.y = y;
+    }
+
+    public Coordinates(ResultSet resultSet) throws SQLException, IllegalAccessException {
+        this.x = Long.parseLong(resultSet.getString("coordinates_x"));
+        this.y = Long.parseLong(resultSet.getString("coordinates_y"));
+
+        if (y > 159) throw new IllegalAccessException("Y value must be less that 159");
     }
 }

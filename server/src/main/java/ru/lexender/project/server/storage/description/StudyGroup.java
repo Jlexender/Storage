@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Description class, collection target.
  */
@@ -41,7 +44,21 @@ public class StudyGroup implements Comparable<StudyGroup> {
         this.groupAdmin = groupAdmin;
     }
 
-    public int compareTo(StudyGroup group) {
+    public StudyGroup(ResultSet resultSet) throws SQLException, IllegalAccessException {
+        this.name = resultSet.getString("name");
+        this.coordinates = new Coordinates(resultSet);
+        this.studentsCount = Long.parseLong(resultSet.getString("studentsCount"));
+        this.averageMark = Long.parseLong(resultSet.getString("averageMark"));
+        this.formOfEducation = FormOfEducation.valueOf(resultSet.getString("formOfEducation"));
+        this.semesterEnum = Semester.valueOf(resultSet.getString("semesterEnum"));
+        this.groupAdmin = new Person(resultSet);
+
+        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+        if (studentsCount < 0) throw new IllegalAccessException("StudentsCount must be greater than 0");
+        if (averageMark < 0) throw new IllegalAccessException("AverageMark value must be greater than 0");
+    }
+
+    public int compareTo(@NonNull StudyGroup group) {
         if (this != group)
             return (this.averageMark > group.getAverageMark() ? -1 : 1);
         return 0;

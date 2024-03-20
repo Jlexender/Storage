@@ -4,13 +4,13 @@ import ru.lexender.project.server.exception.storage.file.transferer.StorageIOExc
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
 import ru.lexender.project.server.storage.IStore;
+import ru.lexender.project.server.storage.StorageObject;
+import ru.lexender.project.server.storage.transfering.ITransfer;
 import ru.lexender.project.server.storage.transfering.file.io.IWrite;
 import ru.lexender.project.server.storage.transfering.file.io.Writer;
 import ru.lexender.project.server.storage.transfering.file.json.parser.GsonStorageParser;
 import ru.lexender.project.server.storage.transfering.file.json.serializer.GsonStorageSerializer;
 import ru.lexender.project.server.storage.transfering.file.json.serializer.ISerialize;
-import ru.lexender.project.server.storage.StorageObject;
-import ru.lexender.project.server.storage.transfering.ITransfer;
 
 import java.util.List;
 

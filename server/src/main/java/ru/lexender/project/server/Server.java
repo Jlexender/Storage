@@ -34,7 +34,6 @@ import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
 import ru.lexender.project.server.io.decoder.IDecode;
 import ru.lexender.project.server.storage.IStore;
-import ru.lexender.project.server.storage.transfering.file.FileTransferer;
 import ru.lexender.project.server.storage.transfering.ITransfer;
 
 import java.util.LinkedList;

@@ -6,6 +6,7 @@ import ru.lexender.project.inbetween.validator.NameValidator;
 import ru.lexender.project.inbetween.validator.Validator;
 import ru.lexender.project.server.exception.io.handling.BuildFailedException;
 import ru.lexender.project.server.handler.builder.StorageObjectBuilder;
+import ru.lexender.project.server.storage.StorageObject;
 import ru.lexender.project.server.storage.description.Color;
 import ru.lexender.project.server.storage.description.Coordinates;
 import ru.lexender.project.server.storage.description.Country;
@@ -13,7 +14,6 @@ import ru.lexender.project.server.storage.description.FormOfEducation;
 import ru.lexender.project.server.storage.description.Person;
 import ru.lexender.project.server.storage.description.Semester;
 import ru.lexender.project.server.storage.description.StudyGroup;
-import ru.lexender.project.server.storage.StorageObject;
 
 import java.util.Arrays;
 import java.util.List;

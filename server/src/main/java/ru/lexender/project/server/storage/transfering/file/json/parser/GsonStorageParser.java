@@ -3,10 +3,10 @@ package ru.lexender.project.server.storage.transfering.file.json.parser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransformationException;
+import ru.lexender.project.server.storage.StorageObject;
 import ru.lexender.project.server.storage.transfering.file.io.IRead;
 import ru.lexender.project.server.storage.transfering.file.io.Reader;
 import ru.lexender.project.server.storage.transfering.file.json.adapter.LocalDateTimeAdapter;
-import ru.lexender.project.server.storage.StorageObject;
 
 import java.io.File;
 import java.time.LocalDateTime;

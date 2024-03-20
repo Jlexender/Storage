@@ -7,7 +7,6 @@ import ru.lexender.project.server.exception.storage.file.transferer.StorageTrans
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
-import ru.lexender.project.server.storage.transfering.file.FileTransferer;
 import ru.lexender.project.server.storage.transfering.ITransfer;
 
 /**

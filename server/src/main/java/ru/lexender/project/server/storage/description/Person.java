@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Description class.
  */
@@ -30,6 +33,17 @@ public class Person implements Comparable<Person> {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.nationality = nationality;
+    }
+
+    public Person(ResultSet resultSet) throws SQLException, IllegalAccessException {
+        this.name = resultSet.getString("admin_name");
+        this.weight = Integer.parseInt(resultSet.getString("admin_weight"));
+        this.eyeColor = Color.valueOf(resultSet.getString("admin_eyeColor"));
+        this.hairColor = Color.valueOf(resultSet.getString("admin_hairColor"));
+        this.nationality = Country.valueOf(resultSet.getString("admin_nationality"));
+
+        if (name.isBlank()) throw new IllegalAccessException("Name can't be empty string");
+        if (weight < 0) throw new IllegalAccessException("Weight must be positive");
     }
 
     public int compareTo(Person person) {

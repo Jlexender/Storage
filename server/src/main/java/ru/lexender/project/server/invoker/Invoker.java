@@ -8,7 +8,6 @@ import ru.lexender.project.server.handler.command.ArgumentedCommand;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.transfering.ITransfer;
-import ru.lexender.project.server.storage.transfering.file.FileBridge;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
