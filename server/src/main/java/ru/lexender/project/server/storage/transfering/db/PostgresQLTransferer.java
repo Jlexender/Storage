@@ -28,6 +28,7 @@ public class PostgresQLTransferer implements ITransfer {
     public void transferIn() throws StorageTransferException {
         try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
              Statement statement = connection.createStatement()) {
+            logger.debug("Driver tries to establish the connection");
             ResultSet resultSet = statement.executeQuery("SELECT * FROM DATA");
             while (resultSet.next()) {
                 try {
@@ -43,6 +44,7 @@ public class PostgresQLTransferer implements ITransfer {
     }
 
     public void transferOut() throws StorageTransferException {
+
         String SQLString = "INSERT INTO data(" +
                 "name, " +
                 "coordinates_x, " +
@@ -61,8 +63,13 @@ public class PostgresQLTransferer implements ITransfer {
                 "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
              PreparedStatement statement = connection.prepareStatement(SQLString)) {
-             for (StorageObject object: storage.getCollectionCopy()) {
-                 if (object.isExternal()) continue;
+            logger.debug("Driver tries to establish the connection");
+
+            for (StorageObject object: storage.getCollectionCopy()) {
+                 if (object.isExternal()) {
+                     logger.debug("Object {} is loaded from db, skipping", object);
+                     continue;
+                 }
 
                  statement.setString(1, object.getObject().getName());
                  statement.setLong(2, object.getObject().getCoordinates().getX());
@@ -83,9 +90,10 @@ public class PostgresQLTransferer implements ITransfer {
                  statement.addBatch();
              }
 
-             statement.executeBatch();
+            statement.executeBatch();
         } catch (SQLException exception) {
-            throw new StorageTransferException("Can't parse from database");
+            logger.error("Storing to DB FAILED");
+            throw new StorageTransferException("Can't store to the database");
         }
     }
 }

@@ -13,7 +13,7 @@ import ru.lexender.project.server.storage.transfering.ITransfer;
  */
 public class Save extends Command {
     public Save() {
-        super("save", "Writes current collection to chosen FileSystem");
+        super("save", "Writes current collection to chosen storage");
     }
     public Response invoke(Invoker invoker) {
         setStatus(CommandStatus.IN_PROCESS);
@@ -25,7 +25,7 @@ public class Save extends Command {
             return new Response(Prompt.ALL_OK, "Saved!");
         } catch (StorageTransferException exception) {
             setStatus(CommandStatus.FAIL);
-            return new Response(Prompt.STORAGE_FILE_UNAVAILABLE);
+            return new Response(Prompt.STORAGE_UNAVAILABLE);
         }
     }
 }

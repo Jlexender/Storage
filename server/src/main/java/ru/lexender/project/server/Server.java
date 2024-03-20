@@ -46,19 +46,19 @@ public class Server {
 
     private final IStore storage;
     private final Invoker invoker;
-    private final AdminConsole console;
+    private final ServerConsole console;
 
     public Server(IStore storage, Invoker invoker) {
         this.storage = storage;
         this.invoker = invoker;
-        this.console = new AdminConsole(this);
+        this.console = new ServerConsole(this);
 
         try {
             ITransfer transferer = invoker.getTransferer();
             transferer.transferIn();
             logger.info("Data transfer OK");
         } catch (StorageTransferException exception) {
-            logger.warn("Can't parse file storage");
+            logger.warn("Loading storage FAILED: all temporary results may be lost!");
         }
     }
 

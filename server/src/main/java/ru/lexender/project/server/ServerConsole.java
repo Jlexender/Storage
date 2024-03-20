@@ -29,10 +29,10 @@ import ru.lexender.project.server.io.decoder.DefaultDecoder;
 
 import java.util.Scanner;
 
-public class AdminConsole extends Thread {
+public class ServerConsole extends Thread {
     private final Server server;
 
-    public AdminConsole(Server server) {
+    public ServerConsole(Server server) {
         super.setName("serverside");
         this.server = server;
     }
