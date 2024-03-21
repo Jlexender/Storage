@@ -80,7 +80,7 @@ public class ClientBridge {
                     });
                     input = client.getReceiver().receive();
                 }
-                Request request = new Request(input);
+                Request request = new Request(input, client.getUserdata());
                 sendRequest(request, channel);
             }
         } catch (IOException exception) {

@@ -19,7 +19,7 @@ public class Clear extends Command {
             invoker.getStorage().clear();
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.ALL_OK);
+            return new Response(Prompt.TRANSACTION_OK);
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

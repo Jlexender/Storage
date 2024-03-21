@@ -36,7 +36,7 @@ public class PrintFieldAscendingSemesterEnum extends Command {
             }
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.ALL_OK, stringBuilder.toString());
+            return new Response(Prompt.TRANSACTION_OK, stringBuilder.toString());
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

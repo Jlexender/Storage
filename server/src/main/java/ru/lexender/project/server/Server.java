@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
+import ru.lexender.project.server.auth.RegisteredUsers;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
@@ -47,10 +48,12 @@ public class Server {
     private final IStore storage;
     private final Invoker invoker;
     private final ServerConsole console;
+    private final RegisteredUsers registeredUsers;
 
-    public Server(IStore storage, Invoker invoker) {
+    public Server(IStore storage, Invoker invoker, RegisteredUsers registeredUsers) {
         this.storage = storage;
         this.invoker = invoker;
+        this.registeredUsers = registeredUsers;
         this.console = new ServerConsole(this);
 
         try {
@@ -58,8 +61,12 @@ public class Server {
             transferer.transferIn();
             logger.info("Data transfer OK");
         } catch (StorageTransferException exception) {
-            logger.warn("Loading storage FAILED: all temporary results may be lost!");
+            logger.warn("Loading storage FAILED: all results will be lost after restart!");
         }
+
+        if (!registeredUsers.isConnectable())
+            logger.error("Server UserDB init FAILED: authentication won't work!");
+        else logger.info("Userdata connection OK");
     }
 
     public Response handle(Request request) {

@@ -51,7 +51,7 @@ public class RemoveGreater extends ConstructorCommand {
             }
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.ALL_OK);
+            return new Response(Prompt.TRANSACTION_OK);
         } catch (IllegalAccessException exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

@@ -2,6 +2,7 @@ package ru.lexender.project.server.storage.transfering.db;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.lexender.project.server.Server;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.StorageObject;
@@ -25,11 +26,42 @@ public class PostgresQLTransferer implements ITransfer {
         this.storage = storage;
     }
 
+    private void checkTable(Connection connection) throws SQLException {
+        if (!connection.getMetaData().getTables(null, null, "data", null).next()) {
+            logger.info("No 'data' table found: trying to create a table");
+
+            String tableQuery = """
+                        CREATE TABLE data(
+                            id bigserial,
+                            name varchar(200),
+                            coordinates_x bigint,
+                            coordinates_y bigint,
+                            creationDate varchar(30),
+                            studentsCount bigint,
+                            averageMark bigint,
+                            formOfEducation varchar(30),
+                            semesterEnum varchar(30),
+                            admin_name varchar(200),
+                            admin_weight integer,
+                            admin_eyeColor varchar(30),
+                            admin_hairColor varchar(30),
+                            admin_nationality varchar(30)
+                        );
+                        """;
+
+            connection.createStatement().executeUpdate(tableQuery);
+            logger.info("OK created table 'data'");
+        }
+    }
+
+
     public void transferIn() throws StorageTransferException {
         try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
              Statement statement = connection.createStatement()) {
             logger.debug("Driver tries to establish the connection");
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM DATA");
+
+            checkTable(connection);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM data");
             while (resultSet.next()) {
                 try {
                     storage.add(new StorageObject(resultSet));
@@ -44,27 +76,29 @@ public class PostgresQLTransferer implements ITransfer {
     }
 
     public void transferOut() throws StorageTransferException {
+        String SQLString = """
+                INSERT INTO data(
+                name,
+                coordinates_x,
+                coordinates_y,
+                creationdate,
+                studentscount,
+                averagemark,
+                formofeducation,
+                semesterenum,
+                admin_name,
+                admin_weight,
+                admin_eyecolor,
+                admin_haircolor,
+                admin_nationality
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
+            """;
 
-        String SQLString = "INSERT INTO data(" +
-                "name, " +
-                "coordinates_x, " +
-                "coordinates_y, " +
-                "creationdate, " +
-                "studentscount, " +
-                "averagemark, " +
-                "formofeducation, " +
-                "semesterenum, " +
-                "admin_name, " +
-                "admin_weight, " +
-                "admin_eyecolor, " +
-                "admin_haircolor, " +
-                "admin_nationality" +
-                ") VALUES " +
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
              PreparedStatement statement = connection.prepareStatement(SQLString)) {
             logger.debug("Driver tries to establish the connection");
 
+            checkTable(connection);
             for (StorageObject object: storage.getCollectionCopy()) {
                  if (object.isExternal()) {
                      logger.debug("Object {} is loaded from db, skipping", object);

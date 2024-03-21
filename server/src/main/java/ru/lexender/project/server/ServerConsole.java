@@ -3,6 +3,7 @@ package ru.lexender.project.server;
 import ru.lexender.project.inbetween.Input;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
+import ru.lexender.project.inbetween.Userdata;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.handler.DefaultHandler;
@@ -42,12 +43,21 @@ public class ServerConsole extends Thread {
 
         while (true) {
             rawInput = scanner.nextLine();
-            Request request = new Request(new Input(rawInput) {
-                @Override
-                public String get() {
-                    return getInputObject().toString();
-                }
-            });
+
+            Request request;
+            try {
+                Userdata localUserdata = Userdata.create("local", "local");
+                request = new Request(new Input(rawInput) {
+                    @Override
+                    public String get() {
+                        return getInputObject().toString();
+                    }
+                }, localUserdata);
+            } catch (IllegalAccessException exception) {
+                Server.logger.error("Local user initialization FAILED: invalid credentials?");
+                Server.logger.error(exception.getMessage());
+                break;
+            }
 
             Response response;
             DefaultDecoder decoder = new DefaultDecoder();
