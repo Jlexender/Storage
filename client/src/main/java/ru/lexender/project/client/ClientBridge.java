@@ -68,9 +68,11 @@ public class ClientBridge {
             while (true) {
                 Response response = getResponse(channel.socket());
                 getClient().getRespondent().respond(getClient().getTranscriber().transcribe(response));
-                if (response.getPrompt() == Prompt.DISCONNECTED) return;
 
+                if (response.getPrompt() == Prompt.DISCONNECTED ||
+                        response.getPrompt() == Prompt.AUTHENTICATION_FAILED) return;
                 Input input = client.getReceiver().receive();
+
                 while (!response.getValidator().test(input.get())) {
                     client.getRespondent().respond(new Output("Invalid argument") {
                         @Override

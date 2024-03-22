@@ -6,9 +6,12 @@ import org.slf4j.LoggerFactory;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
-import ru.lexender.project.server.auth.RegisteredUsers;
+import ru.lexender.project.inbetween.Userdata;
+import ru.lexender.project.server.auth.AuthWorker;
+import ru.lexender.project.server.auth.UserdataBridge;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
+import ru.lexender.project.server.exception.server.auth.UserdataNotConnectedException;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.handler.DefaultHandler;
 import ru.lexender.project.server.handler.builder.list.PersonBuilder;
@@ -45,15 +48,13 @@ import java.util.List;
 public class Server {
     public static final Logger logger = LoggerFactory.getLogger(Server.class);
 
-    private final IStore storage;
     private final Invoker invoker;
     private final ServerConsole console;
-    private final RegisteredUsers registeredUsers;
+    private final AuthWorker authWorker;
 
-    public Server(IStore storage, Invoker invoker, RegisteredUsers registeredUsers) {
-        this.storage = storage;
+    public Server(Invoker invoker, AuthWorker authWorker) {
         this.invoker = invoker;
-        this.registeredUsers = registeredUsers;
+        this.authWorker = authWorker;
         this.console = new ServerConsole(this);
 
         try {
@@ -64,12 +65,20 @@ public class Server {
             logger.warn("Loading storage FAILED: all results will be lost after restart!");
         }
 
-        if (!registeredUsers.isConnectable())
+        if (!authWorker.getUserdataBridge().isConnectable())
             logger.error("Server UserDB init FAILED: authentication won't work!");
         else logger.info("Userdata connection OK");
     }
 
+
     public Response handle(Request request) {
+        try {
+            if (!authWorker.isValid(request.getUserdata()))
+                return new Response(Prompt.AUTHENTICATION_FAILED, "Invalid password");
+        } catch (UserdataNotConnectedException exception) {
+            return new Response(Prompt.AUTHENTICATION_FAILED, "UserDB init FAILED");
+        }
+
         Command[] userCommands = {
                 new Help(),
                 new Info(),
@@ -119,6 +128,7 @@ public class Server {
         }
 
     }
+
 
 }
 

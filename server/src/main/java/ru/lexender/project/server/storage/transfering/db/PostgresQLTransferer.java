@@ -18,12 +18,14 @@ import java.time.format.DateTimeFormatter;
 
 public class PostgresQLTransferer implements ITransfer {
     public static final Logger logger = LoggerFactory.getLogger("Transferer");
-    private final String address;
+    private final String address, username, password;
     private final IStore storage;
 
-    public PostgresQLTransferer(String databaseName, String port, IStore storage) {
-        address = String.format("jdbc:postgresql://localhost:%s/%s", port, databaseName);
+    public PostgresQLTransferer(String databaseName, int port, IStore storage, String username, String password) {
+        address = String.format("jdbc:postgresql://localhost:%d/%s", port, databaseName);
         this.storage = storage;
+        this.username = username;
+        this.password = password;
     }
 
     private void checkTable(Connection connection) throws SQLException {
@@ -56,9 +58,9 @@ public class PostgresQLTransferer implements ITransfer {
 
 
     public void transferIn() throws StorageTransferException {
-        try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
+        try (Connection connection = DriverManager.getConnection(address, username, password);
              Statement statement = connection.createStatement()) {
-            logger.debug("Driver tries to establish the connection");
+            logger.debug("Driver tries to establish the connection {}", address);
 
             checkTable(connection);
             ResultSet resultSet = statement.executeQuery("SELECT * FROM data");
@@ -94,14 +96,15 @@ public class PostgresQLTransferer implements ITransfer {
                 ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
             """;
 
-        try (Connection connection = DriverManager.getConnection(address, "alex", "0000");
+        try (Connection connection = DriverManager.getConnection(address, username, password);
              PreparedStatement statement = connection.prepareStatement(SQLString)) {
             logger.debug("Driver tries to establish the connection");
 
             checkTable(connection);
+
             for (StorageObject object: storage.getCollectionCopy()) {
                  if (object.isExternal()) {
-                     logger.debug("Object {} is loaded from db, skipping", object);
+                     logger.debug("Object {} was loaded from storage, skipping", object);
                      continue;
                  }
 
@@ -123,6 +126,8 @@ public class PostgresQLTransferer implements ITransfer {
 
                  statement.addBatch();
              }
+
+            logger.debug("{}", storage.getCollectionCopy());
 
             statement.executeBatch();
         } catch (SQLException exception) {

@@ -32,7 +32,7 @@ public class Add extends ConstructorCommand {
 
                 StringBuilder responseString = new StringBuilder();
 
-                if (i != arguments.size()) responseString.append("Invalid argument").append('\n');
+                if (i != arguments.size()) responseString.append("Invalid argument\n").append('\n');
                 responseString.append(String.format("Add %s", getObjectBuilder().getFieldNames().get(i)));
                 if (getObjectBuilder().suggest(i).length != 0)
                     responseString.append('\n').append(String.format("List: %s",

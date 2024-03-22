@@ -22,11 +22,12 @@ import java.util.Iterator;
 
 /**
  * client-server
+ * NOTE: 1 request = 1 response!
  */
 
 @Getter
 public class ServerBridge {
-    private static final String putin = """
+    private static final String helloString = """
                             ⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
                             ⣿⣿⣿⣵⣿⣿⣿⠿⡟⣛⣧⣿⣯⣿⣝⡻⢿⣿⣿⣿⣿⣿⣿⣿
                             ⣿⣿⣿⣿⣿⠋⠁⣴⣶⣿⣿⣿⣿⣿⣿⣿⣦⣍⢿⣿⣿⣿⣿⣿
@@ -80,10 +81,11 @@ public class ServerBridge {
                         SocketChannel client = serverSocket.accept();
                         client.configureBlocking(false);
                         client.register(selector, SelectionKey.OP_READ);
-
-                        sendResponse(client, new Response(Prompt.CONNECTED, putin));
-
                         logger.info("New channel {} registered", client);
+
+
+                        sendResponse(client, new Response(Prompt.CONNECTED, helloString));
+
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
 

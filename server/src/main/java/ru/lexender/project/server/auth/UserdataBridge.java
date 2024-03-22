@@ -1,16 +1,21 @@
 package ru.lexender.project.server.auth;
 
+import lombok.Getter;
+import lombok.ToString;
 import ru.lexender.project.server.Server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class RegisteredUsers {
-    private final String address;
+@Getter
+public class UserdataBridge {
+    private final String address, username, password;
 
-    public RegisteredUsers(String databaseName, String port) {
-        address = String.format("jdbc:postgresql://localhost:%s/%s", port, databaseName);
+    public UserdataBridge(String databaseName, int port, String username, String password) {
+        address = String.format("jdbc:postgresql://localhost:%d/%s", port, databaseName);
+        this.username = username;
+        this.password = password;
     }
 
     public boolean isConnectable() {
@@ -21,8 +26,8 @@ public class RegisteredUsers {
                 String tableQuery = """
                         CREATE TABLE users(
                             uid serial PRIMARY KEY,
-                            username varchar(20) UNIQUE NOT NULL,
-                            hash char(256) NOT NULL,
+                            username varchar(40) UNIQUE NOT NULL,
+                            hash char(64) NOT NULL,
                             salt varchar(20) NOT NULL
                         );
                         """;
