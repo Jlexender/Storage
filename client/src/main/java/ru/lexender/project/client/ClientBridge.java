@@ -24,21 +24,21 @@ public record ClientBridge(Client client, String hostname, int port) {
     public void run() {
         try (SocketChannel channel = SocketChannel.open()) {
             channel.connect(new InetSocketAddress(hostname, port));
-            ResponseReader reader = new ResponseReader(channel);
 
-            reader.start();
+
+            Response response = getResponse(channel.socket());
+            client.respondent().respond(client.transcriber().transcribe(response));
+
             Validator validator = new Validator();
             while (true) {
                 Request request = client.getRequest(validator);
                 sendRequest(request, channel);
-                validator = reader.getLatestResponse().getValidator();
+                response = getResponse(channel.socket());
+                client.respondent().respond(client.transcriber().transcribe(response));
 
-                if (reader.getLatestResponse().getPrompt() == Prompt.DISCONNECTED ||
-                reader.getLatestResponse().getPrompt() == Prompt.AUTHENTICATION_FAILED) {
-                    reader.interrupt();
-                    return;
-                }
+                validator = response.getValidator();
             }
+
         } catch (IOException exception) {
             client.respondent().respond(new Output(exception.getMessage()) {
                 @Override
@@ -49,20 +49,6 @@ public record ClientBridge(Client client, String hostname, int port) {
         }
     }
 
-    private class ResponseReader extends Thread {
-        private final SocketChannel channel;
-        @Getter private Response latestResponse;
-
-        public ResponseReader(SocketChannel channel) {
-            this.channel = channel;
-        }
-        public void run() {
-            while (true) {
-                latestResponse = getResponse(channel.socket());
-                client.respondent().respond(client.transcriber().transcribe(latestResponse));
-            }
-        }
-    }
 
     public void sendRequest(Request request, SocketChannel channel) {
         try {
@@ -82,12 +68,12 @@ public record ClientBridge(Client client, String hostname, int port) {
         }
     }
 
-    public Response getResponse(Socket socket) {
+    public synchronized Response getResponse(Socket socket) {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             return (Response) objectInputStream.readObject();
         } catch (ClassNotFoundException | IOException exception) {
-            return null;
+            return new Response(Prompt.UNEXPECTED_ERROR);
         }
     }
 }
