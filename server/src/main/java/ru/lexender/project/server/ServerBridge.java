@@ -83,8 +83,8 @@ public class ServerBridge {
                         client.register(selector, SelectionKey.OP_READ);
                         logger.info("New channel {} registered", client);
 
-
                         sendResponse(client, new Response(Prompt.CONNECTED, helloString));
+                        sendResponse(client, new Response(Prompt.CONNECTED, "иди нахуй"));
 
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();

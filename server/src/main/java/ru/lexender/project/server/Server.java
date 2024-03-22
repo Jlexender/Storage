@@ -77,14 +77,12 @@ public class Server {
                 }
             }
 
-            try {
-                Command command = handler.handle(decoder.decode(request));
-                return invoker.invoke(command, decoder.getArguments(request), username);
-            } catch (InvalidCommandException exception) {
-                return new Response(Prompt.INVALID_COMMAND);
-            }
+            Command command = handler.handle(decoder.decode(request));
+            return invoker.invoke(command, decoder.getArguments(request), username);
         } catch (CommandExecutionException exception) {
             return new Response(exception.getResponse().getPrompt());
+        } catch (InvalidCommandException exception) {
+            return new Response(Prompt.INVALID_COMMAND);
         }
 
     }
