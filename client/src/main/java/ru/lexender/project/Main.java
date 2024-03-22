@@ -18,11 +18,16 @@ public class Main {
             Properties properties = new Properties();
             properties.load(new FileReader("client.cfg"));
 
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Username and password");
+
+            String username = scanner.next(), password = scanner.next();
+
             Client client = new Client(
                     new StringInputReceiver(),
                     new SoutRespondent(),
                     new DefaultTranscriber(),
-                    Userdata.create(properties.getProperty("USERNAME"), properties.getProperty("PASSWORD"))
+                    Userdata.create(username, password)
             );
 
             ClientBridge clientBridge = new ClientBridge(

@@ -92,7 +92,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
         }
     }
 
-    public StorageObject build(List<String> arguments)
+    public StorageObject build(List<String> arguments, String author)
             throws IllegalAccessException, BuildFailedException {
 
         try {
@@ -126,7 +126,7 @@ public class StudyGroupBuilder extends StorageObjectBuilder {
                             persoHairColor,
                             personNationality
                     )
-            ), false);
+            ), author, false);
         } catch (Exception exception) {
             throw new BuildFailedException(exception);
         }

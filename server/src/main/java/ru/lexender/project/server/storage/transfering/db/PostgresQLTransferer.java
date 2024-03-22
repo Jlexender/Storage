@@ -2,7 +2,6 @@ package ru.lexender.project.server.storage.transfering.db;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.lexender.project.server.Server;
 import ru.lexender.project.server.exception.storage.file.transferer.StorageTransferException;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.StorageObject;
@@ -35,6 +34,7 @@ public class PostgresQLTransferer implements ITransfer {
             String tableQuery = """
                         CREATE TABLE data(
                             id bigserial,
+                            author varchar(20),
                             name varchar(200),
                             coordinates_x bigint,
                             coordinates_y bigint,
@@ -81,6 +81,7 @@ public class PostgresQLTransferer implements ITransfer {
         String SQLString = """
                 INSERT INTO data(
                 name,
+                author,
                 coordinates_x,
                 coordinates_y,
                 creationdate,
@@ -93,7 +94,7 @@ public class PostgresQLTransferer implements ITransfer {
                 admin_eyecolor,
                 admin_haircolor,
                 admin_nationality
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
             """;
 
         try (Connection connection = DriverManager.getConnection(address, username, password);
@@ -109,25 +110,24 @@ public class PostgresQLTransferer implements ITransfer {
                  }
 
                  statement.setString(1, object.getObject().getName());
-                 statement.setLong(2, object.getObject().getCoordinates().getX());
-                 statement.setLong(3, object.getObject().getCoordinates().getY());
-                 statement.setString(4, object.getCreationDate().format(
+                 statement.setString(2, object.getAuthor());
+                 statement.setLong(3, object.getObject().getCoordinates().getX());
+                 statement.setLong(4, object.getObject().getCoordinates().getY());
+                 statement.setString(5, object.getCreationDate().format(
                          DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"))
                  );
-                 statement.setLong(5, object.getObject().getStudentsCount());
-                 statement.setLong(6, object.getObject().getAverageMark());
-                 statement.setString(7, object.getObject().getFormOfEducation().toString());
-                 statement.setString(8, object.getObject().getSemesterEnum().toString());
-                 statement.setString(9, object.getObject().getGroupAdmin().getName());
-                 statement.setInt(10, object.getObject().getGroupAdmin().getWeight());
-                 statement.setString(11, object.getObject().getGroupAdmin().getEyeColor().toString());
-                 statement.setString(12, object.getObject().getGroupAdmin().getHairColor().toString());
-                 statement.setString(13, object.getObject().getGroupAdmin().getNationality().toString());
+                 statement.setLong(6, object.getObject().getStudentsCount());
+                 statement.setLong(7, object.getObject().getAverageMark());
+                 statement.setString(8, object.getObject().getFormOfEducation().toString());
+                 statement.setString(9, object.getObject().getSemesterEnum().toString());
+                 statement.setString(10, object.getObject().getGroupAdmin().getName());
+                 statement.setInt(11, object.getObject().getGroupAdmin().getWeight());
+                 statement.setString(12, object.getObject().getGroupAdmin().getEyeColor().toString());
+                 statement.setString(13, object.getObject().getGroupAdmin().getHairColor().toString());
+                 statement.setString(14, object.getObject().getGroupAdmin().getNationality().toString());
 
                  statement.addBatch();
              }
-
-            logger.debug("{}", storage.getCollectionCopy());
 
             statement.executeBatch();
         } catch (SQLException exception) {

@@ -1,7 +1,6 @@
 package ru.lexender.project.server.auth;
 
 import lombok.Getter;
-import lombok.ToString;
 import ru.lexender.project.server.Server;
 
 import java.sql.Connection;

@@ -22,7 +22,7 @@ public class Save extends Command {
             transferer.transferOut();
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK, "Saved!");
+            return new Response(Prompt.ALL_OK, "Saved!");
         } catch (StorageTransferException exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.STORAGE_UNAVAILABLE);

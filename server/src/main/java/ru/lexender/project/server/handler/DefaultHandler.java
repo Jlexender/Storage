@@ -1,5 +1,6 @@
 package ru.lexender.project.server.handler;
 
+import ru.lexender.project.server.Server;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.handler.command.Command;
 
@@ -24,10 +25,13 @@ public class DefaultHandler implements IHandle {
         String word = args.get(0);
 
         for (Command command: validCommands) {
-            if (command.getAbbreviation().equals(word))
+            if (command.getAbbreviation().equals(word)) {
+                Server.logger.info("Command handled as {}", command);
                 return command;
+            }
         }
 
+        Server.logger.info("Command handled as invalid");
         throw new InvalidCommandException("Invalid command", word);
     }
 }

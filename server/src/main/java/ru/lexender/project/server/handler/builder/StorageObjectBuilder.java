@@ -19,5 +19,9 @@ public abstract class StorageObjectBuilder extends ObjectBuilder {
     }
 
     @Override
-    public abstract StorageObject build(List<String> arguments) throws IllegalAccessException, BuildFailedException;
+    public StorageObject build(List<String> args) {
+        return StorageObject.nullObject;
+    }
+
+    public abstract StorageObject build(List<String> arguments, String author) throws IllegalAccessException, BuildFailedException;
 }

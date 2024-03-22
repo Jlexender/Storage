@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
-import java.util.Random;
 
 @Getter @ToString
 public class Userdata implements Serializable {

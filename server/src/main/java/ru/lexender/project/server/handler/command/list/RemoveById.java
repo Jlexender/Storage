@@ -30,7 +30,7 @@ public class RemoveById extends ArgumentedCommand {
             invoker.getStorage().remove(object);
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK);
+            return new Response(Prompt.ALL_OK);
         } catch (NumberFormatException exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.INVALID_ARGUMENT);

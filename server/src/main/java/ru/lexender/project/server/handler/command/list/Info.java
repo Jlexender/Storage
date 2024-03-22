@@ -22,7 +22,7 @@ public class Info extends Command {
                     '\n';
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK, stringBuilder);
+            return new Response(Prompt.ALL_OK, stringBuilder);
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

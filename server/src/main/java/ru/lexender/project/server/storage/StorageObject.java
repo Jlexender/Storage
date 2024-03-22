@@ -19,14 +19,16 @@ public class StorageObject implements Comparable<StorageObject> {
     private static long ID = 0;
     @Expose private final long id;
     @Expose private final LocalDateTime creationDate;
+    @Expose private final String author;
     @ToString.Exclude private final boolean external;
 
     @Expose private StudyGroup object;
 
     public static final StorageObject nullObject = new StorageObject();
 
-    public StorageObject(StudyGroup object, boolean external) {
+    public StorageObject(StudyGroup object, String author, boolean external) {
         this.object = object;
+        this.author = author;
         this.external = external;
         if (external) {
             this.id = object.getId();
@@ -41,6 +43,7 @@ public class StorageObject implements Comparable<StorageObject> {
 
     public StorageObject(ResultSet resultSet) throws SQLException, IllegalAccessException {
         this.id = Long.parseLong(resultSet.getString("id"));
+        this.author = resultSet.getString("author");
         this.creationDate = LocalDateTime.parse(resultSet.getString("creationDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
         this.object = new StudyGroup(resultSet);
         this.external = true;
@@ -50,6 +53,7 @@ public class StorageObject implements Comparable<StorageObject> {
     private StorageObject() {
         this.id = ID++;
         this.creationDate = LocalDateTime.now();
+        this.author = null;
         this.external = false;
     }
 

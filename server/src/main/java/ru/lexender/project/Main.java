@@ -1,7 +1,5 @@
 package ru.lexender.project;
 
-import org.checkerframework.checker.units.qual.A;
-import ru.lexender.project.inbetween.Userdata;
 import ru.lexender.project.server.Server;
 import ru.lexender.project.server.ServerBridge;
 import ru.lexender.project.server.auth.AuthWorker;
@@ -13,7 +11,6 @@ import ru.lexender.project.server.storage.transfering.db.PostgresQLTransferer;
 
 import java.io.FileReader;
 import java.util.Properties;
-import java.util.Scanner;
 
 
 public class Main {

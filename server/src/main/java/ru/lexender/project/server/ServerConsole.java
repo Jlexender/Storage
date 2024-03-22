@@ -89,7 +89,7 @@ public class ServerConsole extends Thread {
             try {
                 Command command = handler.handle(decoder.decode(request));
                 Server.logger.info("Command handled as {}", command);
-                response = rootInvoker.invoke(command, decoder.getArguments(request));
+                response = rootInvoker.invoke(command, decoder.getArguments(request), "root");
                 Server.logger.debug(response.toString());
             } catch (InvalidCommandException exception) {
                 Server.logger.warn("Command identified as invalid");

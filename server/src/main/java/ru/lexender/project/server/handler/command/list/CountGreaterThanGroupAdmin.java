@@ -55,7 +55,7 @@ public class CountGreaterThanGroupAdmin extends ConstructorCommand {
                     .count();
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK, String.valueOf(counter));
+            return new Response(Prompt.ALL_OK, String.valueOf(counter));
         } catch (IllegalAccessException exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

@@ -26,7 +26,7 @@ public class Help extends Command {
             }
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK, helpString.toString());
+            return new Response(Prompt.ALL_OK, helpString.toString());
         } catch (Exception exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);

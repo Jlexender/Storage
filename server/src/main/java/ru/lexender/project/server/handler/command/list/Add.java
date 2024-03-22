@@ -44,11 +44,11 @@ public class Add extends ConstructorCommand {
             }
 
 
-            StorageObject object = (StorageObject) getObjectBuilder().build(arguments);
+            StorageObject object = ((StorageObjectBuilder) getObjectBuilder()).build(arguments, invoker.getCurrentUser());
             invoker.getStorage().add(object);
 
             setStatus(CommandStatus.SUCCESS);
-            return new Response(Prompt.TRANSACTION_OK);
+            return new Response(Prompt.ALL_OK);
         } catch (IllegalAccessException exception) {
             setStatus(CommandStatus.FAIL);
             return new Response(Prompt.UNEXPECTED_ERROR);
