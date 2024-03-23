@@ -18,9 +18,13 @@ import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.handler.command.list.Show;
 import ru.lexender.project.server.handler.command.list.UpdateId;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AccessLevel {
 
-    public static final Command[] ALL = {
+    public static final List<Command> ALL = new ArrayList<>(Arrays.asList(
             new Help(),
             new Info(),
             new Show(),
@@ -36,22 +40,22 @@ public class AccessLevel {
             new CountGreaterThanGroupAdmin(new PersonBuilder()),
             new PrintFieldAscendingSemesterEnum(),
             new Save()
-    };
+    ));
 
-    public static final Command[] GUEST = {
-            ALL[0],
-            ALL[1],
-            ALL[2],
-            ALL[3],
-            ALL[4],
-            ALL[5],
-            ALL[6],
-            ALL[7],
-            ALL[8],
-            ALL[9],
-            ALL[10],
-            ALL[11],
-            ALL[12],
-            ALL[13],
-    };
+    public static final List<Command> GUEST = new ArrayList<>(Arrays.asList(
+            ALL.get(0),
+            ALL.get(1),
+            ALL.get(2),
+            ALL.get(3),
+            ALL.get(4),
+            ALL.get(5),
+            ALL.get(6),
+            ALL.get(7),
+            ALL.get(8),
+            ALL.get(9),
+            ALL.get(10),
+            ALL.get(11),
+            ALL.get(12),
+            ALL.get(13)
+        ));
 }

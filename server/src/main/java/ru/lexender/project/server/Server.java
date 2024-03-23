@@ -30,13 +30,11 @@ public class Server {
     public static final Logger logger = LoggerFactory.getLogger(Server.class);
 
     private final Invoker invoker;
-    private final ServerConsole console;
     private final AuthWorker authWorker;
 
     public Server(Invoker invoker, AuthWorker authWorker) {
         this.invoker = invoker;
         this.authWorker = authWorker;
-        this.console = new ServerConsole(this);
 
         try {
             ITransfer transferer = invoker.getTransferer();

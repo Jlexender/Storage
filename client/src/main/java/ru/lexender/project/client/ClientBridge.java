@@ -1,11 +1,9 @@
 package ru.lexender.project.client;
 
-import lombok.Getter;
 import ru.lexender.project.client.io.Output;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
-import ru.lexender.project.inbetween.validator.Validator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,27 +23,15 @@ public record ClientBridge(Client client, String hostname, int port) {
         try (SocketChannel channel = SocketChannel.open()) {
             channel.connect(new InetSocketAddress(hostname, port));
 
-
-            Response response = getResponse(channel.socket());
-            client.respondent().respond(client.transcriber().transcribe(response));
-
-            Validator validator = new Validator();
             while (true) {
-                Request request = client.getRequest(validator);
-                sendRequest(request, channel);
-                response = getResponse(channel.socket());
+                Response response = getResponse(channel.socket());
                 client.respondent().respond(client.transcriber().transcribe(response));
 
-                validator = response.getValidator();
+                Request request = client.getRequest(response.getValidator());
+                sendRequest(request, channel);
             }
-
-        } catch (IOException exception) {
-            client.respondent().respond(new Output(exception.getMessage()) {
-                @Override
-                public String get() {
-                    return getOutputObject().toString();
-                }
-            });
+        } catch (Exception exception) {
+            client.respondent().respond(new Output(exception.getMessage()));
         }
     }
 
@@ -59,21 +45,16 @@ public record ClientBridge(Client client, String hostname, int port) {
             while (buffer.hasRemaining())
                 channel.write(buffer);
         } catch (IOException exception) {
-            client.respondent().respond(new Output("Unable to send request") {
-                @Override
-                public String get() {
-                    return getOutputObject().toString();
-                }
-            });
+            client.respondent().respond(new Output("Unable to send request"));
         }
     }
 
-    public synchronized Response getResponse(Socket socket) {
+    public Response getResponse(Socket socket) {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             return (Response) objectInputStream.readObject();
-        } catch (ClassNotFoundException | IOException exception) {
-            return new Response(Prompt.UNEXPECTED_ERROR);
+        } catch (IOException | ClassNotFoundException exception) {
+            return new Response(Prompt.DISCONNECTED);
         }
     }
 }

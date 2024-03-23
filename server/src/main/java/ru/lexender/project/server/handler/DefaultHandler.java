@@ -4,7 +4,6 @@ import ru.lexender.project.server.Server;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.handler.command.Command;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,9 +15,8 @@ public class DefaultHandler implements IHandle {
         validCommands = new HashSet<>();
     }
 
-    public void registerCommands(Command ... commands) {
-        validCommands.clear();
-        validCommands.addAll(Arrays.asList(commands));
+    public void registerCommands(List<Command> commands) {
+        validCommands.addAll(commands);
     }
 
     public Command handle(List<String> args) throws InvalidCommandException {

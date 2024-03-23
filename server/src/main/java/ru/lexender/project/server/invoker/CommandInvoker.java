@@ -11,6 +11,6 @@ public interface CommandInvoker {
     public Response invoke(Command command, List<String> args, String username) throws CommandExecutionException;
     public Stack<Command> getHistory(String username);
     public Command peekPreviousCommand(String username);
-    public void registerCommands(Command... commands);
+    public void registerCommands(List<Command> commands);
 
 }

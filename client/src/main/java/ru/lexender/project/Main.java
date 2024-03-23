@@ -15,13 +15,23 @@ public class Main {
     public static void main(String[] args) {
 
         try {
+            boolean fromFile = true;
+
             Properties properties = new Properties();
             properties.load(new FileReader("client.cfg"));
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Username and password");
+            String username, password;
 
-            String username = scanner.next(), password = scanner.next();
+            if (fromFile) {
+                username = properties.getProperty("USERNAME");
+                password = properties.getProperty("PASSWORD");
+            }
+            else {
+                System.out.println("Username and password");
+                username = scanner.next();
+                password = scanner.next();
+            }
 
             Client client = new Client(
                     new StringInputReceiver(),

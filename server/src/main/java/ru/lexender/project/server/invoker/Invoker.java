@@ -10,7 +10,6 @@ import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.transfering.ITransfer;
 
-import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.List;
@@ -64,9 +63,8 @@ public class Invoker implements CommandInvoker {
         return command.invoke(this);
     }
 
-    public void registerCommands(Command ... commands) {
-        allowedCommands.clear();
-        allowedCommands.addAll(Arrays.asList(commands));
+    public void registerCommands(List<Command> commands) {
+        allowedCommands.addAll(commands);
     }
 
     public Command peekPreviousCommand(String username) throws EmptyStackException {

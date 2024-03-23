@@ -18,7 +18,11 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.ArrayDeque;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * client-server
@@ -44,10 +48,12 @@ public class ServerBridge {
                             ⠄⠄⠄⠄⠄⠄⠸⣿⣿⠟⠃⠄⠄⢈⣻⣿⣿⠄⠄⠄⠄⠄⠄⠄
                             ⠄⠄⠄⠄⠄⠄⠄⢿⣿⣾⣷⡄⠄⢾⣿⣿⣿⡄⠄⠄⠄⠄⠄⠄
                             ⠄⠄⠄⠄⠄⠄⠄⠸⣿⣿⣿⠃⠄⠈⢿⣿⣿⠄⠄⠄⠄⠄⠄⠄
-                            *** best handshake ever ***
                             """;
 
     public static final Logger logger = LoggerFactory.getLogger(ServerBridge.class);
+    private final Map<String, Queue<Response>> responseQueue;
+    private final Map<String, Response> lastResponses;
+    private final ServerConsole console;
 
     private final Server server;
     private final int port;
@@ -55,10 +61,13 @@ public class ServerBridge {
     public ServerBridge(Server server, int port) {
         this.server = server;
         this.port = port;
+        this.responseQueue = new HashMap<>();
+        this.lastResponses = new HashMap<>();
+        this.console = new ServerConsole(this);
     }
 
     public void run() {
-        server.getConsole().start();
+        console.start();
 
         try (ServerSocketChannel serverSocket = ServerSocketChannel.open()) {
             serverSocket.bind(new InetSocketAddress(port));
@@ -84,20 +93,26 @@ public class ServerBridge {
                         logger.info("New channel {} registered", client);
 
                         sendResponse(client, new Response(Prompt.CONNECTED, helloString));
-                        sendResponse(client, new Response(Prompt.CONNECTED, "second message"));
-
+                        logger.info("Sent handshake response to {}", client);
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
-
                         Request request = getRequest(client);
-                        if (request != null) {
-                            logger.info("Got request {}", request);
+                        logger.info("Got request {}", request);
 
-                            Response response = server.handle(request, request.getUserdata().getUsername());
-                            logger.info("Transformed {} into {}", request, response);
-
+                        String username = request.getUserdata().getUsername();
+                        if (responseQueue.get(username) == null || responseQueue.get(username).isEmpty()) {
+                            logger.info("Response queue is empty for {}, handling request",
+                                    request.getUserdata().getUsername());
+                            Response response = server.handle(request, username);
                             sendResponse(client, response);
-                            logger.info("{} sent to {}", response, client);
+                            lastResponses.put(username, response);
+                            logger.info("Sent {} to {}", response, client);
+                        } else {
+                            logger.info("Response queue is NOT empty, skipping handling");
+                            Response response = responseQueue.get(username).remove();
+                            sendResponse(client, response);
+                            lastResponses.put(username, response);
+                            logger.info("Sent {} to {} by username {}", response, client, username);
                         }
                     }
                 }
@@ -130,4 +145,10 @@ public class ServerBridge {
             channel.write(buffer);
     }
 
+    public void queryResponse(String username, Response response) {
+        if (responseQueue.get(username) == null)
+            responseQueue.put(username, new ArrayDeque<>());
+        responseQueue.get(username).add(response);
+        logger.debug("Queried response {} for username {}", response, username);
+    }
 }
