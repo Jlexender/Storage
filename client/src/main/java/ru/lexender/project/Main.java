@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            boolean fromFile = true;
+            boolean fromFile = false;
 
             Properties properties = new Properties();
             properties.load(new FileReader("client.cfg"));

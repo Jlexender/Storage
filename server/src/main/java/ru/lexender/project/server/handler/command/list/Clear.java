@@ -5,6 +5,11 @@ import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
+import ru.lexender.project.server.storage.StorageObject;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Clears the collection.
@@ -16,7 +21,10 @@ public class Clear extends Command {
     public Response invoke(Invoker invoker) {
         setStatus(CommandStatus.IN_PROCESS);
         try {
-            invoker.getStorage().clear();
+            invoker.getStorage().removeAll(invoker.getStorage().getCollectionCopy()
+                    .stream()
+                    .filter(o -> o.getAuthor().equals(invoker.getCurrentUser()))
+                    .toList());
 
             setStatus(CommandStatus.SUCCESS);
             return new Response(Prompt.ALL_OK);

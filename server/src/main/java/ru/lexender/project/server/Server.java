@@ -75,7 +75,7 @@ public class Server {
                 }
             }
 
-            Command command = handler.handle(decoder.decode(request));
+            Command command = handler.handle(decoder.decode(request).get(0));
             return invoker.invoke(command, decoder.getArguments(request), username);
         } catch (CommandExecutionException exception) {
             return new Response(exception.getResponse().getPrompt());

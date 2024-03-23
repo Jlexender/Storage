@@ -22,6 +22,7 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Queue;
 
 /**
@@ -96,7 +97,10 @@ public class ServerBridge {
                         logger.info("Sent handshake response to {}", client);
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
-                        Request request = getRequest(client);
+                        Optional<Request> requestNullable = Optional.ofNullable(getRequest(client));
+                        if (requestNullable.isEmpty()) continue;
+
+                        Request request = requestNullable.get();
                         logger.info("Got request {}", request);
 
                         String username = request.getUserdata().getUsername();

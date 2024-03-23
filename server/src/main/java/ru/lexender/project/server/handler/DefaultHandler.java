@@ -19,8 +19,7 @@ public class DefaultHandler implements IHandle {
         validCommands.addAll(commands);
     }
 
-    public Command handle(List<String> args) throws InvalidCommandException {
-        String word = args.get(0);
+    public Command handle(String word) throws InvalidCommandException {
 
         for (Command command: validCommands) {
             if (command.getAbbreviation().equals(word)) {

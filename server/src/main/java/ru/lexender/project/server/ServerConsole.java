@@ -11,6 +11,7 @@ import ru.lexender.project.server.handler.DefaultHandler;
 import ru.lexender.project.server.handler.command.AccessLevel;
 import ru.lexender.project.server.handler.command.ArgumentedCommand;
 import ru.lexender.project.server.handler.command.Command;
+import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.io.decoder.DefaultDecoder;
 
@@ -48,43 +49,19 @@ public class ServerConsole extends Thread {
                 break;
             }
 
-            Command send = new ArgumentedCommand("send", "Sends a message to specified username", 0) {
-                @Override
-                public Response invoke(Invoker invoker, List<String> args) {
-                    try {
-                        String username = args.get(args.size() - 1);
-                        List<String> argsToJoin = new ArrayList<>(args.subList(0, args.size() - 1));
-                        String message = String.join(" ", argsToJoin);
-                        serverBridge.queryResponse(username,
-                                new Response(
-                                        Prompt.INFORMATION,
-                                        message,
-                                        serverBridge.getLastResponses().get(username).getValidator()
-                                )
-                        );
-                        return new Response(Prompt.ALL_OK);
-                    } catch (Exception exception) {
-                        return new Response(Prompt.UNEXPECTED_ERROR);
-                    }
-                }
-            };
-
-            Response response;
             DefaultDecoder decoder = new DefaultDecoder();
             DefaultHandler handler = new DefaultHandler();
             Invoker userInvoker = serverBridge.getServer().getInvoker();
             Invoker rootInvoker = new Invoker(userInvoker.getStorage(), userInvoker.getTransferer());
 
-            List<Command> rootCommands = AccessLevel.ALL;
-            rootCommands.add(send);
+            List<Command> rootCommands = getCommands(handler);
 
             handler.registerCommands(rootCommands);
             rootInvoker.registerCommands(rootCommands);
 
             try {
-                Command command = handler.handle(decoder.decode(request));
-                Server.logger.info("Command handled as {}", command);
-                response = rootInvoker.invoke(command, decoder.getArguments(request), "root");
+                Command command = handler.handle(decoder.decode(request).get(0));
+                Response response = rootInvoker.invoke(command, decoder.getArguments(request), "root");
                 Server.logger.debug(response.toString());
             } catch (InvalidCommandException exception) {
                 Server.logger.warn("Command identified as invalid");
@@ -92,6 +69,56 @@ public class ServerConsole extends Thread {
                 Server.logger.warn("{}", exception.getMessage());
             }
         }
+    }
+
+    private List<Command> getCommands(DefaultHandler handler) {
+        Command send = new ArgumentedCommand("send", "Sends a message to specified username", 2) {
+            @Override
+            public Response invoke(Invoker invoker, List<String> args) {
+                try {
+                    setStatus(CommandStatus.IN_PROCESS);
+                    String username = args.get(args.size() - 1);
+                    List<String> argsToJoin = new ArrayList<>(args.subList(0, args.size() - 1));
+                    String message = String.join(" ", argsToJoin);
+                    serverBridge.queryResponse(username,
+                            new Response(
+                                    Prompt.NOTIFICATION,
+                                    message,
+                                    serverBridge.getLastResponses().get(username).getValidator()
+                            )
+                    );
+
+                    setStatus(CommandStatus.SUCCESS);
+                    return new Response(Prompt.ALL_OK);
+                } catch (Exception exception) {
+                    setStatus(CommandStatus.FAIL);
+                    return new Response(Prompt.UNEXPECTED_ERROR, exception.getMessage());
+                }
+            }
+        };
+
+        Command invoke = new ArgumentedCommand("invoke", "Invokes a command by username", 0) {
+            @Override
+            public Response invoke(Invoker invoker, List<String> arguments) {
+                try {
+                    setStatus(CommandStatus.IN_PROCESS);
+                    String username = arguments.get(0);
+                    List<String> args = new ArrayList<>(arguments.subList(2, arguments.size()));
+                    Command command = handler.handle(arguments.get(1));
+                    invoker.invoke(command, args, username);
+                    setStatus(CommandStatus.SUCCESS);
+                    return new Response(Prompt.ALL_OK);
+                } catch (Exception exception) {
+                    setStatus(CommandStatus.FAIL);
+                    return new Response(Prompt.UNEXPECTED_ERROR, exception.getMessage());
+                }
+            }
+        };
+
+        List<Command> rootCommands = AccessLevel.ALL;
+        rootCommands.add(send);
+        rootCommands.add(invoke);
+        return rootCommands;
     }
 
 }

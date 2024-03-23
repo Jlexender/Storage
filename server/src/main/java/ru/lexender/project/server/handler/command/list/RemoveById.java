@@ -27,6 +27,12 @@ public class RemoveById extends ArgumentedCommand {
 
             long id = Long.parseLong(arguments.get(0));
             StorageObject object = invoker.getStorage().getById(id);
+
+            if (!object.getAuthor().equals(invoker.getCurrentUser())) {
+                setStatus(CommandStatus.FAIL);
+                return new Response(Prompt.ACCESS_DENIED);
+            }
+
             invoker.getStorage().remove(object);
 
             setStatus(CommandStatus.SUCCESS);

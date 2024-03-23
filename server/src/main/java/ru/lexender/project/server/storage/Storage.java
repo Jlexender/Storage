@@ -2,6 +2,8 @@ package ru.lexender.project.server.storage;
 
 import lombok.NonNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -12,10 +14,10 @@ import java.util.TreeSet;
  * @see ru.lexender.project.server.storage.IStore
  */
 public class Storage implements IStore {
-    private final TreeSet<StorageObject> collection;
+    private final ArrayList<StorageObject> collection;
 
     public Storage() {
-        collection = new TreeSet<>();
+        collection = new ArrayList<>();
     }
 
     public void add(@NonNull StorageObject element) throws ClassCastException {
@@ -27,9 +29,8 @@ public class Storage implements IStore {
     }
 
     public StorageObject getById(long id) throws NoSuchElementException {
-        for (StorageObject object: collection) {
-            if (object.getId() == id) return object;
-        }
+        if (collection.stream().anyMatch(o -> o.getId() == id))
+            return collection.stream().filter(o -> o.getId() == id).toList().get(0);
         throw new NoSuchElementException("No such element");
     }
 
@@ -38,11 +39,11 @@ public class Storage implements IStore {
     }
 
     public boolean remove(StorageObject object) {
-        if (collection.contains(object)) {
-            collection.remove(object);
-            return true;
-        }
-        return false;
+        return collection.remove(object);
+    }
+
+    public boolean removeAll(Collection<StorageObject> collection) {
+        return this.collection.removeAll(collection);
     }
 
     public StorageObject getMin() throws NoSuchElementException {

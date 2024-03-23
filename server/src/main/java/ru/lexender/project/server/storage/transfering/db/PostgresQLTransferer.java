@@ -102,20 +102,14 @@ public class PostgresQLTransferer implements ITransfer {
             logger.debug("Driver tries to establish the connection");
 
             checkTable(connection);
+            connection.createStatement().executeUpdate("TRUNCATE TABLE data");
 
             for (StorageObject object: storage.getCollectionCopy()) {
-                 if (object.isExternal()) {
-                     logger.debug("Object {} was loaded from storage, skipping", object);
-                     continue;
-                 }
-
                  statement.setString(1, object.getObject().getName());
                  statement.setString(2, object.getAuthor());
                  statement.setLong(3, object.getObject().getCoordinates().getX());
                  statement.setLong(4, object.getObject().getCoordinates().getY());
-                 statement.setString(5, object.getCreationDate().format(
-                         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"))
-                 );
+                 statement.setString(5, object.getCreationDate().format(DateTimeFormatter.ofPattern("yy-MM-dd hh:mm:ss")));
                  statement.setLong(6, object.getObject().getStudentsCount());
                  statement.setLong(7, object.getObject().getAverageMark());
                  statement.setString(8, object.getObject().getFormOfEducation().toString());

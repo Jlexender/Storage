@@ -27,6 +27,10 @@ public record ClientBridge(Client client, String hostname, int port) {
                 Response response = getResponse(channel.socket());
                 client.respondent().respond(client.transcriber().transcribe(response));
 
+                if (response.getPrompt() == Prompt.DISCONNECTED ||
+                        response.getPrompt() == Prompt.AUTHENTICATION_FAILED)
+                    break;
+
                 Request request = client.getRequest(response.getValidator());
                 sendRequest(request, channel);
             }

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface IHandle {
     public void registerCommands(List<Command> commands);
-    public Command handle(List<String> args) throws InvalidCommandException, InvalidArgumentsException;
+    public Command handle(String word) throws InvalidCommandException, InvalidArgumentsException;
 }

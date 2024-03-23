@@ -47,7 +47,8 @@ public class RemoveGreater extends ConstructorCommand {
             Collection<StorageObject> storage = invoker.getStorage().getCollectionCopy();
 
             for (StorageObject object: storage) {
-                if (object.compareTo(createdObject) < 0) invoker.getStorage().remove(object);
+                if (object.compareTo(createdObject) < 0 && object.getAuthor().equals(invoker.getCurrentUser()))
+                    invoker.getStorage().remove(object);
             }
 
             setStatus(CommandStatus.SUCCESS);

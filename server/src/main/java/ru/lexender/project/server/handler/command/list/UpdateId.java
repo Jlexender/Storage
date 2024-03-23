@@ -28,6 +28,10 @@ public class UpdateId extends ConstructorCommand {
         try {
             if (getStatus() != CommandStatus.WAITING_FOR_ARGUMENT) {
                 this.id = Long.parseLong(arguments.get(0));
+                if (!invoker.getStorage().getById(id).getAuthor().equals(invoker.getCurrentUser())) {
+                    setStatus(CommandStatus.FAIL);
+                    return new Response(Prompt.ACCESS_DENIED);
+                }
                 arguments = arguments.subList(1, arguments.size());
             }
             setStatus(CommandStatus.IN_PROCESS);
