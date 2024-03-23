@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/server/src/main/java/ru/lexender/project/server/storage/transfering/db/PostgresQLTransferer.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/server/src/main/java/ru/lexender/project/server/storage/transfering/db/PostgreSQLTransferer.java" dialect="GenericSQL" />
   </component>
 </project>

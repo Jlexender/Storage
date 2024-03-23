@@ -44,7 +44,7 @@ public class StorageObject implements Comparable<StorageObject> {
     public StorageObject(ResultSet resultSet) throws SQLException, IllegalAccessException {
         this.id = Long.parseLong(resultSet.getString("id"));
         this.author = resultSet.getString("author");
-        this.creationDate = LocalDateTime.parse(resultSet.getString("creationDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
+        this.creationDate = LocalDateTime.parse(resultSet.getString("creationDate"), DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss"));
         this.object = new StudyGroup(resultSet);
         this.external = true;
         ID = Math.max(ID, id) + 1;

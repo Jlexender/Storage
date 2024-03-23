@@ -53,7 +53,7 @@ public class Server {
     public Response handle(Request request, String username) {
         try {
             if (!authWorker.isValid(request.getUserdata()))
-                return new Response(Prompt.AUTHENTICATION_FAILED, "Invalid password");
+                return new Response(Prompt.AUTHENTICATION_FAILED, "The password that you've entered is invalid.");
         } catch (UserdataNotConnectedException exception) {
             return new Response(Prompt.AUTHENTICATION_FAILED, "UserDB init FAILED");
         }

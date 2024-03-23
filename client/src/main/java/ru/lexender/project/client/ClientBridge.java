@@ -1,6 +1,7 @@
 package ru.lexender.project.client;
 
 import ru.lexender.project.client.io.Output;
+import ru.lexender.project.client.io.StringInput;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
@@ -22,18 +23,27 @@ public record ClientBridge(Client client, String hostname, int port) {
     public void run() {
         try (SocketChannel channel = SocketChannel.open()) {
             channel.connect(new InetSocketAddress(hostname, port));
+            sendRequest(new Request(new StringInput(""), client.userdata()), channel);
 
-            while (true) {
-                Response response = getResponse(channel.socket());
-                client.respondent().respond(client.transcriber().transcribe(response));
+            Response helloResponse = getResponse(channel.socket());
+            client.respondent().respond(client.transcriber().transcribe(helloResponse));
 
-                if (response.getPrompt() == Prompt.DISCONNECTED ||
-                        response.getPrompt() == Prompt.AUTHENTICATION_FAILED)
-                    break;
+            Response identification = getResponse(channel.socket());
+            if (identification.getPrompt() == Prompt.DISCONNECTED ||
+                    identification.getPrompt() == Prompt.AUTHENTICATION_FAILED) {
+                client.respondent().respond(client.transcriber().transcribe(identification));
+                return;
+            }
 
+            Response response = new Response(Prompt.ALL_OK);
+            do {
                 Request request = client.getRequest(response.getValidator());
                 sendRequest(request, channel);
-            }
+
+                response = getResponse(channel.socket());
+                client.respondent().respond(client.transcriber().transcribe(response));
+            } while (response.getPrompt() != Prompt.DISCONNECTED &&
+                    response.getPrompt() != Prompt.AUTHENTICATION_FAILED);
         } catch (Exception exception) {
             client.respondent().respond(new Output(exception.getMessage()));
         }
