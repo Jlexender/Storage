@@ -15,12 +15,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 
-public class PostgresQLTransferer implements ITransfer {
+public class PostgreSQLTransferer implements ITransfer {
     public static final Logger logger = LoggerFactory.getLogger("Transferer");
     private final String address, username, password;
     private final IStore storage;
 
-    public PostgresQLTransferer(String databaseName, int port, IStore storage, String username, String password) {
+    public PostgreSQLTransferer(String databaseName, int port, IStore storage, String username, String password) {
         address = String.format("jdbc:postgresql://localhost:%d/%s", port, databaseName);
         this.storage = storage;
         this.username = username;

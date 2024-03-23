@@ -7,7 +7,7 @@ import ru.lexender.project.server.auth.UserdataBridge;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.Storage;
-import ru.lexender.project.server.storage.transfering.db.PostgresQLTransferer;
+import ru.lexender.project.server.storage.transfering.db.PostgreSQLTransferer;
 
 import java.io.FileReader;
 import java.util.Properties;
@@ -22,7 +22,7 @@ public class Main {
             IStore s = new Storage();
             Invoker invoker = new Invoker(
                     s,
-                    new PostgresQLTransferer(
+                    new PostgreSQLTransferer(
                             properties.getProperty("DB_NAME"),
                             Integer.parseInt(properties.getProperty("DB_PORT")),
                             s,
