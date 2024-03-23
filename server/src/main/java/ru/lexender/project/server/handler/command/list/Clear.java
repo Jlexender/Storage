@@ -5,11 +5,6 @@ import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.handler.command.Command;
 import ru.lexender.project.server.handler.command.CommandStatus;
 import ru.lexender.project.server.invoker.Invoker;
-import ru.lexender.project.server.storage.StorageObject;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Clears the collection.

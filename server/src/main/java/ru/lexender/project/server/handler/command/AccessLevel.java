@@ -1,7 +1,5 @@
 package ru.lexender.project.server.handler.command;
 
-import ru.lexender.project.inbetween.Prompt;
-import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.server.handler.builder.list.PersonBuilder;
 import ru.lexender.project.server.handler.builder.list.StudyGroupBuilder;
 import ru.lexender.project.server.handler.command.list.Add;
@@ -19,7 +17,6 @@ import ru.lexender.project.server.handler.command.list.RemoveGreater;
 import ru.lexender.project.server.handler.command.list.Save;
 import ru.lexender.project.server.handler.command.list.Show;
 import ru.lexender.project.server.handler.command.list.UpdateId;
-import ru.lexender.project.server.invoker.Invoker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
