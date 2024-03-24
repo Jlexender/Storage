@@ -20,8 +20,8 @@ public class PostgreSQLTransferer implements ITransfer {
     private final String address, username, password;
     private final IStore storage;
 
-    public PostgreSQLTransferer(String databaseName, int port, IStore storage, String username, String password) {
-        address = String.format("jdbc:postgresql://localhost:%d/%s", port, databaseName);
+    public PostgreSQLTransferer(String databaseHost, String databaseName, int port, IStore storage, String username, String password) {
+        address = String.format("jdbc:postgresql://%s:%d/%s", databaseHost, port, databaseName);
         this.storage = storage;
         this.username = username;
         this.password = password;

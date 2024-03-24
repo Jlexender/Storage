@@ -23,6 +23,7 @@ public class Main {
             Invoker invoker = new Invoker(
                     s,
                     new PostgreSQLTransferer(
+                            properties.getProperty("DB_HOST"),
                             properties.getProperty("DB_NAME"),
                             Integer.parseInt(properties.getProperty("DB_PORT")),
                             s,
