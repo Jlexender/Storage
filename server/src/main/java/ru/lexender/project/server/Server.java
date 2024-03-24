@@ -49,7 +49,6 @@ public class Server {
         else logger.info("Userdata connection OK");
     }
 
-
     public Response handle(Request request, String username) {
         try {
             if (!authWorker.isValid(request.getUserdata()))

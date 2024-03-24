@@ -1,9 +1,9 @@
 package ru.lexender.project;
 
 import ru.lexender.project.server.Server;
-import ru.lexender.project.server.ServerBridge;
 import ru.lexender.project.server.auth.AuthWorker;
 import ru.lexender.project.server.auth.UserdataBridge;
+import ru.lexender.project.server.connection.ServerBridge;
 import ru.lexender.project.server.invoker.Invoker;
 import ru.lexender.project.server.storage.IStore;
 import ru.lexender.project.server.storage.Storage;

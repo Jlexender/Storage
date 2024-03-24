@@ -4,7 +4,9 @@ import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.TreeSet;
@@ -14,10 +16,10 @@ import java.util.TreeSet;
  * @see ru.lexender.project.server.storage.IStore
  */
 public class Storage implements IStore {
-    private final ArrayList<StorageObject> collection;
+    private final List<StorageObject> collection;
 
     public Storage() {
-        collection = new ArrayList<>();
+        collection = Collections.synchronizedList(new ArrayList<>());
     }
 
     public void add(@NonNull StorageObject element) throws ClassCastException {
@@ -53,8 +55,7 @@ public class Storage implements IStore {
     }
 
     public TreeSet<StorageObject> getCollectionCopy() {
-        TreeSet<StorageObject> dataCopy = new TreeSet<>();
-        dataCopy.addAll(collection);
+        TreeSet<StorageObject> dataCopy = new TreeSet<>(collection);
         return dataCopy;
     }
 }

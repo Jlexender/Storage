@@ -5,6 +5,7 @@ import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
 import ru.lexender.project.inbetween.Userdata;
+import ru.lexender.project.server.connection.ServerBridge;
 import ru.lexender.project.server.exception.command.CommandExecutionException;
 import ru.lexender.project.server.exception.io.handling.InvalidCommandException;
 import ru.lexender.project.server.handler.DefaultHandler;
@@ -19,12 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ServerConsole extends Thread {
+public class ServerConsole implements Runnable {
     private final ServerBridge serverBridge;
 
     public ServerConsole(ServerBridge serverBridge) {
-        super.setName("serverside");
-        this.serverBridge = serverBridge;
+       this.serverBridge = serverBridge;
     }
 
     public void run() {
@@ -80,11 +80,13 @@ public class ServerConsole extends Thread {
                     String username = args.get(args.size() - 1);
                     List<String> argsToJoin = new ArrayList<>(args.subList(0, args.size() - 1));
                     String message = String.join(" ", argsToJoin);
-                    serverBridge.queryResponse(username,
+                    serverBridge.getResponseProcessor().queryResponse(username,
                             new Response(
                                     Prompt.NOTIFICATION,
                                     message,
-                                    serverBridge.getLastResponses().get(username).getValidator()
+                                    serverBridge.
+                                            getResponseProcessor().
+                                            getLastResponses().get(username).getValidator()
                             )
                     );
 

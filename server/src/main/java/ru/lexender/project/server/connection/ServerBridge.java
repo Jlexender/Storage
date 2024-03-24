@@ -1,4 +1,4 @@
-package ru.lexender.project.server.connect;
+package ru.lexender.project.server.connection;
 
 import lombok.Getter;
 import org.slf4j.Logger;
@@ -21,7 +21,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
-import java.util.Optional;
 
 /**
  * client-server
@@ -30,15 +29,7 @@ import java.util.Optional;
 
 @Getter
 public class ServerBridge {
-    private static final String helloString = """
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓████████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░\s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░\s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░\s
-            ░▒▓████████▓▒░ ░▒▓██████▓▒░    ░▒▓██████▓▒░ \s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░           ░▒▓█▓▒░    \s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░           ░▒▓█▓▒░    \s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓████████▓▒░    ░▒▓█▓▒░    \s
-            """;
+    private static final String helloString = "Connection has been established.";
 
     public static final Logger logger = LoggerFactory.getLogger(ServerBridge.class);
 
@@ -85,9 +76,14 @@ public class ServerBridge {
                         logger.info("Sent handshake response to {}", client);
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
-                        Request request = requestProcessor.processRequest(client);
-                        Response response = responseProcessor.handleRequest(client, request);
-                        responseProcessor.sendResponse(client, response, request.getUserdata().getUsername());
+                        Request request = requestProcessor.processRequest(client).get();
+                        if (request != null) {
+                            Response response = responseProcessor.handleRequest(request);
+                            responseProcessor.sendResponse(client, response, request.getUserdata().getUsername());
+                        } else {
+                            client.close();
+                            logger.info("Closed connection {}", client);
+                        }
                     }
                 }
             }
@@ -96,13 +92,18 @@ public class ServerBridge {
         }
     }
 
-    public void sendResponse(SocketChannel channel, Response response) throws IOException {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        objectOutputStream.writeObject(response);
-        ByteBuffer buffer = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
-        while (buffer.hasRemaining())
-            channel.write(buffer);
+    public void sendResponse(SocketChannel channel, Response response) {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(response);
+            ByteBuffer buffer = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
+            while (buffer.hasRemaining())
+                channel.write(buffer);
+        } catch (IOException exception) {
+            logger.error(exception.getMessage());
+        }
+
     }
 
     public Request getRequest(SocketChannel channel) {
