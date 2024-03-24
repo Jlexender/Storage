@@ -81,8 +81,8 @@ public class ServerBridge {
                             Response response = responseProcessor.handleRequest(request);
                             responseProcessor.sendResponse(client, response, request.getUserdata().getUsername());
                         } else {
+                            logger.info("Closing connection {}", client);
                             client.close();
-                            logger.info("Closed connection {}", client);
                         }
                     }
                 }
@@ -119,6 +119,7 @@ public class ServerBridge {
             ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
             return (Request) objectInputStream.readObject();
         } catch (Exception exception) {
+            exception.printStackTrace();
             return null;
         }
     }

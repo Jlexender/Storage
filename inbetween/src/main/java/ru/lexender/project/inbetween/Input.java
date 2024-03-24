@@ -2,13 +2,17 @@ package ru.lexender.project.inbetween;
 
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public abstract class Input {
+public class Input implements Serializable {
     private final Object inputObject;
 
     public Input(Object inputObject) {
         this.inputObject = inputObject;
     }
 
-    public abstract String get();
+    public String get() {
+        return inputObject.toString();
+    }
 }

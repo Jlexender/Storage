@@ -20,12 +20,7 @@ public record Client(IReceive receiver, IRespond respondent, ITranscribe transcr
     public Request getRequest(Validator validator) {
         Input input = receiver.receive();
         while (validator != null && !validator.test(input.get())) {
-            respondent().respond(new Output("Not valid argument") {
-                @Override
-                public String get() {
-                    return getOutputObject().toString();
-                }
-            });
+            respondent().respond(new Output("Not valid argument"));
             input = receiver.receive();
         }
         return new Request(input, userdata);

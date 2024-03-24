@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class DefaultDecoder implements IDecode {
     public List<String> decode(Request request)  {
-        String rawMessage = request.getRawMessage();
+        String rawMessage = request.getInput().get();
         return Arrays.stream(rawMessage.split(" ")).toList();
     }
 

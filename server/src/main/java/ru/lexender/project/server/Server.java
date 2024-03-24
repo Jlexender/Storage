@@ -67,7 +67,7 @@ public class Server {
                 Command previousCommand = invoker.peekPreviousCommand(username);
                 if (previousCommand.getStatus() == CommandStatus.WAITING_FOR_ARGUMENT) {
                     List<String> newArgs = new LinkedList<>(((ConstructorCommand) previousCommand).getRecentArguments());
-                    newArgs.add(request.getRawMessage());
+                    newArgs.add(request.getInput().get());
 
                     logger.info("Constructor command {} relaunched with args {}", previousCommand, newArgs);
                     return invoker.invoke(previousCommand, newArgs, username);
