@@ -34,6 +34,7 @@ public class Main {
             Server server = new Server(
                     invoker,
                     new AuthWorker(new UserdataBridge(
+                            properties.getProperty("DB_HOST"),
                             properties.getProperty("DB_NAME"),
                             Integer.parseInt(properties.getProperty("DB_PORT")),
                             properties.getProperty("DB_USERNAME"),

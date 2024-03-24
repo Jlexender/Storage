@@ -11,14 +11,14 @@ import java.sql.SQLException;
 public class UserdataBridge {
     private final String address, username, password;
 
-    public UserdataBridge(String databaseName, int port, String username, String password) {
-        address = String.format("jdbc:postgresql://localhost:%d/%s", port, databaseName);
+    public UserdataBridge(String databaseHost, String databaseName, int port, String username, String password) {
+        address = String.format("jdbc:postgresql://%s:%d/%s", databaseHost, port, databaseName);
         this.username = username;
         this.password = password;
     }
 
     public boolean isConnectable() {
-        try (Connection connection = DriverManager.getConnection(address, "alex", "0000")) {
+        try (Connection connection = DriverManager.getConnection(address, username, password)) {
             if (!connection.getMetaData().getTables(null, null, "users", null).next()) {
                 Server.logger.info("No 'users' table found: trying to create a table");
 
