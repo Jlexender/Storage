@@ -17,14 +17,15 @@ import java.time.format.DateTimeFormatter;
 
 public class PostgreSQLTransferer implements ITransfer {
     public static final Logger logger = LoggerFactory.getLogger("Transferer");
-    private final String address, username, password;
+    private final String address, username, password, schemaName;
     private final IStore storage;
 
-    public PostgreSQLTransferer(String databaseHost, String databaseName, int port, IStore storage, String username, String password) {
+    public PostgreSQLTransferer(String databaseHost, String databaseName, String schemaName, int port, IStore storage, String username, String password) {
         address = String.format("jdbc:postgresql://%s:%d/%s", databaseHost, port, databaseName);
         this.storage = storage;
         this.username = username;
         this.password = password;
+        this.schemaName = schemaName;
     }
 
     private void checkTable(Connection connection) throws SQLException {
@@ -62,6 +63,9 @@ public class PostgreSQLTransferer implements ITransfer {
              Statement statement = connection.createStatement()) {
             logger.debug("Driver tries to establish the connection {}", address);
 
+            connection.createStatement().executeUpdate("SET search_path TO " + schemaName);
+            logger.info("Transferer switched to schema {}", schemaName);
+
             checkTable(connection);
             ResultSet resultSet = statement.executeQuery("SELECT * FROM data");
             while (resultSet.next()) {
@@ -73,6 +77,7 @@ public class PostgreSQLTransferer implements ITransfer {
             }
             resultSet.close();
         } catch (SQLException exception) {
+            exception.printStackTrace();
             throw new StorageTransferException("Can't parse from database");
         }
     }
@@ -102,6 +107,12 @@ public class PostgreSQLTransferer implements ITransfer {
             logger.debug("Driver tries to establish the connection");
 
             checkTable(connection);
+
+            PreparedStatement prepared = connection.prepareStatement("SET search_path TO ?");
+            prepared.setString(1, schemaName);
+            prepared.executeUpdate();
+            logger.info("Transferer switched to schema {}", schemaName);
+
             connection.createStatement().executeUpdate("TRUNCATE TABLE data");
 
             for (StorageObject object: storage.getCollectionCopy()) {

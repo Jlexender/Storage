@@ -48,6 +48,9 @@ public class AuthWorker {
              PreparedStatement statement = connection.prepareStatement(insertStatement);
              PreparedStatement statement2 = connection.prepareStatement(existsStatement)) {
 
+            connection.createStatement().executeUpdate("SET search_path TO " + userdataBridge.getSchemaName());
+            Server.logger.info("AuthWorker switched to schema {}", userdataBridge.getSchemaName());
+
             statement2.setString(1, userdata.getUsername());
             ResultSet resultSet = statement2.executeQuery();
             if (resultSet.next()) {
@@ -75,6 +78,9 @@ public class AuthWorker {
         try (Connection connection = DriverManager.getConnection(userdataBridge.getAddress(),
                 userdataBridge.getUsername(), userdataBridge.getPassword());
              PreparedStatement statement = connection.prepareStatement(selectStatement)) {
+
+            connection.createStatement().executeUpdate("SET search_path TO " + userdataBridge.getSchemaName());
+            Server.logger.info("AuthWorker switched to schema {}", userdataBridge.getSchemaName());
 
             statement.setString(1, userdata.getUsername());
             ResultSet resultSet = statement.executeQuery();

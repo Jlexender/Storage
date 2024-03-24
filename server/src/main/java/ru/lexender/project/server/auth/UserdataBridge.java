@@ -5,20 +5,26 @@ import ru.lexender.project.server.Server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @Getter
 public class UserdataBridge {
-    private final String address, username, password;
+    private final String address, username, password, schemaName;
 
-    public UserdataBridge(String databaseHost, String databaseName, int port, String username, String password) {
+    public UserdataBridge(String databaseHost, String databaseName, String schemaName, int port, String username, String password) {
         address = String.format("jdbc:postgresql://%s:%d/%s", databaseHost, port, databaseName);
         this.username = username;
         this.password = password;
+        this.schemaName = schemaName;
     }
 
     public boolean isConnectable() {
         try (Connection connection = DriverManager.getConnection(address, username, password)) {
+
+            connection.createStatement().executeUpdate("SET search_path TO " + schemaName);
+            Server.logger.info("UserdataBridge switched to schema {}", schemaName);
+
             if (!connection.getMetaData().getTables(null, null, "users", null).next()) {
                 Server.logger.info("No 'users' table found: trying to create a table");
 
