@@ -1,4 +1,4 @@
-package ru.lexender.project.server;
+package ru.lexender.project.server.connect;
 
 import lombok.Getter;
 import org.slf4j.Logger;
@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
+import ru.lexender.project.server.Server;
+import ru.lexender.project.server.ServerConsole;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -18,12 +20,8 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.ArrayDeque;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Queue;
 
 /**
  * client-server
@@ -39,26 +37,25 @@ public class ServerBridge {
             ░▒▓████████▓▒░ ░▒▓██████▓▒░    ░▒▓██████▓▒░ \s
             ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░           ░▒▓█▓▒░    \s
             ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░           ░▒▓█▓▒░    \s
-            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓████████▓▒░    ░▒▓█▓▒░ \s
+            ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓████████▓▒░    ░▒▓█▓▒░    \s
             """;
 
     public static final Logger logger = LoggerFactory.getLogger(ServerBridge.class);
-    private final Map<String, Queue<Response>> responseQueue;
-    private final Map<String, Response> lastResponses;
-    private final ServerConsole console;
 
     private final Server server;
     private final int port;
+    private final ResponseProcessor responseProcessor;
+    private final RequestProcessor requestProcessor;
 
     public ServerBridge(Server server, int port) {
         this.server = server;
         this.port = port;
-        this.responseQueue = new HashMap<>();
-        this.lastResponses = new HashMap<>();
-        this.console = new ServerConsole(this);
+        responseProcessor = new ResponseProcessor(this);
+        requestProcessor = new RequestProcessor(this);
     }
 
     public void run() {
+        Thread console = new Thread(new ServerConsole(this), "serverside");
         console.start();
 
         try (ServerSocketChannel serverSocket = ServerSocketChannel.open()) {
@@ -88,46 +85,14 @@ public class ServerBridge {
                         logger.info("Sent handshake response to {}", client);
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
-                        Optional<Request> requestNullable = Optional.ofNullable(getRequest(client));
-                        if (requestNullable.isEmpty()) continue;
-
-                        Request request = requestNullable.get();
-                        logger.info("Got request {}", request);
-
-                        String username = request.getUserdata().getUsername();
-                        if (responseQueue.get(username) == null || responseQueue.get(username).isEmpty()) {
-                            logger.info("Response queue is empty for {}, handling request",
-                                    request.getUserdata().getUsername());
-                            Response response = server.handle(request, username);
-                            sendResponse(client, response);
-                            lastResponses.put(username, response);
-                            logger.info("Sent {} to {}", response, client);
-                        } else {
-                            logger.info("Response queue is NOT empty, skipping handling");
-                            Response response = responseQueue.get(username).remove();
-                            sendResponse(client, response);
-                            lastResponses.put(username, response);
-                            logger.info("Sent {} to {} by username {}", response, client, username);
-                        }
+                        Request request = requestProcessor.processRequest(client);
+                        Response response = responseProcessor.handleRequest(client, request);
+                        responseProcessor.sendResponse(client, response, request.getUserdata().getUsername());
                     }
                 }
             }
         } catch (Exception exception) {
             logger.error(exception.getMessage());
-        }
-    }
-
-
-    public Request getRequest(SocketChannel channel) {
-        try {
-            ByteBuffer buffer = ByteBuffer.allocate(1024);
-            channel.read(buffer);
-            buffer.flip();
-            ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
-            ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
-            return (Request) objectInputStream.readObject();
-        } catch (Exception exception) {
-            return null;
         }
     }
 
@@ -140,10 +105,21 @@ public class ServerBridge {
             channel.write(buffer);
     }
 
-    public void queryResponse(String username, Response response) {
-        if (responseQueue.get(username) == null)
-            responseQueue.put(username, new ArrayDeque<>());
-        responseQueue.get(username).add(response);
-        logger.debug("Queried response {} for username {}", response, username);
+    public Request getRequest(SocketChannel channel) {
+        try {
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            int bytesRead = channel.read(buffer);
+            if (bytesRead == -1) {
+                return null;
+            }
+
+            buffer.flip();
+            ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(buffer.array());
+            ObjectInputStream objectInputStream = new ObjectInputStream(arrayInputStream);
+            return (Request) objectInputStream.readObject();
+        } catch (Exception exception) {
+            return null;
+        }
     }
+
 }
