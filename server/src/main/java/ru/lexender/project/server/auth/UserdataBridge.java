@@ -22,14 +22,11 @@ public class UserdataBridge {
     public boolean isConnectable() {
         try (Connection connection = DriverManager.getConnection(address, username, password)) {
 
-            connection.createStatement().executeUpdate("SET search_path TO " + schemaName);
-            Server.logger.info("UserdataBridge switched to schema {}", schemaName);
-
-            if (!connection.getMetaData().getTables(null, null, "users", null).next()) {
-                Server.logger.info("No 'users' table found: trying to create a table");
+            if (!connection.getMetaData().getTables(null, null, "storage_users", null).next()) {
+                Server.logger.info("No 'storage_users' table found: trying to create a table");
 
                 String tableQuery = """
-                        CREATE TABLE users(
+                        CREATE TABLE storage_users(
                             uid serial PRIMARY KEY,
                             username varchar(40) UNIQUE NOT NULL,
                             hash char(64) NOT NULL,
@@ -38,7 +35,7 @@ public class UserdataBridge {
                         """;
 
                 connection.createStatement().executeUpdate(tableQuery);
-                Server.logger.info("OK created table 'users'");
+                Server.logger.info("OK created table 'storage_users'");
             }
             return true;
         } catch (SQLException exception) {

@@ -17,23 +17,22 @@ import java.time.format.DateTimeFormatter;
 
 public class PostgreSQLTransferer implements ITransfer {
     public static final Logger logger = LoggerFactory.getLogger("Transferer");
-    private final String address, username, password, schemaName;
+    private final String address, username, password;
     private final IStore storage;
 
-    public PostgreSQLTransferer(String databaseHost, String databaseName, String schemaName, int port, IStore storage, String username, String password) {
+    public PostgreSQLTransferer(String databaseHost, String databaseName, int port, IStore storage, String username, String password) {
         address = String.format("jdbc:postgresql://%s:%d/%s", databaseHost, port, databaseName);
         this.storage = storage;
         this.username = username;
         this.password = password;
-        this.schemaName = schemaName;
     }
 
     private void checkTable(Connection connection) throws SQLException {
-        if (!connection.getMetaData().getTables(null, null, "data", null).next()) {
-            logger.info("No 'data' table found: trying to create a table");
+        if (!connection.getMetaData().getTables(null, null, "storage_data", null).next()) {
+            logger.info("No 'storage_data' table found: trying to create a table");
 
             String tableQuery = """
-                        CREATE TABLE data(
+                        CREATE TABLE storage_data(
                             id bigserial,
                             author varchar(20),
                             name varchar(200),
@@ -53,7 +52,7 @@ public class PostgreSQLTransferer implements ITransfer {
                         """;
 
             connection.createStatement().executeUpdate(tableQuery);
-            logger.info("OK created table 'data'");
+            logger.info("OK created table 'storage_data'");
         }
     }
 
@@ -63,11 +62,8 @@ public class PostgreSQLTransferer implements ITransfer {
              Statement statement = connection.createStatement()) {
             logger.debug("Driver tries to establish the connection {}", address);
 
-            connection.createStatement().executeUpdate("SET search_path TO " + schemaName);
-            logger.info("Transferer switched to schema {}", schemaName);
-
             checkTable(connection);
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM data");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM storage_data");
             while (resultSet.next()) {
                 try {
                     storage.add(new StorageObject(resultSet));
@@ -77,14 +73,13 @@ public class PostgreSQLTransferer implements ITransfer {
             }
             resultSet.close();
         } catch (SQLException exception) {
-            exception.printStackTrace();
             throw new StorageTransferException("Can't parse from database");
         }
     }
 
     public void transferOut() throws StorageTransferException {
         String SQLString = """
-                INSERT INTO data(
+                INSERT INTO storage_data(
                 name,
                 author,
                 coordinates_x,
@@ -108,12 +103,7 @@ public class PostgreSQLTransferer implements ITransfer {
 
             checkTable(connection);
 
-            PreparedStatement prepared = connection.prepareStatement("SET search_path TO ?");
-            prepared.setString(1, schemaName);
-            prepared.executeUpdate();
-            logger.info("Transferer switched to schema {}", schemaName);
-
-            connection.createStatement().executeUpdate("TRUNCATE TABLE data");
+            connection.createStatement().executeUpdate("TRUNCATE TABLE storage_data");
 
             for (StorageObject object: storage.getCollectionCopy()) {
                  statement.setString(1, object.getObject().getName());

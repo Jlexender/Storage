@@ -41,15 +41,12 @@ public class AuthWorker {
                 .hashString(pepper+userdata.getPassword()+salt, StandardCharsets.UTF_8)
                 .toString();
 
-        String insertStatement = "INSERT INTO users(username, hash, salt) VALUES (?,?,?)";
-        String existsStatement = "SELECT uid FROM users where username = ?";
+        String insertStatement = "INSERT INTO storage_users(username, hash, salt) VALUES (?,?,?)";
+        String existsStatement = "SELECT uid FROM storage_users where username = ?";
         try (Connection connection = DriverManager.getConnection(userdataBridge.getAddress(),
                 userdataBridge.getUsername(), userdataBridge.getPassword());
              PreparedStatement statement = connection.prepareStatement(insertStatement);
              PreparedStatement statement2 = connection.prepareStatement(existsStatement)) {
-
-            connection.createStatement().executeUpdate("SET search_path TO " + userdataBridge.getSchemaName());
-            Server.logger.info("AuthWorker switched to schema {}", userdataBridge.getSchemaName());
 
             statement2.setString(1, userdata.getUsername());
             ResultSet resultSet = statement2.executeQuery();
@@ -74,13 +71,10 @@ public class AuthWorker {
         if (!userdataBridge.isConnectable())
             throw new UserdataNotConnectedException("Userdata is not connected");
 
-        String selectStatement = "SELECT salt, hash FROM users WHERE username=?";
+        String selectStatement = "SELECT salt, hash FROM storage_users WHERE username=?";
         try (Connection connection = DriverManager.getConnection(userdataBridge.getAddress(),
                 userdataBridge.getUsername(), userdataBridge.getPassword());
              PreparedStatement statement = connection.prepareStatement(selectStatement)) {
-
-            connection.createStatement().executeUpdate("SET search_path TO " + userdataBridge.getSchemaName());
-            Server.logger.info("AuthWorker switched to schema {}", userdataBridge.getSchemaName());
 
             statement.setString(1, userdata.getUsername());
             ResultSet resultSet = statement.executeQuery();

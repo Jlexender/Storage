@@ -25,7 +25,6 @@ public class Main {
                     new PostgreSQLTransferer(
                             properties.getProperty("DB_HOST"),
                             properties.getProperty("DB_NAME"),
-                            properties.getProperty("DB_SCHEMA"),
                             Integer.parseInt(properties.getProperty("DB_PORT")),
                             s,
                             properties.getProperty("DB_USERNAME"),
