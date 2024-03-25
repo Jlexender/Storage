@@ -22,7 +22,7 @@ public class Info extends Command {
         try {
 
             String stringBuilder = String.format("Time: %s\nElements amount: %d\nUsername: %s\nElements created by user: %d\n",
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy-MM-dd hh:mm:ss")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy-MM-dd HH:mm:ss")),
                     invoker.getStorage().size(),
                     invoker.getCurrentUser(),
                     invoker.getStorage().getCollectionCopy()
