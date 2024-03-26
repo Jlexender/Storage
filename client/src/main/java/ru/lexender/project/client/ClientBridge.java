@@ -7,14 +7,10 @@ import ru.lexender.project.inbetween.Prompt;
 import ru.lexender.project.inbetween.Request;
 import ru.lexender.project.inbetween.Response;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
 import java.util.List;
 
 /**
@@ -35,29 +31,30 @@ public class ClientBridge {
     }
 
     public void run() {
-        try (SocketChannel channel = SocketChannel.open()) {
-            channel.connect(new InetSocketAddress(hostname, port));
-            Response helloResponse = getResponse(channel.socket());
+        try (Socket socket = new Socket(hostname, port)) {
+            System.out.println("Connected!");
+
+            Response helloResponse = getResponse(socket);
             client.respondent().respond(client.transcriber().transcribe(helloResponse));
 
-            sendRequest(new Request(new Input(""), client.userdata()), channel);
-            Response identification = getResponse(channel.socket());
-            if (identification.getPrompt() == Prompt.DISCONNECTED ||
-                    identification.getPrompt() == Prompt.AUTHENTICATION_FAILED) {
-                client.respondent().respond(client.transcriber().transcribe(identification));
+            sendRequest(new Request(new Input(""), client.userdata()), socket);
+            Response response = getResponse(socket);
+
+            if (response.getPrompt() == Prompt.DISCONNECTED ||
+                    response.getPrompt() == Prompt.AUTHENTICATION_FAILED) {
+                client.respondent().respond(client.transcriber().transcribe(response));
                 return;
             }
 
-            Response response = new Response(Prompt.ALL_OK);
             do {
                 Request request = client.getRequest(response.getValidator());
                 if (scriptManager.isScriptCommand(request)) {
-                    processRequests(channel, scriptManager.getBatch(request.getInput()));
+                    processRequests(socket, scriptManager.getBatch(request.getInput()));
                     continue;
                 }
-                sendRequest(request, channel);
+                sendRequest(request, socket);
 
-                response = getResponse(channel.socket());
+                response = getResponse(socket);
                 client.respondent().respond(client.transcriber().transcribe(response));
             } while (response.getPrompt() != Prompt.DISCONNECTED &&
                     response.getPrompt() != Prompt.AUTHENTICATION_FAILED);
@@ -66,23 +63,19 @@ public class ClientBridge {
         }
     }
 
-    public void processRequests(SocketChannel channel, List<Request> requests) {
+    public void processRequests(Socket socket, List<Request> requests) {
         for (Request request: requests) {
-            sendRequest(request, channel);
-            Response response = getResponse(channel.socket());
+            sendRequest(request, socket);
+            Response response = getResponse(socket);
             client.respondent().respond(client.transcriber().transcribe(response));
         }
     }
 
 
-    public void sendRequest(Request request, SocketChannel channel) {
+    public void sendRequest(Request request, Socket socket) {
         try {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            ObjectOutputStream objectOutputStream  = new ObjectOutputStream(socket.getOutputStream());
             objectOutputStream.writeObject(request);
-            ByteBuffer buffer = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
-            while (buffer.hasRemaining())
-                channel.write(buffer);
         } catch (IOException exception) {
             client.respondent().respond(new Output("Unable to send request"));
         }

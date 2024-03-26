@@ -80,13 +80,11 @@ public class ServerConsole implements Runnable {
                     String username = args.get(args.size() - 1);
                     List<String> argsToJoin = new ArrayList<>(args.subList(0, args.size() - 1));
                     String message = String.join(" ", argsToJoin);
-                    serverBridge.getResponseProcessor().queryResponse(username,
+                    serverBridge.queryResponse(username,
                             new Response(
                                     Prompt.NOTIFICATION,
                                     message,
-                                    serverBridge.
-                                            getResponseProcessor().
-                                            getLastResponses().get(username).getValidator()
+                                    serverBridge.getLastResponse().get(username).getValidator()
                             )
                     );
 

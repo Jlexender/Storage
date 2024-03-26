@@ -49,13 +49,15 @@ public class Server {
         else logger.info("Userdata connection OK");
     }
 
-    public Response handle(Request request, String username) {
+    public Response handle(Request request) {
         try {
             if (!authWorker.isValid(request.getUserdata()))
                 return new Response(Prompt.AUTHENTICATION_FAILED, "The password that you've entered is invalid.");
         } catch (UserdataNotConnectedException exception) {
             return new Response(Prompt.AUTHENTICATION_FAILED, "UserDB init FAILED");
         }
+
+        String username = request.getUserdata().getUsername();
 
         DefaultHandler handler = new DefaultHandler();
         IDecode decoder = new DefaultDecoder();
