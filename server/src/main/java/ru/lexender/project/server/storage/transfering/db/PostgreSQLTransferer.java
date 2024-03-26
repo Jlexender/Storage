@@ -105,6 +105,7 @@ public class PostgreSQLTransferer implements ITransfer {
 
             connection.createStatement().executeUpdate("TRUNCATE TABLE storage_data");
 
+
             for (StorageObject object: storage.getCollectionCopy()) {
                  statement.setString(1, object.getObject().getName());
                  statement.setString(2, object.getAuthor());

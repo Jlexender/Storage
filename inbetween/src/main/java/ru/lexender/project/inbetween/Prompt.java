@@ -1,7 +1,7 @@
 package ru.lexender.project.inbetween;
 
 public enum Prompt {
-    DISCONNECTED,
+    CONNECTION_UNAVAILABLE,
     CONNECTED,
     INVALID_AMOUNT,
     INVALID_ARGUMENT,
@@ -12,5 +12,6 @@ public enum Prompt {
     STORAGE_UNAVAILABLE,
     AUTHENTICATION_FAILED,
     NOTIFICATION,
-    ACCESS_DENIED
+    ACCESS_DENIED,
+    DISCONNECTED
 }
